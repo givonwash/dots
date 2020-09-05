@@ -61,20 +61,31 @@ DISABLE_AUTO_TITLE="true" # Alacritty will do this for me
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM=/usr/share/zsh/plugins
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git 
+    zsh-autosuggestions 
+    zsh-syntax-highlighting 
+    vi-mode
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
+
+# personal environment variables
+export NVIM_CONFIG="~/DotFiles/init.vim"
+export ALACRITTY_CONFIG="~/DotFiles/alacritty.yml"
+export ZSH_CONFIG="~/DotFiles/.zshrc"
+export I3_CONFIG="~/DotFiles/i3/config"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,10 +104,15 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias n="$EDITOR"
+alias e="exit"
+alias nn="n $NVIM_CONFIG"
+alias na="n $ALACRITTY_CONFIG"
+alias nz="n $ZSH_CONFIG"
+alias ni="n $I3_CONFIG"
+alias sz="source $ZSH_CONFIG"
+alias c="clear"
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -112,4 +128,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

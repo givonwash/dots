@@ -1,9 +1,9 @@
 " =============================================================================
 " Givon's NeoVim Config
 " =============================================================================
-"
+
 " -----------------------------------------------------------------------------
-"  Built-in Features
+"  Configuring Options
 " -----------------------------------------------------------------------------
 set nu				        " Add line numbers
 set relativenumber		    " Make line numbers relative
@@ -13,7 +13,6 @@ set timeoutlen=300	    	" Eliminate wait time for key-sharing commands
 set splitright		    	" Always split vertically split windows right
 set splitbelow		    	" Always split horizontally split windows below
 set hidden		        	" When a buffer is abandoned it remains loaded
-set termguicolors		    " Enable 24-bit RGB color
 set ignorecase		    	" Ignore case by default when searching
 set smartcase		    	" Infer whether I want a case-sensitive search
 set incsearch		    	" Go-to word as it being typed in search
@@ -26,6 +25,11 @@ set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
 
 " -----------------------------------------------------------------------------
+"  Non-Plugin Related Global Variables
+" -----------------------------------------------------------------------------
+let g:python3_host_prog = '/home/givonwash/miniconda3/bin/python'
+
+" -----------------------------------------------------------------------------
 "  Basic Mappings
 " -----------------------------------------------------------------------------
 "  define leader key as <space>
@@ -35,8 +39,8 @@ let mapleader=' '
 map <silent> <leader>h :nohl<cr>
 
 "  toggle automatic comment formatting for newlines
-map <leader>c :setlocal formatoptions-=cro<cr>
-map <leader>C :setlocal formatoptions+=cro<cr>
+map <silent> <leader>c :setlocal formatoptions-=cro<cr>
+map <silent> <leader>C :setlocal formatoptions+=cro<cr>
 
 "  leave insert mode via 'jj'
 inoremap jj <esc>
@@ -51,5 +55,41 @@ nmap <leader>b :buffers<cr>:buffer<space>
 "  remove trailing white space
 nmap <leader>tr :%s/\s\+$//e<cr>
 
+"  copy to system clipboard
+nmap <leader>y "+y<cr>
+
 "  paste from system clipboard
 nmap <leader>p "+p
+
+" -----------------------------------------------------------------------------
+"  Plugins (handled via the Vim-Plug plugin manager)
+" -----------------------------------------------------------------------------
+call plug#begin(stdpath('data') . '/plugged')
+
+"  colorscheme to match alacritty colorscheme
+Plug 'connorholyday/vim-snazzy'
+
+"  surround mode
+Plug 'tpope/vim-surround'
+
+"  personal wiki
+Plug 'vimwiki/vimwiki'
+
+"  fancy status lines
+Plug 'itchyny/lightline.vim'
+
+call plug#end()
+
+" -----------------------------------------------------------------------------
+"  Plugin Compatability
+" -----------------------------------------------------------------------------
+"  -- vim-snazzy
+let g:SnazzyTransparent=1
+colorscheme snazzy
+let g:lightline = {
+            \ 'colorscheme': 'snazzy',
+            \ }
+
+"  -- vim-wiki
+set nocompatible
+filetype plugin on
