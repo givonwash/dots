@@ -56,10 +56,10 @@ nmap <leader>b :buffers<cr>:buffer<space>
 nmap <leader>tr :%s/\s\+$//e<cr>
 
 "   copy to system clipboard
-nmap <leader>y "+y<cr>
+noremap <leader>y "+y<cr>
 
 "   paste from system clipboard
-nmap <leader>p "+p
+noremap <leader>p "+p<cr>
 
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
