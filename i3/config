@@ -29,7 +29,7 @@ set                         $ws10                "10 | spt"
 # Default Mode Keybindings
 ################################################################################
 # lock screen
-bindsym $mod+Shift+x exec i3lock-fancy --nofork -f $i3lockfont
+bindsym $mod+Shift+x exec i3lock-fancy --nofork -f $i3lockfont -- scrot -o -z
 
 # launch terminal
 bindsym $mod+Return exec $terminal
@@ -207,7 +207,7 @@ bar {
 # Run on Start-Up
 ################################################################################
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -f $i3lockfont
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -f $i3lockfont -- scrot -o -z
 
 # manage wireless networks
 exec --no-startup-id nm-applet
