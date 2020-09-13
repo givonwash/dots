@@ -8,8 +8,9 @@
 #                           varname              varvalue
 set_from_resource           $bg                  i3wm.color0 #282a36
 set_from_resource           $fg                  i3wm.color15 #eff0eb
-set                         $wallpaper           ~/.themes/my-wallpapers/lego-city.JPG
-set                         $font                Fira Sans Bold 10
+set                         $wallpaper           ~/.themes/my-wallpapers/wallpaper.png
+set                         $wmfont              Fira Sans Bold 10
+set                         $i3lockfont          Fira-Sans-Bold
 set                         $mod                 Mod4
 set                         $refresh_i3status    killall -SIGUSR1 i3status
 set                         $terminal            alacritty
@@ -28,7 +29,7 @@ set                         $ws10                "10 | spt"
 # Default Mode Keybindings
 ################################################################################
 # lock screen
-bindsym $mod+Shift+x exec i3lock --color $bg
+bindsym $mod+Shift+x exec i3lock-fancy --nofork -f $i3lockfont
 
 # launch terminal
 bindsym $mod+Return exec $terminal
@@ -114,13 +115,16 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg "exit"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Enter resize mode
 bindsym $mod+r mode "resize"
+
+# poweroff
+bindsym $mod+Shift+p exec poweroff
 
 ################################################################################
 # Resize-Mode Keybindings
@@ -155,7 +159,7 @@ mode "resize" {
 # Aesthetics
 ################################################################################
 # font
-font pango:$font
+font pango:$wmfont
 
 # window colors
 #                       border              background         text                 indicator
@@ -174,7 +178,7 @@ default_floating_border pixel 0
 gaps inner 10
 
 # Background
-exec feh --bg-fill $wallpaper
+exec --no-startup-id feh --bg-fill $wallpaper
 
 # Assign applications to particular workspaces
 assign [class="^firefox$"] $ws1
@@ -203,7 +207,7 @@ bar {
 # Run on Start-Up
 ################################################################################
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color $bg
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -f $i3lockfont
 
 # manage wireless networks
 exec --no-startup-id nm-applet
