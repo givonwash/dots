@@ -59,7 +59,7 @@ nmap <leader>tr :%s/\s\+$//e<cr>
 nmap <leader>y "+y<cr>
 
 "   paste from system clipboard
-nmap <leader>p "+p
+nmap <leader>p "+p<cr>
 
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
