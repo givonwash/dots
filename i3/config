@@ -6,8 +6,8 @@
 # Config Variables
 ################################################################################
 #                           varname              varvalue
-set_from_resource           $bg                  i3wm.background #282a36
-set_from_resource           $fg                  i3wm.foreground #111217
+set_from_resource           $bg                  i3wm.color0 #282a36
+set_from_resource           $fg                  i3wm.color15 #eff0eb
 set                         $wallpaper           ~/.themes/my-wallpapers/lego-city.JPG
 set                         $font                Fira Sans Bold 10
 set                         $mod                 Mod4
