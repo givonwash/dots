@@ -176,32 +176,10 @@ default_floating_border pixel 0
 
 # Gaps
 gaps inner 10
+gaps bottom 40
 
 # Background
 exec --no-startup-id feh --bg-fill $wallpaper
-
-# Assign applications to particular workspaces
-assign [class="^firefox$"] $ws1
-
-################################################################################
-# Bar
-################################################################################
-# Start i3bar to display a workspace bar (plus the system information i3status)
-bar {
-        status_command i3status
-        height 25
-        mode hide
-        hidden_state hide
-        modifier $mod
-        colors {
-            background $bg
-            separator $fg
-            #                  border             background         text
-            focused_workspace  $bg                $fg                $bg
-            inactive_workspace $bg                $fg                $bg
-            urgent_workspace   $bg                $fg                $bg
-        }
-}
 
 ################################################################################
 # Run on Start-Up
@@ -214,3 +192,6 @@ exec --no-startup-id nm-applet
 
 # Window Compositor
 exec --no-startup-id picom
+
+# launch polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
