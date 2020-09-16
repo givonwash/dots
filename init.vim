@@ -66,8 +66,8 @@ nnoremap <leader>p "+p<cr>
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-"   colorscheme to match alacritty colorscheme
-Plug 'connorholyday/vim-snazzy'
+"   set colorscheme to colors from pywal
+Plug 'dylanaraps/wal.vim'
 
 "   surround mode
 Plug 'tpope/vim-surround'
@@ -86,11 +86,12 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
-"   -- vim-snazzy
-let g:SnazzyTransparent=1
-colorscheme snazzy
+"  --  wal.vim
+colorscheme wal
+
+"  -- lightline.vim
 let g:lightline = {
-            \ 'colorscheme': 'snazzy',
+            \ 'colorscheme': 'wal',
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
             \   },
@@ -99,6 +100,18 @@ let g:lightline = {
 "  -- vim-wiki
 set nocompatible
 filetype plugin on
+let g:vimwiki_list = [
+            \ { 
+            \ 'path': '~/.local/share/wiki/',
+            \ },
+            \ ]
+
+hi VimwikiHeader1 guifg='LightYellow' gui=bold,underline ctermfg=14 cterm=bold,underline
+hi VimwikiHeader2 guifg='LightBlue' gui=bold,underline ctermfg=9 cterm=bold,underline
+hi VimwikiHeader3 guifg='LightGreen' gui=bold,underline ctermfg=10 cterm=bold,underline
+hi VimwikiHeader4 guifg='LightCyan' gui=bold,underline ctermfg=11 cterm=bold,underline
+hi VimwikiHeader5 guifg='LightRed' gui=bold,underline ctermfg=12 cterm=bold,underline
+hi VimwikiHeader6 guifg='LightMagenta' gui=bold,underline ctermfg=13 cterm=bold,underline
 
 "   -- coc.nvim
 "  ****************************************************************************

@@ -8,7 +8,7 @@
 #                           varname              varvalue
 set_from_resource           $bg                  i3wm.color0 #282a36
 set_from_resource           $fg                  i3wm.color15 #eff0eb
-set                         $wallpaper           ~/.themes/my-wallpapers/wallpaper.png
+set                         $wallpaper           ~/.themes/wal/wal.png
 set                         $wmfont              Fira Sans Bold 10
 set                         $i3lockfont          Fira-Sans-Bold
 set                         $mod                 Mod4
@@ -179,7 +179,7 @@ gaps inner 10
 gaps bottom 40
 
 # Background
-exec --no-startup-id feh --bg-fill $wallpaper
+exec --no-startup-id wal -i $wallpaper -b "#282a36"
 
 ################################################################################
 # Run on Start-Up
