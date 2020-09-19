@@ -184,11 +184,11 @@ exec --no-startup-id wal -i $wallpaper -b "#282a36"
 ################################################################################
 # Run on Start-Up
 ################################################################################
+# start nm-applet
+exec --no-startup-id nm-applet --no-agent
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -f $i3lockfont -- scrot -o -z
-
-# manage wireless networks
-exec --no-startup-id nm-applet
 
 # Window Compositor
 exec --no-startup-id picom

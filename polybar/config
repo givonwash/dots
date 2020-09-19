@@ -29,9 +29,9 @@ border-size = 0
 border-color = ${self.primary}
 padding = 0
 module-margin = 0
-modules-left =
+modules-left = date
 modules-center = i3
-modules-right =
+modules-right = 
 separator =
 dim-value = 0.95
 locale = ${env:LANG:en_US.UTF-8}
@@ -100,7 +100,7 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
+label-mode-foreground = ${self.alert}
 label-mode-background = ${self.primary}
 
 ; focused = Active workspace on focused monitor
@@ -164,22 +164,25 @@ type = internal/backlight
 card = intel_backlight
 
 [module/cpu]
+inherit = base
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${self.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
+inherit = base
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${self.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
 
 [module/wlan]
+inherit = base
 type = internal/network
 interface = net1
 interval = 3.0
@@ -202,13 +205,14 @@ ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
+inherit = base
 type = internal/network
 interface = vboxnet0
 interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${self.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -218,6 +222,7 @@ format-disconnected =
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
+inherit = base
 type = internal/date
 interval = 5
 
@@ -234,6 +239,7 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 [module/pulseaudio]
+inherit = base
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
@@ -258,9 +264,10 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${self.foreground-alt}
 
 [module/alsa]
+inherit = base
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
@@ -268,7 +275,7 @@ label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${self.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
@@ -286,9 +293,10 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${self.foreground-alt}
 
 [module/battery]
+inherit = base
 type = internal/battery
 battery = BAT0
 adapter = ADP1
@@ -301,27 +309,28 @@ format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${base.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${self.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${self.foreground-alt}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${self.foreground-alt}
 animation-discharging-framerate = 750
 
 [module/temperature]
+inherit = base
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
@@ -333,14 +342,15 @@ format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${self.secondary}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${self.foreground-alt}
 
 [module/powermenu]
+inherit = base
 type = custom/menu
 
 expand-right = true
@@ -348,11 +358,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${self.secondary}
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${self.secondary}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${self.foreground-alt}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
