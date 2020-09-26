@@ -27,7 +27,7 @@ set autoindent		    	" Copy indent from current line for newlines
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
 " -----------------------------------------------------------------------------
-let g:python3_host_prog = '/home/givonwash/miniconda3/bin/python'
+let g:python3_host_prog = '/home/givon/miniconda3/bin/python'
 
 " -----------------------------------------------------------------------------
 "   Basic Mappings
@@ -52,22 +52,39 @@ nnoremap OO m`O<esc>``
 "   switch between buffers easily
 nmap <leader>b :buffers<cr>:buffer<space>
 
+"   close current window/tab
+map <silent> <leader>cl :close<cr>
+
+"   navigate windows easily in normal and terminal mode
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+
 "   remove trailing white space
 nmap <leader>tr :%s/\s\+$//e<cr>
 
 "   copy to system clipboard
-nnoremap <leader>y "+y<cr>
+nnoremap <leader>y "+y
 
 "   paste from system clipboard
-nnoremap <leader>p "+p<cr>
+nnoremap <leader>p "+p
+
+"   exit termninal mode with jj
+tnoremap jj <C-\><C-N>
 
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-"   set colorscheme to colors from pywal
-Plug 'dylanaraps/wal.vim'
+"   snazzy colorscheme
+Plug 'connorholyday/vim-snazzy'
 
 "   surround mode
 Plug 'tpope/vim-surround'
@@ -86,12 +103,13 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
-"  --  wal.vim
-colorscheme wal
+"  --  vim-snazzy
+let g:SnazzyTransparent=1
+colorscheme snazzy
 
 "  -- lightline.vim
 let g:lightline = {
-            \ 'colorscheme': 'wal',
+            \ 'colorscheme': 'snazzy',
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
             \   },
@@ -106,12 +124,12 @@ let g:vimwiki_list = [
             \ },
             \ ]
 
-hi VimwikiHeader1 guifg='LightYellow' gui=bold,underline ctermfg=14 cterm=bold,underline
-hi VimwikiHeader2 guifg='LightBlue' gui=bold,underline ctermfg=9 cterm=bold,underline
-hi VimwikiHeader3 guifg='LightGreen' gui=bold,underline ctermfg=10 cterm=bold,underline
-hi VimwikiHeader4 guifg='LightCyan' gui=bold,underline ctermfg=11 cterm=bold,underline
-hi VimwikiHeader5 guifg='LightRed' gui=bold,underline ctermfg=12 cterm=bold,underline
-hi VimwikiHeader6 guifg='LightMagenta' gui=bold,underline ctermfg=13 cterm=bold,underline
+hi VimwikiHeader1 guifg='LightYellow'   gui=bold,underline  ctermfg=14  cterm=bold,underline
+hi VimwikiHeader2 guifg='LightBlue'     gui=bold,underline  ctermfg=9   cterm=bold,underline
+hi VimwikiHeader3 guifg='LightGreen'    gui=bold,underline  ctermfg=10  cterm=bold,underline
+hi VimwikiHeader4 guifg='LightCyan'     gui=bold,underline  ctermfg=11  cterm=bold,underline
+hi VimwikiHeader5 guifg='LightRed'      gui=bold,underline  ctermfg=12  cterm=bold,underline
+hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bold,underline
 
 "   -- coc.nvim
 "  ****************************************************************************
