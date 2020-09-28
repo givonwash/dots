@@ -83,8 +83,8 @@ tnoremap jj <C-\><C-N>
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-"   snazzy colorscheme
-Plug 'connorholyday/vim-snazzy'
+" Plug 'connorholyday/vim-snazzy'
+Plug 'dylanaraps/wal.vim'
 
 "   surround mode
 Plug 'tpope/vim-surround'
@@ -103,13 +103,12 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
-"  --  vim-snazzy
-let g:SnazzyTransparent=1
-colorscheme snazzy
+"  --  python-pywal vim colorscheme
+colorscheme wal
 
 "  -- lightline.vim
 let g:lightline = {
-            \ 'colorscheme': 'snazzy',
+            \ 'colorscheme': 'wal',
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
             \   },
