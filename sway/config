@@ -1,0 +1,308 @@
+################################################################################
+# Givon's Sway Config
+################################################################################
+
+# see sway(5) for detailed breakdown
+
+################################################################################
+# Config Global Variables
+################################################################################
+
+# Keys
+#   Variable    Key
+set $mod        Mod4
+set $left       h
+set $down       j
+set $up         k
+set $right      l
+
+# Inputs
+# -- Bluetooth Paired Devices
+#   Variable    Input
+set $logmx      1133:45091:Logitech_Wireless_Mouse_MX_Master_3
+set $logk780    1133:45883:Keyboard_K780_Keyboard
+
+# Aesthetics
+#   Variable    Value
+set $lockfont   Fira Sans
+set $pango_font $lockfont Bold 10
+set $wal        wal -i /home/givon/DotFiles/wallpapers/wal.png -b "#282a36" -n
+
+# -- pywal Colors
+# ---- Generate Colors
+exec $wal 
+# ---- Import those Colors and the Wallpaper as Variables
+include /home/givon/.cache/wal/colors-sway
+
+# Terminal
+#   Variable    Terminal
+set $term       alacritty
+
+# Commands
+#   Variable    Command
+set $launcher   wofi
+set $lock       swaylock --image $wallpaper \
+                         --show-keyboard-layout \
+                         --indicator-caps-lock \
+                         --scaling fill \
+                         --font "$lockfont" \
+                         --font-size 20 \
+                         --daemonize \
+                         --bs-hl-color "$color12" \
+                         --indicator-radius 75 \
+                         --indicator-thickness 25 \
+                         --inside-color "$background" \
+                         --inside-clear-color "$foreground" \
+                         --inside-ver-color "$color9" \
+                         --inside-wrong-color "$color12" \
+                         --key-hl-color "$color10" \
+                         --layout-bg-color "$background" \
+                         --layout-border-color "$color4" \
+                         --layout-text-color "$color15" \
+                         --line-color "$color14" \
+                         --line-clear-color "$color10" \
+                         --line-ver-color "$color9" \
+                         --line-wrong-color "$color12" \
+                         --ring-color "$color8" \
+                         --ring-clear-color "$color10" \
+                         --ring-ver-color "$color9" \
+                         --ring-wrong-color "$color12" \
+                         --separator-color "$color14" \
+                         --text-color "$color15"
+# Workspaces
+#   Variable    Workspace
+set $ws1        "1"
+set $ws2        "2"
+set $ws3        "3"
+set $ws4        "4"
+set $ws5        "5"
+set $ws6        "6"
+set $ws7        "7"
+set $ws8        "8"
+set $ws9        "9"
+set $ws10       "10"
+
+################################################################################
+# Output Configuration
+################################################################################
+
+#       name    bg      file        mode    fallback-color
+output  *       bg      $wallpaper  fill    $color7
+
+################################################################################
+# Idle Configuration
+################################################################################
+
+# Lock the Screen After 5 Minutes of Inactivity 
+# Turn Off the Screen after 6 Minutes of Inactivity
+# Also Lock the Screen Before Sleeping
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
+
+################################################################################
+# Input configuration
+################################################################################
+
+input type:touchpad {
+    natural_scroll  enabled
+    tap             enabled
+    tap_button_map  lrm
+    scroll_method   two_finger
+    dwt             enabled
+    drag            disabled
+}
+
+input $logmx {
+    natural_scroll  enabled
+    dwt             enabled
+}
+
+input $logk780 {
+    xkb_model       logitech_base
+    xkb_numlock     disabled
+}
+
+################################################################################
+# Key Bindings
+################################################################################
+
+# Launchers
+# -- Start a Terminal
+bindsym $mod+Return exec $term
+
+# -- Run Launcher
+bindsym $mod+Space exec $launcher
+
+# General
+# -- Kill Focused Window
+bindsym $mod+q kill
+
+# -- Reload the Configuration File
+bindsym $mod+Shift+r reload
+
+# -- Lock Sway
+bindsym $mod+x exec $lock
+
+# -- Exit Sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exit
+
+# Movement
+# -- Move Your Focus Around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# -- Move the Focused Window with the Same, but Add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# -- Switch to Explicity Defined Workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# -- Move Focused Container to Explicitly Defined Workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Layout
+# -- Splits
+bindsym $mod+Semicolon splith
+bindsym $mod+v splitv
+
+# -- Switch the Current Container Between Different Layout Styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# -- Make the current focus fullscreen
+bindsym $mod+f fullscreen toggle
+
+# -- Move focus to the parent container
+bindsym $mod+a focus parent
+
+# -- Increase/Decrease Inner Gaps for Current Workspace
+bindsym $mod+p gaps inner current plus 1
+bindsym $mod+Shift+p gaps inner current minus 1
+
+# Scratchpad
+# -- Move the Currently Focused Window to the Scratchpad
+bindsym $mod+Shift+minus move to scratchpad
+
+# -- Cycle thru Scratchpad Windows or Close the Sole Focused One
+bindsym $mod+minus scratchpad show
+
+################################################################################
+# Aesthetics
+################################################################################
+
+# Font
+font pango:$pango_font
+
+# Gaps
+gaps inner 5
+
+# Cursor Theme
+seat seat0 xcursor_theme Bibata_Oil 16
+
+# Window Colors
+#                       Border      Background      Text        Indicator   Child-Border
+client.focused          $color8     $background     $color15    $color8     $color8 
+client.unfocused        $background $background     $color15    $color9     $background
+client.focused_inactive $background $background     $color15    $color9     $background
+client.urgent           $color12    $background     $color15    $color3     $color12
+
+# Borders
+# -- Defaults
+default_border pixel 2
+default_floating_border normal
+smart_borders on
+
+# Opacity
+# -- Wayland Applications
+for_window [app_id=".*"] opacity set 0.95
+# -- X11 Applications
+for_window [class=".*"] opacity set 0.95
+
+
+################################################################################
+# Modes
+################################################################################
+
+# Resize
+mode "resize" {
+    # left will shrink the containers width
+    bindsym $left resize shrink width 10px
+    # right will grow the containers width
+    bindsym $right resize grow width 10px
+    # down will grow the containers height
+    bindsym $down resize grow height 10px
+    # up will shrink the containers height
+    bindsym $up resize shrink height 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+################################################################################
+# Status Bar
+################################################################################
+
+bar {
+    swaybar_command waybar
+}
+
+################################################################################
+# Miscellaneous Defaults/Commands
+################################################################################
+
+# Modifier for Dragging Floating Windows and Resizing Any Window
+floating_modifier $mod normal
+
+# Initial Workspace Layout
+workspace_layout default
+
+# Lazy Load XWayland for Compatability with Several Applications
+xwayland enable
+
+# Do Not Wrap Focus to Opposite Edge Container When No Containers Left
+focus_wrapping no
+
+# Focus Follows Mouse
+focus_follows_mouse yes
+
+# Focus Windows Requesting Activation If Visible, Else Make Them Urgent
+focus_on_window_activation smart
+
+# Include Any Additoinal System-Wide Configurations
+include /etc/sway/config.d/*
+
+################################################################################
+# Sway Start-Up Executables
+################################################################################
+
+# Update FireFox Colors With Latest pywal Colors
+exec pywalfox update

@@ -1,0 +1,55 @@
+################################################################################
+# Givon's Wofi Config
+################################################################################
+
+# Defaults
+term=alacritty
+color="../../.cache/wal/colors.css"
+
+# Behavior
+# -- General
+show=drun,run
+normal_window=false
+allow_images=true
+allow_markup=true
+exec_search=false
+matching=fuzzy
+insensitive=true
+sort_order=default
+dynamic_lines=false
+layer=top
+
+# -- Keybindings
+key_submit=Return
+key_exit=Escape
+key_expand=space
+key_hide_search=semicolon
+
+# Aesthetics
+# -- Position and Dimensions
+width=25%
+height=60%
+xoffset=0
+yoffset=0
+location=top_left
+columns=1
+
+# -- Text
+prompt="Go!"
+
+# -- Misc
+hide_scroll=true
+
+# Mode Specifi Config
+# -- dmenu
+drun-parse_actions=false
+drun-separator="\\n"
+drun-print_line_num=false
+
+# -- run
+run-always_parse_arg=false
+show_all=true
+
+# --drun
+drun-print_commands=false
+drun-display_generic=true

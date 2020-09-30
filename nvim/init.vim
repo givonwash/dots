@@ -23,6 +23,7 @@ set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
+set formatoptions="rqnljP"  " Comment and text formatting options
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
@@ -131,6 +132,10 @@ hi VimwikiHeader5 guifg='LightRed'      gui=bold,underline  ctermfg=12  cterm=bo
 hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bold,underline
 
 "   -- coc.nvim
+let g:coc_global_extensions =[
+            \ 'coc-json',
+            \ ]
+
 "  ****************************************************************************
 "   --- boiler plate config copied form https://github.com/neoclide/coc.nvim
 "  ****************************************************************************
