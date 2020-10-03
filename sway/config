@@ -318,5 +318,5 @@ include /etc/sway/config.d/*
 # Update FireFox Colors With Latest pywal Colors
 exec pywalfox update
 
-# Start gammastep
+# Start gammastep (Not Enabled at Boot as it needs Wayland Specific Env Vars)
 exec systemctl --user start gammastep.service

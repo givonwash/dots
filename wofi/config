@@ -2,6 +2,10 @@
 # Givon's Wofi Config
 ################################################################################
 
+# File Locations
+color=/home/givon/.cache/wal/colors
+style=/home/givon/.config/wofi/style.css
+
 # Defaults
 term=alacritty
 
@@ -11,26 +15,23 @@ show=drun,run
 normal_window=false
 allow_images=true
 allow_markup=true
-exec_search=false
+exec_search=true
 matching=fuzzy
 insensitive=true
 sort_order=default
-dynamic_lines=false
+dynamic_lines=true
 layer=top
 
 # -- Keybindings
 key_submit=Return
 key_exit=Escape
 key_expand=space
-key_hide_search=semicolon
 
 # Aesthetics
 # -- Position and Dimensions
-width=25%
-height=60%
-xoffset=0
-yoffset=0
-location=top_left
+width=50%
+lines=10
+location=center
 columns=1
 
 # -- Text
