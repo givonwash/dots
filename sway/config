@@ -69,6 +69,7 @@ set $lock       swaylock --image $wallpaper \
                          --ring-wrong-color "$color12" \
                          --separator-color "$color14" \
                          --text-color "$color15"
+
 # Workspaces
 #   Variable    Workspace
 set $ws1        "1"
@@ -97,9 +98,9 @@ output  *       bg      $wallpaper  fill    $color7
 # Turn Off the Screen after 6 Minutes of Inactivity
 # Also Lock the Screen Before Sleeping
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 '$lock' \
          timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep '$lock'
 
 ################################################################################
 # Input configuration
@@ -212,6 +213,16 @@ bindsym $mod+Shift+minus move to scratchpad
 # -- Cycle thru Scratchpad Windows or Close the Sole Focused One
 bindsym $mod+minus scratchpad show
 
+# Device Control
+# -- Backlight
+bindsym $mod+b exec light -U 5
+bindsym $mod+Shift+b exec light -A 5
+
+# -- Audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
 ################################################################################
 # Aesthetics
 ################################################################################
@@ -306,3 +317,6 @@ include /etc/sway/config.d/*
 
 # Update FireFox Colors With Latest pywal Colors
 exec pywalfox update
+
+# Start gammastep
+exec systemctl --user start gammastep.service

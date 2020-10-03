@@ -4,7 +4,6 @@
 
 # Defaults
 term=alacritty
-color="../../.cache/wal/colors.css"
 
 # Behavior
 # -- General

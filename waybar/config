@@ -1,4 +1,5 @@
 {
+    "name": "top-middle",
     "layer": "top",
     "position": "top",
     "margin": "px",
@@ -14,12 +15,12 @@
         "pulseaudio", 
         "cpu", 
         "memory", 
-        "temperature", 
         "backlight", 
         "battery", 
         "clock", 
         "tray"
     ],
+    "gtk-layer-shell": true,
     "sway/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
