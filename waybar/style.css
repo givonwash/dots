@@ -1,0 +1,130 @@
+/* Givon's Waybar Stylesheet */
+
+/* Import pywal colors */
+@import url("../../.cache/wal/colors-waybar.css");
+
+/* ===========================================================================*/
+/* Defaults */
+/* ===========================================================================*/
+* {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    font-family: "Fira Sans", "Noto Color Emoji", sans-serif;
+    font-size: 12pt;
+    text-shadow: none;
+    transition-duration: 0s;
+}
+/* ===========================================================================*/
+
+/* ===========================================================================*/
+/* Modules-Left */
+/* ===========================================================================*/
+/* Bar */
+window#waybar {
+    background-color: alpha(@background, 0.8);
+    border: 2px solid @color8;
+    border-radius: 10px;
+    color: @color15;
+}
+/* --- */
+
+/* Workspaces */
+#workspaces button {
+    border-right: 2px solid @color8;
+    color: @color15;
+}
+
+#workspaces button:first-child {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#workspaces button:hover {
+    background-color: @color9;
+    color: @background;
+}
+
+#workspaces button.focused {
+    color: @background;
+    background-color: @color15;
+    border-top: 2px solid @color13;
+    border-bottom: 2px solid @color13;
+    border-right: 1px solid @color13;
+    border-left: 1px solid @color13;
+}
+
+#workspaces button.urgent {
+    color: @background;
+    background-color: @color11;
+}
+/* --- */
+
+/* Sway Mode */
+#mode {
+    color: @color15;
+    border-right: 1px solid @color8;
+}
+/* --- */
+
+/* ===========================================================================*/
+/* Modules-Right */
+/* ===========================================================================*/
+
+/* All Right Modules */
+#idle_inhibitor, 
+#pulseaudio,
+#backlight,
+#battery,
+#network,
+#clock {
+    margin: 0px 4px;
+}
+/* --- */
+
+/* Idle Inihibitor */
+#idle_inhibitor {
+    color: @color15;
+}
+/* --- */
+
+/* PulseAudio */
+#pulseaudio {
+    letter-spacing: 5px;
+}
+/* --- */
+
+/* Battery */
+#battery.full {
+    color: @color12;
+}
+
+#battery.good{
+    color: @color9;
+}
+
+#batter.warning {
+    color: @color13;
+}
+
+#batter.critical {
+    color: @color11;
+}
+/* --- */
+
+/* Clock */
+#clock {
+    border-left: 2px solid @color8;
+    font-family: "Fira Sans", sans-serif;
+    margin: 0px 5px;
+    padding-left: 2px;
+}
+/* --- */
+
+/* Network */
+#network {
+    font-family: "Fira Sans", sans-serif;
+    color: @color15;
+}
+/* --- */

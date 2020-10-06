@@ -20,7 +20,7 @@ matching=fuzzy
 insensitive=true
 sort_order=default
 dynamic_lines=true
-layer=top
+layer=overlay
 
 # -- Keybindings
 key_submit=Return

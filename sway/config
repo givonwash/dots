@@ -217,11 +217,19 @@ bindsym $mod+minus scratchpad show
 # -- Backlight
 bindsym $mod+b exec light -U 5
 bindsym $mod+Shift+b exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+
+# -- Inhibit Idle
+bindsym $mod+i inhibit_idle visible
 
 # -- Audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 ################################################################################
 # Aesthetics
@@ -255,6 +263,9 @@ for_window [app_id=".*"] opacity set 0.95
 # -- X11 Applications
 for_window [class=".*"] opacity set 0.95
 
+# Floating Windows
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 
 ################################################################################
 # Modes
@@ -279,7 +290,7 @@ bindsym $mod+r mode "resize"
 
 
 ################################################################################
-# Status Bar
+# Waybar
 ################################################################################
 
 bar {
@@ -318,5 +329,5 @@ include /etc/sway/config.d/*
 # Update FireFox Colors With Latest pywal Colors
 exec pywalfox update
 
-# Start gammastep (Not Enabled at Boot as it needs Wayland Specific Env Vars)
-exec systemctl --user start gammastep.service
+# Start gammastep
+exec gammastep
