@@ -128,13 +128,16 @@ let g:vimwiki_list = [
             \ 'links_space_char': '_',
             \ },
             \ ]
+let g:vimwik_key_mappings = {
+            \ 'table_mappings': 0
+            \ }
 
 autocmd FileType vimwiki
-            \ nmap <leader>. <Plug>VimwikiNextLink
+            \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()
 autocmd FileType vimwiki
-            \ nmap <leader>, <Plug>VimwikiPrevLink
+            \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()
 autocmd FileType vimwiki
-            \ nmap <leader>tt <Plug>VimwikiTable
+            \ nmap <leader>tt :VimwikiTable<space>
 autocmd FileType vimwiki 
             \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR>
 autocmd FileType vimwiki
@@ -153,7 +156,7 @@ let g:coc_global_extensions =[
             \ ]
 
 "  ****************************************************************************
-"   --- boiler plate config copied form https://github.com/neoclide/coc.nvim
+"   --- boiler plate config copied from https://github.com/neoclide/coc.nvim
 "  ****************************************************************************
 set hidden              " TextEdit might fail if not hidden
 set nobackup            " Some servers have issues with backup files
@@ -222,14 +225,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
