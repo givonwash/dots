@@ -29,13 +29,13 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Environment Variables
-export EDITOR="nvim"
 export DOTFILES="${HOME}/DotFiles"
+export EDITOR="nvim"
+export MANPAGER='nvim +Man!'
 export PATH="${PATH}:${HOME}/.local/bin"
 
 # Aliases
 # -- General
-alias ~="~"
 alias ..="./.."
 alias ...="./../.."
 alias ....="./../../.."
