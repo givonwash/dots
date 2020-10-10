@@ -153,6 +153,13 @@ hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bo
 "   -- coc.nvim
 let g:coc_global_extensions =[
             \ 'coc-json',
+            \ 'coc-css',
+            \ 'coc-markdownlint',
+            \ 'coc-python',
+            \ 'coc-sh',
+            \ 'coc-snippets',
+            \ 'coc-syntax',
+            \ 'coc-yaml'
             \ ]
 
 "  ****************************************************************************
