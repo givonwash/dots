@@ -30,8 +30,8 @@ bindkey -v
 
 # Environment Variables
 export DOTFILES="${HOME}/DotFiles"
-export EDITOR="nvim"
 export MANPAGER='nvim +Man!'
+export EDITOR='nvim'
 export PATH="${PATH}:${HOME}/.local/bin"
 
 # Aliases

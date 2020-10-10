@@ -27,12 +27,12 @@
             "disable-markup": false,
             "format": "{icon}",
             "format-icons": {
-                "1": "",
-                "2": "",
-                "10": "",
-                "urgent": "",
-                "focused": "",
-                "default": ""
+                "1": "<span font=\"Noto Color Emoji\"></span>",
+                "2": "<span font=\"Noto Color Emoji\"></span>",
+                "10": "<span font=\"Noto Color Emoji\"></span>",
+                "urgent": "<span font=\"Noto Color Emoji\"></span>",
+                "focused": "<span font=\"Noto Color Emoji\"></span>",
+                "default": "<span font=\"Noto Color Emoji\"></span>"
             },
             "numeric-first": false,
             "persistent_workspaces": {
@@ -53,7 +53,7 @@
             "on-click": "swaymsg inhibit_idle none"
         },
         "clock": {
-            "format": "{:%a %b %d %I:%M %p}",
+            "format": " {:%a %b %d %I:%M %p} ",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
             "interval": 60
         },
@@ -75,7 +75,7 @@
         },
         "network": {
             "format-wifi": "",
-            "format-disconnected": "Disconnected ⚠",
+            "format-disconnected": "⚠",
             "on-click": "nm-connection-editor"
         },
         "pulseaudio": {

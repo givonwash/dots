@@ -52,6 +52,8 @@ nnoremap OO m`O<esc>``
 
 "   switch between buffers easily
 nmap <leader>b :buffers<cr>:buffer<space>
+nnoremap gb :bnext<cr>
+nnoremap gB :bprev<cr>
 
 "   close current window/tab
 map <silent> <leader>cl :close<cr>
@@ -118,11 +120,25 @@ let g:lightline = {
 "  -- vim-wiki
 set nocompatible
 filetype plugin on
+let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_list = [
             \ { 
             \ 'path': '~/.local/share/wiki/',
+            \ 'auto_toc': 1,
+            \ 'links_space_char': '_',
             \ },
             \ ]
+
+autocmd FileType vimwiki
+            \ nmap <leader>. <Plug>VimwikiNextLink
+autocmd FileType vimwiki
+            \ nmap <leader>, <Plug>VimwikiPrevLink
+autocmd FileType vimwiki
+            \ nmap <leader>tt <Plug>VimwikiTable
+autocmd FileType vimwiki 
+            \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR>
+autocmd FileType vimwiki
+            \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>
 
 hi VimwikiHeader1 guifg='LightYellow'   gui=bold,underline  ctermfg=14  cterm=bold,underline
 hi VimwikiHeader2 guifg='LightBlue'     gui=bold,underline  ctermfg=9   cterm=bold,underline
