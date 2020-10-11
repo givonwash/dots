@@ -1,2 +1,51 @@
-# Placeholder for the pywal generated zathurarc in ~/.cache/wal
-include ../../.cache/wal/zathurarc
+# Givon's Zathura Config
+
+# Keybindings
+# ...
+
+# Girara and Zathura Options
+set completion-fg "#282a36"
+set completion-bg "#8dc7d5"
+set completion-group-fg "#628b95"
+set completion-group-bg "#1A5E61"
+set completion-highlight-fg "#282a36"
+set completion-highlight-bg "#D19D2C"
+set default-fg "#8dc7d5"
+set default-bg "#282a36"
+set font "FiraCode Nerd Font 11"
+set guioptions ""
+set inputbar-fg "#8dc7d5"
+set inputbar-bg "#282a36"
+set notification-fg "#282a36"
+set notification-bg "#628b95"
+set notification-error-fg "#CB4A37"
+set notification-error-bg "#628b95"
+set notification-warning-fg "#D19D2C"
+set notification-warning-bg "#628b95"
+set tabbar-fg "#8dc7d5"
+set tabbar-bg "#282a36"
+set tabbar-focus-fg "#282a36"
+set tabbar-focus-bg "#8dc7d5"
+set statusbar-fg "#355EA5"
+set statusbar-bg "#282a36"
+
+# Zathura Only Options
+set abort-clear-search true
+set adjust-open width
+set advance-pages-per-row false
+set incremental-search true
+set highlight-color "#CB4A37"
+set highlight-active-color "#355EA5"
+set highlight-transparency 0.5
+set recolor true
+set recolor-darkcolor "#8dc7d5"
+set recolor-lightcolor "#282a36"
+set render-loading-fg "#8dc7d5"
+set render-loading-bg "#282a36"
+set scroll-page-aware false
+set window-title-home-tilde true
+set statusbar-home-tilde true
+set index-fg "#8dc7d5"
+set index-bg "#282a36"
+set index-active-fg "#282a36"
+set index-active-bg "#8dc7d5"

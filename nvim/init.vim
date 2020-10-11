@@ -81,6 +81,10 @@ nnoremap <leader>p "+p
 "   exit termninal mode with jj
 tnoremap jj <C-\><C-N>
 
+"   faster whole file substitution
+noremap ;; :%s:::g<Left><Left><Left>
+noremap ;' :%s:::gc<Left><Left><Left><Left>
+
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
 " -----------------------------------------------------------------------------
@@ -131,7 +135,7 @@ let g:vimwiki_list = [
             \ 'links_space_char': '_',
             \ },
             \ ]
-let g:vimwik_key_mappings = {
+let g:vimwiki_key_mappings = {
             \ 'table_mappings': 0
             \ }
 
@@ -157,6 +161,7 @@ hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bo
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
+let g:vimtex_compiler_progname = 'nvr'
 
 "   -- coc.nvim
 let g:coc_global_extensions =[
