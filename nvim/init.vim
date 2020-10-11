@@ -139,6 +139,25 @@ let g:vimwiki_key_mappings = {
             \ 'table_mappings': 0
             \ }
 
+function! VimwikiLinkHandler(link)
+    " Use nvim to open external files with the nfile: prefix
+    " >>> [[nfile:~/.config/nvim/init.vim]]
+    let link = a:link
+    if link =~# '^nfile:'
+        let link = link[1:]
+    else
+        return 0
+    endif
+    let link_infos = vimwiki#base#resolve_link(link)
+    if link_infos.filename == ''
+        echomsg 'Vimwiki Error: Unable to resolve link!'
+        return 0
+    else
+        exe 'tabnew ' . fnameescape(link_infos.filename)
+        return 1
+    endif
+endfunction
+
 autocmd FileType vimwiki
             \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()
 autocmd FileType vimwiki

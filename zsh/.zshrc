@@ -59,6 +59,8 @@ alias pqs="pacman -Qs"
 alias psyu="sudo pacman -Syu"
 alias sb="source ~/.bashrc"
 alias sz="source ~/.zshrc"
+alias yss="yay -Ss"
+alias ysi="yay -Si"
 
 # -- Git Related
 alias g="git"
