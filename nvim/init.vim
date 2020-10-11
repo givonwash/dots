@@ -138,6 +138,7 @@ let g:vimwiki_list = [
 let g:vimwiki_key_mappings = {
             \ 'table_mappings': 0
             \ }
+let g:vimwiki_dir_link = 'index'
 
 function! VimwikiLinkHandler(link)
     " Use nvim to open external files with the nfile: prefix
@@ -158,6 +159,14 @@ function! VimwikiLinkHandler(link)
     endif
 endfunction
 
+autocmd FileType vimwiki 
+            \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR>
+autocmd FileType vimwiki 
+            \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR>
+autocmd FileType vimwiki 
+            \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR>
+autocmd FileType vimwiki 
+            \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR>
 autocmd FileType vimwiki
             \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()
 autocmd FileType vimwiki
@@ -192,6 +201,9 @@ let g:coc_global_extensions =[
             \ 'coc-snippets',
             \ 'coc-syntax',
             \ 'coc-vimtex',
+            \ 'coc-omni',
+            \ 'coc-tag',
+            \ 'coc-word',
             \ 'coc-yaml'
             \ ]
 
