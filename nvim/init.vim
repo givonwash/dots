@@ -98,6 +98,9 @@ Plug 'vimwiki/vimwiki'
 "   fancy status lines
 Plug 'itchyny/lightline.vim'
 
+"   better latex doc handling
+Plug 'lervag/vimtex'
+
 "   vscode-like autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -150,6 +153,11 @@ hi VimwikiHeader4 guifg='LightCyan'     gui=bold,underline  ctermfg=11  cterm=bo
 hi VimwikiHeader5 guifg='LightRed'      gui=bold,underline  ctermfg=12  cterm=bold,underline
 hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bold,underline
 
+"   -- vimtex 
+let g:vimtex_compiler_method='latexmk'
+let g:vimtex_view_method='zathura'
+let g:tex_flavor='latex'
+
 "   -- coc.nvim
 let g:coc_global_extensions =[
             \ 'coc-json',
@@ -159,6 +167,7 @@ let g:coc_global_extensions =[
             \ 'coc-sh',
             \ 'coc-snippets',
             \ 'coc-syntax',
+            \ 'coc-vimtex',
             \ 'coc-yaml'
             \ ]
 
