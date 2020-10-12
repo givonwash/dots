@@ -23,7 +23,7 @@ set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
-set formatoptions="rqnljP"  " Comment and text formatting options
+set formatoptions-=o        " Hitting 'o/O' no longer insert comment leader
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
@@ -39,10 +39,6 @@ let mapleader=' '
 "   turn of highlighting following a search
 map <silent> <leader>h :nohl<cr>
 
-"   toggle automatic comment formatting for newlines
-map <silent> <leader>c :setlocal formatoptions-=cro<cr>
-map <silent> <leader>C :setlocal formatoptions+=cro<cr>
-
 "   leave insert mode via 'jj'
 inoremap jj <esc>
 
@@ -56,7 +52,8 @@ nnoremap gb :bnext<cr>
 nnoremap gB :bprev<cr>
 
 "   close current window/tab
-map <silent> <leader>cl :close<cr>
+nnoremap <silent> <leader>cc :close<cr>
+nnoremap <silent> <leader>nn :tabnew<cr>
 
 "   navigate windows easily in normal and terminal mode
 nnoremap <A-h> <C-w>h
@@ -84,6 +81,11 @@ tnoremap jj <C-\><C-N>
 "   faster whole file substitution
 noremap ;; :%s:::g<Left><Left><Left>
 noremap ;' :%s:::gc<Left><Left><Left><Left>
+
+" -----------------------------------------------------------------------------
+"   Custom Commands
+" -----------------------------------------------------------------------------
+command! -nargs=* -complete=help Help vertical belowright help <args>
 
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
@@ -125,21 +127,7 @@ let g:lightline = {
             \ }
 
 "  -- vim-wiki
-set nocompatible
-filetype plugin on
-let g:vimwiki_hl_cb_checked = 2
-let g:vimwiki_list = [
-            \ { 
-            \ 'path': '~/.local/share/wiki/',
-            \ 'auto_toc': 1,
-            \ 'links_space_char': '_',
-            \ },
-            \ ]
-let g:vimwiki_key_mappings = {
-            \ 'table_mappings': 0
-            \ }
-let g:vimwiki_dir_link = 'index'
-
+"  ---- Redefine Link Handling Behavior
 function! VimwikiLinkHandler(link)
     " Use nvim to open external files with the nfile: prefix
     " >>> [[nfile:~/.config/nvim/init.vim]]
@@ -159,25 +147,49 @@ function! VimwikiLinkHandler(link)
     endif
 endfunction
 
-autocmd FileType vimwiki 
-            \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR>
-autocmd FileType vimwiki 
-            \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR>
-autocmd FileType vimwiki 
-            \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR>
-autocmd FileType vimwiki 
-            \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR>
-autocmd FileType vimwiki
-            \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()
-autocmd FileType vimwiki
-            \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()
-autocmd FileType vimwiki
-            \ nmap <leader>tt :VimwikiTable<space>
-autocmd FileType vimwiki 
-            \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR>
-autocmd FileType vimwiki
-            \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>
+" ---- Compatability options
+set nocompatible
+filetype plugin on
 
+" ---- Self-defined paths to wiki
+let g:vimwiki_list = [
+            \ { 
+            \ 'path': '~/.local/share/wiki/',
+            \ 'auto_toc': 1,
+            \ 'links_space_char': '_',
+            \ },
+            \ ]
+
+" ---- Remove default table keyboard mappings to replace w/ own
+let g:vimwiki_key_mappings = {
+            \ 'table_mappings': 0
+            \ }
+" ---- Highlight the list item of a todo that has been checked off
+let g:vimwiki_hl_cb_checked = 2
+
+" ---- Default to index.wiki when only directory specified in wiki link path
+let g:vimwiki_dir_link = 'index'
+
+" ---- Conceal preformatted text markers
+let g:vimwiki_conceal_pre = 1
+
+
+" ---- Remap vimwiki keybindings when opening files of filetype vimwiki
+augroup myvimwiki
+    au!
+    au FileType vimwiki 
+                \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR> | 
+                \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR> |
+                \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR> |
+                \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR> |
+                \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab() |
+                \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab() |
+                \ nmap <leader>tt :VimwikiTable<space> |
+                \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR> |
+                \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>
+augroup end
+
+" ---- Define custom colors and font faces for vimwiki headers
 hi VimwikiHeader1 guifg='LightYellow'   gui=bold,underline  ctermfg=14  cterm=bold,underline
 hi VimwikiHeader2 guifg='LightBlue'     gui=bold,underline  ctermfg=9   cterm=bold,underline
 hi VimwikiHeader3 guifg='LightGreen'    gui=bold,underline  ctermfg=10  cterm=bold,underline
