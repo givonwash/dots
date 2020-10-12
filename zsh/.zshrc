@@ -4,6 +4,25 @@
 #       machines before being forked
 ################################################################################
 
+# Zsh Completions
+zstyle ':completion*' auto-description 'Specify: %d'
+zstyle ':completion*' completer _complete _ignored _approximate
+zstyle ':completion*' expand prefix suffix
+zstyle ':completion*' file-sort modification
+zstyle ':completion*' format 'Type of Completion: %d'
+zstyle ':completion*' ignore-parents parent pwd .. directory
+zstyle ':completion*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
+zstyle ':completion*' menu select=0
+zstyle ':completion*' preserve-prefix '//[^/]##/'
+zstyle ':completion*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion*' verbose true
+zstyle :compinstall filename '/home/givon/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Zsh Options
 HISTFILE=~/.cache/zsh/.hist
 HISTSIZE=1000
 SAVEHIST=1000
