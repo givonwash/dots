@@ -23,7 +23,6 @@ set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
-set formatoptions-=o        " Hitting 'o/O' no longer insert comment leader
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
@@ -35,9 +34,10 @@ let g:python3_host_prog = '/home/givon/miniconda3/bin/python'
 " -----------------------------------------------------------------------------
 "   define leader key as <space>
 let mapleader=' '
+let maplocalleader=','
 
 "   turn of highlighting following a search
-map <silent> <leader>h :nohl<cr>
+noremap <silent> <leader>h :nohl<cr>
 
 "   leave insert mode via 'jj'
 inoremap jj <esc>
@@ -51,23 +51,19 @@ nmap <leader>b :buffers<cr>:buffer<space>
 nnoremap gb :bnext<cr>
 nnoremap gB :bprev<cr>
 
-"   close current window/tab
-nnoremap <silent> <leader>cc :close<cr>
-nnoremap <silent> <leader>nn :tabnew<cr>
-
-"   navigate windows easily in normal and terminal mode
+"   navigate windows easily in normal...
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
+"   ...and terminal mode
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
 
 "   remove trailing white space
-nmap <leader>tr :%s/\s\+$//e<cr>
+nmap <leader>t :%s/\s\+$//e<cr>
 
 "   copy to system clipboard
 nnoremap <leader>y "+y
@@ -79,13 +75,37 @@ nnoremap <leader>p "+p
 tnoremap jj <C-\><C-N>
 
 "   faster whole file substitution
-noremap ;; :%s:::g<Left><Left><Left>
-noremap ;' :%s:::gc<Left><Left><Left><Left>
+nnoremap <leader><leader> :%s:::g<Left><Left><Left>
+nnoremap <leader>' :%s:::gc<Left><Left><Left><Left>
+
+"   edit this file from anywhere
+nnoremap <leader>n :edit $MYVIMRC<cr>
+nnoremap <leader>N :vsplit $MYVIMRC<cr>
+nnoremap <leader>t :tabnew $MYVIMRC<cr>
+
+"   source this file from anywhere
+nnoremap <leader>s :source $MYVIMRC<cr>
+
+"   close current window/tab
+nnoremap <silent> <leader>cc :close<cr>
+nnoremap <silent> <leader>nn :tabnew<cr>
+
+"   define some general useful operator pending mappings
+onoremap p i(
+onoremap ' i'
+onoremap " i"
+onoremap [ i[
+onoremap { i{
 
 " -----------------------------------------------------------------------------
 "   Custom Commands
 " -----------------------------------------------------------------------------
 command! -nargs=* -complete=help Help vertical belowright help <args>
+
+augroup fmt
+    au!
+    au BufEnter * set formatoptions-=ro
+augroup end
 
 " -----------------------------------------------------------------------------
 "   Plugins (handled via the Vim-Plug plugin manager)
@@ -173,6 +193,8 @@ let g:vimwiki_dir_link = 'index'
 " ---- Conceal preformatted text markers
 let g:vimwiki_conceal_pre = 1
 
+" ---- Make <localleader> the vimwiki map prefix
+let g:vimwiki_map_prefix = '<localleader>w'
 
 " ---- Remap vimwiki keybindings when opening files of filetype vimwiki
 augroup myvimwiki
@@ -184,7 +206,7 @@ augroup myvimwiki
                 \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR> |
                 \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab() |
                 \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab() |
-                \ nmap <leader>tt :VimwikiTable<space> |
+                \ nmap <localleader>t :VimwikiTable<space> |
                 \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR> |
                 \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>
 augroup end
@@ -230,24 +252,17 @@ set updatetime=300      " Longer updatetimes result in noticeable delays
 set shortmess+=c        " Don't pass messages to ins-completion-menu
 set signcolumn=yes      " Always show the sign column
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 "  Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-"  Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
 
 "  Use <cr> to confirm completion, `<C-g>u` means break undo chain at 
 "  current position. Coc only does snippet and additional edit on confirm.
@@ -284,21 +299,21 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <localleader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <localleader>f  <Plug>(coc-format-selected)
+nmap <localleader>f  <Plug>(coc-format-selected)
 
 " Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Example: `<localleader>aap` for current paragraph
+xmap <localleader>a  <Plug>(coc-codeaction-selected)
+nmap <localleader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <localleader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <localleader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -327,21 +342,21 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <localleader>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <localleader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <leader>m  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <localleader>m  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <localleader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <localleader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>r  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <localleader>r  :<C-u>CocListResume<CR>
 
 "  ****************************************************************************
 "   --- end of boiler plate code
