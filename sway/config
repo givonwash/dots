@@ -194,7 +194,7 @@ bindsym $mod+v splitv
 # -- Switch the Current Container Between Different Layout Styles
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout default
 
 # -- Make the current focus fullscreen
 bindsym $mod+f fullscreen toggle

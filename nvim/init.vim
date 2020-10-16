@@ -86,16 +86,11 @@ nnoremap <leader>t :tabnew $MYVIMRC<cr>
 "   source this file from anywhere
 nnoremap <leader>s :source $MYVIMRC<cr>
 
-"   close current window/tab
-nnoremap <silent> <leader>cc :close<cr>
-nnoremap <silent> <leader>nn :tabnew<cr>
+"   open new tab
+nnoremap <silent> <leader>l :tabnew<cr>
 
-"   define some general useful operator pending mappings
-onoremap p i(
-onoremap ' i'
-onoremap " i"
-onoremap [ i[
-onoremap { i{
+"   close current window
+nnoremap <silent> <leader>c :close<cr>
 
 " -----------------------------------------------------------------------------
 "   Custom Commands
@@ -119,7 +114,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-surround'
 
 "   personal wiki
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 
 "   fancy status lines
 Plug 'itchyny/lightline.vim'
@@ -197,18 +192,17 @@ let g:vimwiki_conceal_pre = 1
 let g:vimwiki_map_prefix = '<localleader>w'
 
 " ---- Remap vimwiki keybindings when opening files of filetype vimwiki
-augroup myvimwiki
+augroup vimwiki_prefs
     au!
     au FileType vimwiki 
-                \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR> | 
-                \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR> |
-                \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR> |
-                \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR> |
-                \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab() |
-                \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab() |
-                \ nmap <localleader>t :VimwikiTable<space> |
-                \ inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 1 5<CR> |
-                \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>
+                \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR>| 
+                \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR>|
+                \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR>|
+                \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR>|
+                \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()|
+                \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()|
+                \ nmap <localleader>t :VimwikiTable<space>|
+                \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>|
 augroup end
 
 " ---- Define custom colors and font faces for vimwiki headers
@@ -241,9 +235,7 @@ let g:coc_global_extensions =[
             \ 'coc-yaml'
             \ ]
 
-"  ****************************************************************************
-"   --- boiler plate config copied from https://github.com/neoclide/coc.nvim
-"  ****************************************************************************
+"   ---- Compatability Options
 set hidden              " TextEdit might fail if not hidden
 set nobackup            " Some servers have issues with backup files
 set nowritebackup       " Some servers have issues with backup files
@@ -252,41 +244,7 @@ set updatetime=300      " Longer updatetimes result in noticeable delays
 set shortmess+=c        " Don't pass messages to ins-completion-menu
 set signcolumn=yes      " Always show the sign column
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-"  Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"  Use <cr> to confirm completion, `<C-g>u` means break undo chain at 
-"  current position. Coc only does snippet and additional edit on confirm.
-"  <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
+"   ---- Helper Functions
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -295,28 +253,49 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
+"   use tab and shift-tab to select completion option
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"   use <CR> for completion confirmation
+inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :
+            \ &filetype ==# 'vimwiki' ? "<C-]><Esc>:VimwikiReturn 1 5<CR>" : "\<C-g>u\<CR>"
+
+"   ---- Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+"   ---- GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"   ---- Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+"   ---- Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
+"   ---- Symbol renaming.
 nmap <localleader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
+"   ---- Formatting selected code.
 xmap <localleader>f  <Plug>(coc-format-selected)
 nmap <localleader>f  <Plug>(coc-format-selected)
 
-" Applying codeAction to the selected region.
-" Example: `<localleader>aap` for current paragraph
+"   ---- Applying codeAction to the selected region.
 xmap <localleader>a  <Plug>(coc-codeaction-selected)
 nmap <localleader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
+"   ---- Remap keys for applying codeAction to the current buffer.
 nmap <localleader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+
+"   ---- Apply AutoFix to problem on the current line.
 nmap <localleader>qf  <Plug>(coc-fix-current)
 
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+"   ---- Map function and class text objects
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -326,38 +305,40 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+"   ---- Use CTRL-S for selections ranges.
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
+"   ---- Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+"   ---- Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+"   ---- Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
-" Mappings for CoCList
-" Show all diagnostics.
+"   ---- Mappings for CoCList
+"   ------ Show all diagnostics.
 nnoremap <silent><nowait> <localleader>d  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <localleader>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <localleader>m  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <localleader>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <localleader>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <localleader>r  :<C-u>CocListResume<CR>
 
-"  ****************************************************************************
-"   --- end of boiler plate code
-"  ****************************************************************************
+"   ------ Manage extensions.
+nnoremap <silent><nowait> <localleader>e  :<C-u>CocList extensions<cr>
+
+"   ------ Show commands.
+nnoremap <silent><nowait> <localleader>m  :<C-u>CocList commands<cr>
+
+"   ------ Find symbol of current document.
+nnoremap <silent><nowait> <localleader>o  :<C-u>CocList outline<cr>
+
+"   ------ Search workspace symbols.
+nnoremap <silent><nowait> <localleader>s  :<C-u>CocList -I symbols<cr>
+
+"   ------ Do default action for next item.
+nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
+
+"   ------ Do default action for previous item.
+nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
+
+"   ------ Resume latest coc list.
+nnoremap <silent><nowait> <localleader>r  :<C-u>CocListResume<CR>
