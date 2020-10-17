@@ -10,48 +10,36 @@
     background: transparent;
     box-shadow: none;
     border: none;
-    border-radius: 0px;
     font-size: 12pt;
     text-shadow: none;
     transition-duration: 0s;
 }
+
+/* ===========================================================================*/
+
+/* ===========================================================================*/
+/* Waybar */
 /* ===========================================================================*/
 
 /* ===========================================================================*/
 /* Modules-Left */
 /* ===========================================================================*/
-/* Bar */
-window#waybar {
-    background-color: alpha(@background, 0.8);
-    border: 2px solid @color8;
-    border-radius: 10px;
-    color: @color15;
-}
-/* --- */
 
 /* Workspaces */
+
 #workspaces button {
-    border-right: 2px solid @color8;
+    margin: 0px;
     color: @color15;
+    border-radius: 15px;
 }
 
-#workspaces button:first-child {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+#workspaces button.focused {
+    background-color: alpha(@color14, 0.4);
 }
 
 #workspaces button:hover {
     background-color: @color9;
     color: @background;
-}
-
-#workspaces button.focused {
-    color: @background;
-    background-color: @color15;
-    border-top: 2px solid @color13;
-    border-bottom: 2px solid @color13;
-    border-right: 1px solid @color13;
-    border-left: 1px solid @color13;
 }
 
 #workspaces button.urgent {
@@ -63,67 +51,76 @@ window#waybar {
 /* Sway Mode */
 #mode {
     color: @color15;
-    border-right: 1px solid @color8;
+    margin-left: 0.5em;
 }
 /* --- */
+
+/* ===========================================================================*/
+/* Modules-Center */
+/* ===========================================================================*/
+
+#window {
+    color: @color15;
+}
 
 /* ===========================================================================*/
 /* Modules-Right */
 /* ===========================================================================*/
 
 /* All Right Modules */
-#idle_inhibitor, 
 #pulseaudio,
 #backlight,
 #battery,
 #network,
 #clock {
-    margin: 0px 5px;
-}
-/* --- */
-
-/* Idle Inihibitor */
-#idle_inhibitor {
+    background-color: alpha(@color14, 0.3);
     color: @color15;
+    margin: 0px;
+    padding: 0em 0.4em;
 }
 /* --- */
 
 /* PulseAudio */
 #pulseaudio {
-    letter-spacing: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    letter-spacing: 0.4em;
+}
+/* --- */
+
+/* Backlight */
+#backlight {
+    padding-left: 0.2em;
 }
 /* --- */
 
 /* Battery */
-#battery.full {
-    color: @color12;
+#battery.full,
+#battery.good
+{
+    color: @color15;
 }
 
-#battery.good{
-    color: @color9;
-}
-
-#batter.warning {
+#battery.warning {
     color: @color13;
 }
 
-#batter.critical {
+#battery.critical {
     color: @color11;
 }
 /* --- */
 
 /* Clock */
 #clock {
-    border-left: 2px solid @color8;
-    font-family: "Fira Sans", sans-serif;
-    margin: 0px 5px;
-    padding-left: 2px;
+    padding-left: 0.6em;
+    border-left: 2px solid @color11;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 /* --- */
 
 /* Network */
 #network {
-    font-family: "Fira Sans", sans-serif;
-    color: @color15;
+    padding-right: 0.9em;
 }
 /* --- */

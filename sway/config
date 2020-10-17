@@ -26,11 +26,12 @@ set $logk780    1133:45883:Keyboard_K780_Keyboard
 #   Variable    Value
 set $lockfont   Fira Sans
 set $pango_font $lockfont Bold 10
-set $wal        wal -i /home/givon/DotFiles/wallpapers/wal.png -b "#282a36" -n
+set $wal_wal    /home/givon/DotFiles/wallpapers/blue-skies.png
+set $wal_exec   wal -i $wal_wal -n
 
 # -- pywal Colors
 # ---- Generate Colors
-exec $wal 
+exec $wal_exec 
 # ---- Import those Colors and the Wallpaper as Variables
 include /home/givon/.cache/wal/colors-sway
 
@@ -327,7 +328,7 @@ include /etc/sway/config.d/*
 ################################################################################
 
 # Update FireFox Colors With Latest pywal Colors
-exec pywalfox update
+exec_always pywalfox update
 
 # Start gammastep
 exec gammastep

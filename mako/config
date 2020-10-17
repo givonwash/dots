@@ -9,16 +9,16 @@ anchor = top-right
 
 # Style Options
 font = "Fira Sans, Noto Color Emoji, Normal Small-Caps 12"
-background-color = #282a36E5
-text-color = #8dc7d5
+background-color = #0f1f2fE5
+text-color = #cbc9cc
 width = 300
 height = 100
 margin = 10
 padding = 5
 border-size = 2
-border-color = #8dc7d5
+border-color = #cbc9cc
 border-radius = 8
-progress-color = source #355EA5
+progress-color = source #60A2CD
 icons = 1
 max-icon-size = 64
 icon-path = ""

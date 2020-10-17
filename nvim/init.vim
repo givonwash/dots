@@ -92,6 +92,14 @@ nnoremap <silent> <leader>l :tabnew<cr>
 "   close current window
 nnoremap <silent> <leader>c :close<cr>
 
+"   some useful operator dependent mappings
+onoremap p i)
+onoremap ' i'
+onoremap " i"
+onoremap } i}
+onoremap ] i]
+onoremap > i>
+
 " -----------------------------------------------------------------------------
 "   Custom Commands
 " -----------------------------------------------------------------------------
@@ -259,7 +267,8 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 "   use <CR> for completion confirmation
 inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :
-            \ &filetype ==# 'vimwiki' ? "<C-]><Esc>:VimwikiReturn 1 5<CR>" : "\<C-g>u\<CR>"
+            \ &filetype ==# 'vimwiki' ? "<C-]><Esc>:VimwikiReturn 1 5<CR>" :
+            \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 
 "   ---- Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -273,10 +282,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 "   ---- Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-
-"   ---- Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "   ---- Symbol renaming.
 nmap <localleader>rn <Plug>(coc-rename)
