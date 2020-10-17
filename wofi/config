@@ -29,10 +29,10 @@ key_expand=space
 
 # Aesthetics
 # -- Position and Dimensions
-width=50%
-lines=10
-location=center
+lines=12
+location=top
 columns=1
+y-offset=2
 
 # -- Text
 prompt="Go!"

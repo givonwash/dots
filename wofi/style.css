@@ -1,44 +1,32 @@
-
 /* Wofi CSS Style/Color Sheet */
 
 * {
     font-family: "Fira Sans", monospace;
-    color: --wofi-color8;
+    color: --wofi-color15;
 }
 
 window {
-    background-color: --wofi-color0;
+    background-color: alpha(--wofi-color11, 0.1);
     border: none;
-    opacity: 0.90;
-}
-
-#outer-box {
-    border-style: solid;
-    border-color: --wofi-color15;
-    border-width: 2px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 #input {
-    border: solid;
-    border-color: --wofi-color8;
-    border-width: 1px;
-    border-radius: 10px;
-    background-color: --wofi-color0;
-    margin: 7px;
+    background-color: alpha(--wofi-color14, 0.4);
+    border-radius: 15px;
     box-shadow: none;
+    margin: 0.8em;
 }
 
 #entry {
-    padding-left: 5px;
+    padding-left: 0.5em;
     border: none;
+    border-radius: 15px;
 }
 
 #entry:selected {
-    background-color: --wofi-color0;
-    border-style: solid;
-    border-color: --wofi-color15;
-    border-width: 2px;
+    background-color: alpha(--wofi-color14, 0.4);
+    padding-left: 1em;
 }
 
 #text {
@@ -47,5 +35,4 @@ window {
 
 #text:selected {
     font-weight: bold;
-    color: --wofi-color15;
 }
