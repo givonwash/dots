@@ -223,6 +223,7 @@ bindsym XF86MonBrightnessUp exec light -A 5
 
 # -- Inhibit Idle
 bindsym $mod+i inhibit_idle visible
+bindsym $mod+Shift+i inhibit_idle none
 
 # -- Audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%

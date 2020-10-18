@@ -16,6 +16,8 @@ window {
     border-radius: 15px;
     box-shadow: none;
     margin: 0.8em;
+    font-style: italic;
+    font-weight: bold;
 }
 
 #entry {
@@ -30,6 +32,7 @@ window {
 }
 
 #text {
+    font-style: italic;
     margin: 2px;
 }
 
