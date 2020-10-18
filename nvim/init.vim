@@ -27,7 +27,10 @@ set autoindent		    	" Copy indent from current line for newlines
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
 " -----------------------------------------------------------------------------
+"   To use packages from current env, use miniconda instead of system python
 let g:python3_host_prog = '/home/givon/miniconda3/bin/python'
+
+"   Remove concealing of greek letters mathematical symbols, and greek letters
 let g:tex_conceal = "abd"
 
 " -----------------------------------------------------------------------------
@@ -35,6 +38,8 @@ let g:tex_conceal = "abd"
 " -----------------------------------------------------------------------------
 "   define leader key as <space>
 let mapleader=' '
+
+"   define localleader for plugins to use as <comma>
 let maplocalleader=','
 
 "   turn of highlighting following a search
