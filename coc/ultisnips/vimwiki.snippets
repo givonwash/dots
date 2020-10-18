@@ -25,5 +25,25 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet ob_i "(ith) object/variable" iA
-${VISUAL:x}^{(${1:i})})} $0
+${1:x}${2:^{(${3:(i)})}}${4:} $0
+endsnippet
+
+snippet sup_i "Parenthetical Superscript for (ith) observation/variable" iA
+^{(${1:(i)})}$0
+endsnippet
+
+snippet sub_i "Subscript for (ith) object/variable" iA
+_${1:{i}}$0
+endsnippet
+
+snippet cal_x "Calligraphic Lettering" iA
+\mathcal{${1:X}} $0
+endsnippet
+
+snippet hypi "Hypothesis function for ith observation" iA
+h(${1:x}${2:^{${3:(i)}}}${4:})$0
+endsnippet
+
+snippet sum_i "Sum over indexed objects" iA
+\sum_${1:i=1}^${2:m} $0
 endsnippet

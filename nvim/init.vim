@@ -3,7 +3,7 @@
 " =============================================================================
 
 " -----------------------------------------------------------------------------
-"   Configuring Options
+"   Basic Options
 " -----------------------------------------------------------------------------
 set nu				        " Add line numbers
 set relativenumber		    " Make line numbers relative
@@ -28,6 +28,7 @@ set autoindent		    	" Copy indent from current line for newlines
 "   Non-Plugin Related Global Variables
 " -----------------------------------------------------------------------------
 let g:python3_host_prog = '/home/givon/miniconda3/bin/python'
+let g:tex_conceal = "abd"
 
 " -----------------------------------------------------------------------------
 "   Basic Mappings
@@ -261,11 +262,11 @@ function! s:show_documentation()
   endif
 endfunction
 
-"   use tab and shift-tab to select completion option
+"   ---- Use tab and shift-tab to select completion option
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"   use <CR> for completion confirmation
+"   ---- Use <CR> for completion confirmation
 inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :
             \ &filetype ==# 'vimwiki' ? "<C-]><Esc>:VimwikiReturn 1 5<CR>" :
             \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
@@ -347,3 +348,15 @@ nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
 
 "   ------ Resume latest coc list.
 nnoremap <silent><nowait> <localleader>r  :<C-u>CocListResume<CR>
+
+"   ---- Extension Specific Mappings
+"   ------ coc-snippets
+"   -------- snippet editing
+nnoremap <silent> <localleader><leader>s :CocCommand snippets.editSnippets<CR>
+nnoremap <silent> <localleader><leader>o :CocCommand snippets.openSnippetFiles<CR>
+
+"   -------- expand, select, and jump with snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<C-j>'
+let g:coc_snippet_prev = '<C-k>'
