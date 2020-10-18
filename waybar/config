@@ -81,9 +81,13 @@
             ]
         },
         "network": {
-            "format-wifi": "<span font=\"Noto Color Emoji 16\"></span>",
             "format-disconnected": "<span font=\"Noto Color Emoji 16\"></span>",
-            "tooltip": false,
+            "format-wifi": "{icon}",
+            "format-icons": [
+                "<span font=\"Noto Color Emoji 16\"></span>"
+            ],
+            "tooltip": true,
+            "tooltip-format": "{essid}: \n\t• Signal Strength: {signalStrength}\n\t• Upload Bandwidth: {bandwidthUpBits}\n\t• Download Bandwidth: {bandwidthDownBits}",
             "on-click": "nm-connection-editor"
         },
         "pulseaudio": {
