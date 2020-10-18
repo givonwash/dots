@@ -94,22 +94,6 @@
 }
 /* --- */
 
-/* Battery */
-#battery.full,
-#battery.good
-{
-    color: @color15;
-}
-
-#battery.warning {
-    color: @color13;
-}
-
-#battery.critical {
-    color: @color11;
-}
-/* --- */
-
 /* Clock */
 #clock {
     padding-left: 0.6em;

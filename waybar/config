@@ -65,8 +65,10 @@
             "states": {
                 "full": 100,
                 "good": 70,
-                "warning": 30,
-                "critical": 15
+                "average": 50,
+                "below-average": 35,
+                "warning": 20,
+                "critical": 10
             },
             "format": "{icon}",
             "format-icons": [
