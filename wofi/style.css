@@ -6,7 +6,7 @@
 }
 
 window {
-    background-color: alpha(--wofi-color11, 0.1);
+    background-color: alpha(--wofi-color11, 0.6);
     border: none;
     border-radius: 15px;
 }
