@@ -69,7 +69,7 @@ tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
 
 "   remove trailing white space
-nmap <leader>t :%s/\s\+$//e<cr>
+nmap <leader>w :%s/\s\+$//e<cr>
 
 "   copy to system clipboard
 nnoremap <leader>y "+y
@@ -363,5 +363,5 @@ nnoremap <silent> <localleader><leader>o :CocCommand snippets.openSnippetFiles<C
 "   -------- expand, select, and jump with snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<C-j>'
-let g:coc_snippet_prev = '<C-k>'
+let g:coc_snippet_next = ';j'
+let g:coc_snippet_prev = ';k'
