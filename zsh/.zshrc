@@ -77,13 +77,15 @@ alias gco="g checkout"
 alias gconf="g config"
 alias gd="g diff"
 alias gf="g fetch"
-alias gl="g log --graph --decorate --all"
+alias ggr="g grep"
+alias gl="g log --graph --decorate --all --summary --stat"
 alias gm="g merge"
 alias gpush="g push"
 alias gpull="g pull"
 alias gs="g status"
 alias gss="g stauts --short"
- 
+alias gsw="g switch"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/givon/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

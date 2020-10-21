@@ -185,6 +185,8 @@ let g:vimwiki_list = [
             \ { 
             \ 'path': '~/.local/share/wiki/',
             \ 'auto_toc': 1,
+            \ 'auto_diary_index': 1,
+            \ 'auto_generate_links': 1,
             \ 'links_space_char': '_',
             \ },
             \ ]
@@ -193,6 +195,7 @@ let g:vimwiki_list = [
 let g:vimwiki_key_mappings = {
             \ 'table_mappings': 0
             \ }
+
 " ---- Highlight the list item of a todo that has been checked off
 let g:vimwiki_hl_cb_checked = 2
 
@@ -204,6 +207,9 @@ let g:vimwiki_conceal_pre = 1
 
 " ---- Make <localleader> the vimwiki map prefix
 let g:vimwiki_map_prefix = '<localleader>w'
+
+" ---- Table of Contents Header
+let g:vimwiki_toc_header = 'Table of Contents'
 
 " ---- Remap vimwiki keybindings when opening files of filetype vimwiki
 augroup vimwiki_prefs
@@ -240,6 +246,7 @@ let g:coc_global_extensions =[
             \ 'coc-markdownlint',
             \ 'coc-python',
             \ 'coc-sh',
+            \ 'coc-pairs',
             \ 'coc-snippets',
             \ 'coc-syntax',
             \ 'coc-vimtex',
