@@ -121,7 +121,7 @@ augroup end
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-" Plug 'connorholyday/vim-snazzy'
+"   colorscheme 
 Plug 'dylanaraps/wal.vim'
 
 "   surround mode
