@@ -111,3 +111,14 @@ endsnippet
 snippet ;l;[ "Surround LaTex pre-formatted text \left[ and \right]" iA
 \left[ ${1:${VISUAL:x^{(i)}}} \right]$0
 endsnippet
+
+# Rust-Specific
+snippet ;r;f "Rust main Function" bA
+fn ${1:main} () {
+	$2
+}$0
+endsnippet
+
+snippet ;r;p "Rust println!" iA
+println!(${1:${VISUAL:Hello, world!}});$0
+endsnippet
