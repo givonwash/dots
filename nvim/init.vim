@@ -7,7 +7,7 @@
 " -----------------------------------------------------------------------------
 set nu				        " Add line numbers
 set relativenumber		    " Make line numbers relative
-set colorcolumn=81	    	" Add ruler to indicate 81st column
+set colorcolumn=80	    	" Add ruler to indicate 80th column
 set nowrap		        	" No line wrapping (it's hideous)
 set timeoutlen=300	    	" Eliminate wait time for key-sharing commands
 set splitright		    	" Always split vertically split windows right
@@ -187,7 +187,7 @@ let g:vimwiki_list = [
             \ 'auto_toc': 1,
             \ 'auto_diary_index': 1,
             \ 'auto_generate_links': 1,
-            \ 'links_space_char': '_',
+            \ 'links_space_char': ' ',
             \ },
             \ ]
 

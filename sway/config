@@ -204,8 +204,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+a focus parent
 
 # -- Increase/Decrease Inner Gaps for Current Workspace
-bindsym $mod+p gaps inner current plus 1
-bindsym $mod+Shift+p gaps inner current minus 1
+bindsym $mod+g gaps inner current plus 1
+bindsym $mod+Shift+g gaps inner current minus 1
 
 # Scratchpad
 # -- Move the Currently Focused Window to the Scratchpad

@@ -1,0 +1,112 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+# Format
+# ;[:letter:]+ --> Pre-formatted object (e.g., hypothesis function)
+# [:letter:]+;[:letter:]+ --> Operation (e.g., exponentiation/indexing)
+
+###############################################################################
+# Operations
+###############################################################################
+
+snippet p;i "Superscript" iA
+^{${1:(i)}}$0
+endsnippet
+
+snippet b;i "Subscript" iA
+_{${1:i}}$0
+endsnippet
+
+snippet o;i "Operations over indexes" iA
+\\${1:sum}_{${2:i=1}}^{${3:m}} $0
+endsnippet
+
+snippet a;e "Align environment equal sign" iA
+&= $0
+endsnippet
+
+###############################################################################
+# Objects
+###############################################################################
+
+snippet ;i "(ith) object/variable" iA
+${1:x}${2:${3:^}\{${4:(${5:i})}\}}$0
+endsnippet
+
+snippet ;f "Fractions" iA
+\frac{${1:p}}{${2:q}}$0
+endsnippet
+
+snippet ;lc "Calligraphic Lettering" iA
+\mathcal{${1:X}}$0
+endsnippet
+
+snippet ;s "Common Sets" iA
+\mathbb{${1:R}}$0
+endsnippet
+
+snippet ;h "Hypothesis function for ith observation" iA
+h${1:_\{\theta\}}(${2:x}${3:^\{${4:(i)}\}})$0
+endsnippet
+
+###############################################################################
+# Environments, Matching Delimiters, and Commands
+###############################################################################
+
+snippet ;dp "Surround with parenthetical delimiters" iA
+\left( ${1:${VISUAL:x^\{(i)\}}} \right)$0
+endsnippet
+
+snippet ;db "Surround with bracket delimiters" iA
+\left[ ${1:${VISUAL:x^\{(i)\}}} \right]$0
+endsnippet
+
+snippet ;dr "Surround with brace delimiters" iA
+\left{ ${1:${VISUAL:x^\{(i)\}}} ${2:\right\}}$0
+endsnippet
+
+snippet ;en "Generic LaTex environment" iA
+\begin{${1:equation}}
+$2
+\end{$1}$0
+endsnippet
+
+snippet ;c "Generic LaTex command" iA
+\\${1:command}${2:[${3:optarg1}]${4:[${5:optarg2}]${6:[${7:optargs3}]}}}\{${8:reqargs1}\}${9:\{${10:reqargs2}\}}
+endsnippet
+
+###############################################################################
+# Miscellaneous
+###############################################################################
+
+# Preamble Helpers
+snippet ;p;d "LaTex Document Class" bA
+\documentclass${1:[${2:letterpaper,12pt}]}{${3:article}}
+endsnippet
+
+snippet ;p;u "Use Package" bA
+\usepackage${1:[${2:opt_args}]}{${3:package}}
+endsnippet
