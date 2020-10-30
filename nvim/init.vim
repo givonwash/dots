@@ -72,10 +72,11 @@ tnoremap <A-l> <C-\><C-N><C-w>l
 nmap <leader>w :%s/\s\+$//e<cr>
 
 "   copy to system clipboard
-nnoremap <leader>y "+y
+noremap <leader>y "+y
+noremap <leader>x "+x
 
 "   paste from system clipboard
-nnoremap <leader>p "+p
+noremap <leader>p "+p
 
 "   exit termninal mode with jj
 tnoremap jj <C-\><C-N>
@@ -121,7 +122,7 @@ augroup end
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-"   colorscheme 
+"   colorscheme
 Plug 'dylanaraps/wal.vim'
 
 "   surround mode
@@ -182,7 +183,7 @@ filetype plugin on
 
 " ---- Self-defined paths to wiki
 let g:vimwiki_list = [
-            \ { 
+            \ {
             \ 'path': '~/.local/share/wiki/',
             \ 'auto_toc': 1,
             \ 'auto_diary_index': 1,
@@ -214,8 +215,8 @@ let g:vimwiki_toc_header = 'Table of Contents'
 " ---- Remap vimwiki keybindings when opening files of filetype vimwiki
 augroup vimwiki_prefs
     au!
-    au FileType vimwiki 
-                \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR>| 
+    au FileType vimwiki
+                \ nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<CR>|
                 \ nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<CR>|
                 \ nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<CR>|
                 \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR>|
@@ -233,7 +234,7 @@ hi VimwikiHeader4 guifg='LightCyan'     gui=bold,underline  ctermfg=11  cterm=bo
 hi VimwikiHeader5 guifg='LightRed'      gui=bold,underline  ctermfg=12  cterm=bold,underline
 hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bold,underline
 
-"   -- vimtex 
+"   -- vimtex
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
