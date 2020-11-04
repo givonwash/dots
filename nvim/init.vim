@@ -183,42 +183,49 @@ function! VimwikiLinkHandler(link)
     endif
 endfunction
 
-" ---- Compatability options
+"   ---- Compatability options
 set nocompatible
 filetype plugin on
 
-" ---- Self-defined paths to wiki
+"   ---- Self-defined paths to wiki
 let g:vimwiki_list = [
             \ {
             \ 'path': '~/.local/share/wiki/',
+            \ 'path_html': '~/.local/share/wiki_html/',
+            \ 'template_path': '~/.local/share/wiki_html/templates/',
+            \ 'template_default': 'default',
+            \ 'template_ext': '.html',
             \ 'auto_toc': 1,
+            \ 'toc_header': 'Table of Contents',
             \ 'auto_diary_index': 1,
+            \ 'diary_caption_level': -1,
             \ 'auto_generate_links': 1,
             \ 'links_space_char': ' ',
+            \ 'cycle_bullets': 1,
             \ },
             \ ]
 
-" ---- Remove default table keyboard mappings to replace w/ own
+"   ---- Remove default table keyboard mappings to replace w/ own
 let g:vimwiki_key_mappings = {
             \ 'table_mappings': 0
             \ }
 
-" ---- Highlight the list item of a todo that has been checked off
+"   ---- Highlight the list item of a todo that has been checked off
 let g:vimwiki_hl_cb_checked = 2
 
-" ---- Default to index.wiki when only directory specified in wiki link path
+"   ---- Default to index.wiki when only directory specified in wiki link path
 let g:vimwiki_dir_link = 'index'
 
-" ---- Conceal preformatted text markers
+"   ---- Conceal preformatted text markers
 let g:vimwiki_conceal_pre = 1
 
-" ---- Make <localleader> the vimwiki map prefix
+"   ---- Make <localleader> the vimwiki map prefix
 let g:vimwiki_map_prefix = '<localleader>w'
 
-" ---- Table of Contents Header
+"   ---- Table of Contents Header
 let g:vimwiki_toc_header = 'Table of Contents'
 
-" ---- Remap vimwiki keybindings when opening files of filetype vimwiki
+"   ---- Remap vimwiki keybindings when opening files of filetype vimwiki
 augroup vimwiki_prefs
     au!
     au FileType vimwiki
@@ -232,7 +239,7 @@ augroup vimwiki_prefs
                 \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>|
 augroup end
 
-" ---- Define custom colors and font faces for vimwiki headers
+"   ---- Define custom colors and font faces for vimwiki headers
 hi VimwikiHeader1 guifg='LightYellow'   gui=bold,underline  ctermfg=14  cterm=bold,underline
 hi VimwikiHeader2 guifg='LightBlue'     gui=bold,underline  ctermfg=9   cterm=bold,underline
 hi VimwikiHeader3 guifg='LightGreen'    gui=bold,underline  ctermfg=10  cterm=bold,underline
