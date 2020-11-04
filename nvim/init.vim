@@ -145,19 +145,25 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
-"  --  python-pywal vim colorscheme
+"   --  python-pywal vim colorscheme
 colorscheme wal
 
-"  -- lightline.vim
+"   -- lightline.vim
 let g:lightline = {
             \ 'colorscheme': 'wal',
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
             \   },
+            \ 'active': {
+                \ 'left': [
+                    \ ['mode', 'paste'],
+                    \ ['readonly', 'filename', 'modified', 'cocstatus']
+                \ ]
+            \   }
             \ }
 
-"  -- vim-wiki
-"  ---- Redefine Link Handling Behavior
+"   -- vim-wiki
+"   ---- Redefine Link Handling Behavior
 function! VimwikiLinkHandler(link)
     " Use nvim to open external files with the nfile: prefix
     " >>> [[nfile:~/.config/nvim/init.vim]]
