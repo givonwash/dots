@@ -1,5 +1,7 @@
 {
     "coc.source.omni.filetypes": [
         "vimwiki"
-    ]
+    ],
+    "python.pythonPath": "/home/givon/miniconda3/bin/python",
+    "python.jediEnabled": false
 }
