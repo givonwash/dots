@@ -77,20 +77,20 @@ endsnippet
 ###############################################################################
 
 snippet ;dp "Surround with parenthetical delimiters" iA
-\left( ${1:${VISUAL:x^\{(i)\}}} \right)$0
+\left( $1 \right)$0
 endsnippet
 
 snippet ;db "Surround with bracket delimiters" iA
-\left[ ${1:${VISUAL:x^\{(i)\}}} \right]$0
+\left[ $1 \right]$0
 endsnippet
 
 snippet ;dr "Surround with brace delimiters" iA
-\left{ ${1:${VISUAL:x^\{(i)\}}} ${2:\right\}}$0
+\left\\{ $2 \right${1:\\\}}$0
 endsnippet
 
 snippet ;en "Generic LaTex environment" iA
-\begin{${1:equation}}
-$2
+\begin{${1:equation}}${2:\{$3\}}
+$4
 \end{$1}$0
 endsnippet
 
@@ -109,4 +109,8 @@ endsnippet
 
 snippet ;p;u "Use Package" bA
 \usepackage${1:[${2:opt_args}]}{${3:package}}
+endsnippet
+
+snippet ;;m "Inline Math" iA
+$$1$$0
 endsnippet
