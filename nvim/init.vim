@@ -252,6 +252,7 @@ let g:vimtex_compiler_method='latexmk'
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_indent_on_ampersands = 0
 
 "   -- coc.nvim
 let g:coc_global_extensions =[
@@ -296,6 +297,12 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :
             \ &filetype ==# 'vimwiki' ? "<C-]><Esc>:VimwikiReturn 1 5<CR>" :
             \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
+
+"   ---- Define mappings for scrolling down and up floating windows
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 "   ---- Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
