@@ -54,8 +54,8 @@ nnoremap OO m`O<esc>``
 
 "   switch between buffers easily
 nmap <leader>b :buffers<cr>:buffer<space>
-nnoremap gb :bnext<cr>
-nnoremap gB :bprev<cr>
+nnoremap <silent> gb :bnext<cr>
+nnoremap <silent> gB :bprev<cr>
 
 "   navigate windows easily in normal...
 nnoremap <A-h> <C-w>h
@@ -99,6 +99,9 @@ nnoremap <silent> <leader>l :tabnew<cr>
 "   close current window
 nnoremap <silent> <leader>c :close<cr>
 
+"   make current window the only window
+nnoremap <silent> <leader>o :only<cr>
+
 "   some useful operator dependent mappings
 onoremap p i)
 onoremap ' i'
@@ -106,6 +109,17 @@ onoremap " i"
 onoremap } i}
 onoremap ] i]
 onoremap > i>
+
+"   syntax highlighting debugging
+function! <SID>SynStack()
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
+nnoremap <C-S-P> :call <SID>SynStack()<CR>
+
+"   use my custom colorscheme
+source ~/.cache/wal/colors-wal.vim
+colorscheme walle
 
 " -----------------------------------------------------------------------------
 "   Custom Commands
@@ -121,9 +135,6 @@ augroup end
 "   Plugins (handled via the Vim-Plug plugin manager)
 " -----------------------------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
-
-"   colorscheme
-Plug 'dylanaraps/wal.vim'
 
 "   surround mode
 Plug 'tpope/vim-surround'
@@ -145,12 +156,9 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
-"   --  python-pywal vim colorscheme
-colorscheme wal
-
 "   -- lightline.vim
 let g:lightline = {
-            \ 'colorscheme': 'wal',
+            \ 'colorscheme': 'walle',
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
             \   },
@@ -158,8 +166,34 @@ let g:lightline = {
                 \ 'left': [
                     \ ['mode', 'paste'],
                     \ ['readonly', 'filename', 'modified', 'cocstatus']
-                \ ]
-            \   }
+                \ ],
+                \ 'right': [
+                    \ ['lineinfo'],
+                    \ ['percent'],
+                    \ ['fileformat', 'fileencoding', 'filetype']
+                \ ],
+            \   },
+            \ 'inactive': {
+                \ 'left': [
+                    \ ['filename']
+                \ ],
+                \ 'right': [
+                    \ ['lineinfo'],
+                    \ ['percent']
+                \ ],
+              \ },
+            \ 'tabline': {
+                \ 'left': [
+                    \ ['tabs']
+                \ ],
+                \ 'right': [
+                    \ ['close']
+                \ ],
+            \   },
+            \ 'tab' : {
+                \ 'active': ['tabnum', 'filename', 'modified'],
+                \ 'inactive': ['tabnum', 'filename', 'modified']
+            \   },
             \ }
 
 "   -- vim-wiki
