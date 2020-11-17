@@ -150,6 +150,9 @@ Plug 'itchyny/lightline.vim'
 "   imporved latex features
 Plug 'lervag/vimtex'
 
+"   improved syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
 "   vscode-like autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
