@@ -23,6 +23,8 @@ set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
+set scrolloff=3             " Min 3 lines between edge of screen and cursor
+set nrformats-=octal        " Stop C-A and C-X from Using Octal Numbers
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
@@ -43,7 +45,7 @@ let mapleader=' '
 let maplocalleader=','
 
 "   turn of highlighting following a search
-noremap <silent> <leader>h :nohl<cr>
+nnoremap <silent> <leader>h :nohl<cr>
 
 "   leave insert mode via 'jj'
 inoremap jj <esc>
@@ -53,7 +55,7 @@ nnoremap oo m`o<esc>``
 nnoremap OO m`O<esc>``
 
 "   switch between buffers easily
-nmap <leader>b :buffers<cr>:buffer<space>
+nnoremap <leader>b :buffers<cr>:buffer<space>
 nnoremap <silent> gb :bnext<cr>
 nnoremap <silent> gB :bprev<cr>
 
@@ -69,7 +71,7 @@ tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
 
 "   remove trailing white space
-nmap <leader>w :%s/\s\+$//e<cr>
+nnoremap <silent> <leader>w m`:%s/\s\+$//e<cr>:nohl<cr>``
 
 "   copy to system clipboard
 noremap <leader>y "+y
@@ -145,7 +147,7 @@ Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 "   fancy status lines
 Plug 'itchyny/lightline.vim'
 
-"   better latex doc handling
+"   imporved latex features
 Plug 'lervag/vimtex'
 
 "   vscode-like autocompletion
@@ -217,10 +219,6 @@ function! VimwikiLinkHandler(link)
     endif
 endfunction
 
-"   ---- Compatability options
-set nocompatible
-filetype plugin on
-
 "   ---- Self-defined paths to wiki
 let g:vimwiki_list = [
             \ {
@@ -272,14 +270,6 @@ augroup vimwiki_prefs
                 \ nmap <localleader>t :VimwikiTable<space>|
                 \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>|
 augroup end
-
-"   ---- Define custom colors and font faces for vimwiki headers
-hi VimwikiHeader1 guifg='LightYellow'   gui=bold,underline  ctermfg=14  cterm=bold,underline
-hi VimwikiHeader2 guifg='LightBlue'     gui=bold,underline  ctermfg=9   cterm=bold,underline
-hi VimwikiHeader3 guifg='LightGreen'    gui=bold,underline  ctermfg=10  cterm=bold,underline
-hi VimwikiHeader4 guifg='LightCyan'     gui=bold,underline  ctermfg=11  cterm=bold,underline
-hi VimwikiHeader5 guifg='LightRed'      gui=bold,underline  ctermfg=12  cterm=bold,underline
-hi VimwikiHeader6 guifg='LightMagenta'  gui=bold,underline  ctermfg=13  cterm=bold,underline
 
 "   -- vimtex
 let g:vimtex_compiler_method='latexmk'
