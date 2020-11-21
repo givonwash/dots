@@ -94,7 +94,7 @@
             "format": "{icon}{format_source}",
             "format-bluetooth": "{icon}(<span font=\"Noto Color Emoji\"></span>){format_source}",
             "format-bluetooth-muted": "{icon}(<span font=\"Noto Color Emoji\"></span>){format_source}",
-            "format-muted": "<span font=\"Noto Color Emoji\">🔇</span>{format_source}",
+            "format-muted": "<span font=\"Noto Color Emoji\"></span>{format_source}",
             "format-source": "<span font=\"Noto Color Emoji 17\"></span>",
             "format-source-muted": "<span font=\"Noto Color Emoji 17\"></span>",
             "format-icons": {
