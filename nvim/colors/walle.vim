@@ -38,7 +38,7 @@ hi Search		    ctermbg=NONE	ctermfg=NONE	cterm=bold,inverse          guibg=NONE	
 hi Substitute		ctermbg=NONE	ctermfg=NONE	cterm=bold,italic,inverse	guibg=NONE          guifg=NONE		    gui=bold,italic,inverse
 hi LineNr		    ctermbg=NONE	ctermfg=11		cterm=bold		            guibg=NONE          guifg=g:color11		gui=bold
 hi CursorLineNr		ctermbg=NONE	ctermfg=15		cterm=bold                  guibg=NONE          guifg=g:color15		gui=bold
-hi MatchParen		ctermbg=NONE	ctermfg=12		cterm=bold,inverse          guibg=NONE          guifg=g:color12		gui=bold,inverse
+hi MatchParen		ctermbg=12	    ctermfg=8		cterm=bold                  guibg=g:color12     guifg=g:color8		gui=bold
 hi ModeMsg		    ctermbg=NONE	ctermfg=NONE	cterm=bold                  guibg=NONE          guifg=NONE		    gui=bold
 hi MsgArea		    ctermbg=NONE	ctermfg=15		cterm=NONE                  guibg=NONE          guifg=g:color15		gui=NONE
 hi MsgSeparator		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE          guifg=NONE		    gui=NONE
