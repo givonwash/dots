@@ -125,12 +125,36 @@ snippet ;l;[ "Surround LaTex pre-formatted text \left[ and \right]" iA
 endsnippet
 
 # Rust-Specific
-snippet ;r;f "Rust main Function" bA
-fn ${1:main} ($2) $3{
+snippet ;r;f "Rust main Function" iA
+fn ${1:main}($2) $3{
 	$4
 }$0
 endsnippet
 
 snippet ;r;p "Rust println!" iA
-println!(${1:${VISUAL:Hello, world!}});$0
+println!(${1:"${2:Hello, world!}"});$0
+endsnippet
+
+snippet ;r;s "Rust struct" iA
+struct ${1:name} {
+	$2
+}$0
+endsnippet
+
+snippet ;r;i "Rust impl block" iA
+impl ${1:structure} {
+	$2
+}$0
+endsnippet
+
+snippet ;r;e "Rust enum" iA
+enum ${1:enumeration} {
+	$2
+}$0
+endsnippet
+
+snippet ;r;m "Rust match expression" iA
+match ${1:to_match} {
+	$2
+}$0
 endsnippet
