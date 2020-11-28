@@ -78,11 +78,15 @@ snippet ;;i "Italic Text" iA
 _${1:${VISUAL:Italic Text}}_$0
 endsnippet
 
-snippet ;;p "Superscript (vimwiki)" iA
+snippet ;;n "Inline Code" iA
+\`${1:${VISUAL:code}}\`
+endsnippet
+
+snippet ;;sp "Superscript (vimwiki)" iA
 ^${1:${VISUAL:th}}^
 endsnippet
 
-snippet ;;b "Subscript (vimwiki)" iA
+snippet ;;sb "Subscript (vimwiki)" iA
 ,,${1:${VISUAL:subscript}},,
 endsnippet
 
