@@ -88,6 +88,9 @@ nnoremap <leader><leader> :%s:\v::g<Left><Left><Left>
 nnoremap <leader>; :s:\v::g<Left><Left><Left>
 nnoremap <leader>' :.,$s:\v::gc<Left><Left><Left><Left>
 
+"   very-magic searching
+noremap / /\v
+
 "   edit this file from anywhere
 nnoremap <leader>n :edit $MYVIMRC<cr>
 nnoremap <leader>N :vsplit $MYVIMRC<cr>
