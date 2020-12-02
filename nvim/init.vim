@@ -83,9 +83,9 @@ noremap <leader>p "+p
 "   exit termninal mode with jj
 tnoremap jj <C-\><C-N>
 
-"   faster whole file substitution
-nnoremap <leader><leader> :%s:::g<Left><Left><Left>
-nnoremap <leader>' :%s:::gc<Left><Left><Left><Left>
+"   faster substitution
+nnoremap <leader><leader> :%s:\v::g<Left><Left><Left>
+nnoremap <leader>' :.,$s:\v::gc<Left><Left><Left><Left>
 
 "   edit this file from anywhere
 nnoremap <leader>n :edit $MYVIMRC<cr>
