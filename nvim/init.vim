@@ -114,7 +114,7 @@ onoremap > i>
 
 "   syntax highlighting debugging
 function! <SID>SynStack()
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
 nnoremap <C-S-P> :call <SID>SynStack()<CR>
@@ -309,11 +309,11 @@ set signcolumn=yes      " Always show the sign column
 
 "   ---- Helper Functions
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 "   ---- Use tab and shift-tab to select completion option
