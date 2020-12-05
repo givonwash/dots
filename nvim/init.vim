@@ -25,6 +25,7 @@ set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
 set scrolloff=3             " Min 3 lines between edge of screen and cursor
 set nrformats-=octal        " Stop C-A and C-X from Using Octal Numbers
+set undofile                " Persistent undo history
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
