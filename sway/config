@@ -116,6 +116,11 @@ input type:touchpad {
     drag            disabled
 }
 
+input type:keyboard {
+    repeat_delay    300
+    repeat_rate     15
+}
+
 input $logmx {
     natural_scroll  enabled
     dwt             enabled
