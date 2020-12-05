@@ -155,6 +155,12 @@ bindsym $mod+x exec $lock
 # -- Exit Sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exit
 
+# -- Dismiss Most Recent Mako Notifications
+bindsym $mod+d exec makoctl dismiss
+
+# -- Dismiss All Mako Notifications
+bindsym $mod+Shift+d exec makoctl dismiss
+
 # Movement
 # -- Move Your Focus Around
 bindsym $mod+$left focus left
