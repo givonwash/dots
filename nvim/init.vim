@@ -23,7 +23,7 @@ set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
 set autoindent		    	" Copy indent from current line for newlines
-set scrolloff=3             " Min 3 lines between edge of screen and cursor
+set scrolloff=2             " Min 3 lines between edge of screen and cursor
 set nrformats-=octal        " Stop C-A and C-X from Using Octal Numbers
 set undofile                " Persistent undo history
 
