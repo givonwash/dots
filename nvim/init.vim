@@ -87,7 +87,7 @@ tnoremap jj <C-\><C-N>
 "   faster substitution
 nnoremap <leader><leader> :%s:\v::g<Left><Left><Left>
 nnoremap <leader>; :s:\v::g<Left><Left><Left>
-nnoremap <leader>' :.,$s:\v::gc<Left><Left><Left><Left>
+nnoremap <leader>' :.,$s:\v::g<Left><Left><Left>
 
 "   very-magic searching
 noremap ? ?\v
