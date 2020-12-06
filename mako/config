@@ -1,27 +1,32 @@
 # Givon's Mako Config
 
-# Global Config Options
+# Behavior Options
 max-visible=3
-sort=-time
-output=""
 layer=overlay
-anchor=top-right
 
 # Style Options
-font=FiraCode Nerd Font 12
-background-color=#0f1f2fE5
+# -- defaults
+font=Fira Sans 12
+format=<span weight='bold'>%a</span>: <span style='italic' weight='bold'>%s</span>\n%b
 text-color=#cbc9cc
-width=300
-height=100
+border-color=#cbc9cc
+background-color=#60A2CDE5
+width=400
+height=150
 margin=10
 padding=5
 border-size=2
-border-color=#cbc9cc
 border-radius=8
-progress-color=source #60A2CD
+progress-color=source #8e8c8e
 icons=1
-max-icon-size=64
-icon-path=""
 markup=1
 actions=1
 default-timeout=10000
+
+# -- high urgency notifications
+[urgency=high]
+border-color=#0488C5
+
+# -- grouped notifications
+[grouped=true]
+format=<span weight='bold'>(%g) %a</span>: <span style='italic' weight='bold'>%s</span>\n%b
