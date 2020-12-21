@@ -8,7 +8,7 @@
 set nu				        " Add line numbers
 set relativenumber		    " Make line numbers relative
 set colorcolumn=80	    	" Add ruler to indicate 80th column
-set nowrap		        	" No line wrapping (it's hideous)
+set nowrap		        	" No line wrapping
 set timeoutlen=300	    	" Eliminate wait time for key-sharing commands
 set splitright		    	" Always split vertically split windows right
 set splitbelow		    	" Always split horizontally split windows below
@@ -137,6 +137,12 @@ command! -nargs=* -complete=help Help vertical belowright help <args>
 augroup fmt
     au!
     au BufEnter * set formatoptions-=ro
+augroup end
+
+"   Rust Standard Formatting Allows for a Line Maximum of 100
+augroup rust
+    au!
+    au FileType rust set colorcolumn=101
 augroup end
 
 " -----------------------------------------------------------------------------
@@ -307,7 +313,8 @@ let g:coc_global_extensions =[
             \ 'coc-omni',
             \ 'coc-tag',
             \ 'coc-word',
-            \ 'coc-yaml'
+            \ 'coc-yaml',
+            \ 'coc-rust-analyzer'
             \ ]
 
 "   ---- Compatability Options
