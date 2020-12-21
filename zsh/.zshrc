@@ -31,7 +31,7 @@ bindkey -v
 # Environment Variables
 export DOTFILES="${HOME}/DotFiles"
 export PROJECTS="${HOME}/projects"
-export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
