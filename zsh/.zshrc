@@ -105,6 +105,17 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Manage ssh-agent
+SSH_AGENT_DOTENV="${XDG_RUNTIME_DIR}/ssh-agent.env"
+# -- Write stdout from ssh-agent to file if no current process
+if ! pgrep -u "${USER}" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "${SSH_AGENT_DOTENV}"
+fi
+# -- If SSH_AUTH_SOCK env variable DNE, source previously saved file
+if [[ ! "${SSH_AUTH_SOCK}" ]]; then
+    . "${SSH_AGENT_DOTENV}" > /dev/null
+fi
+
 # Starship Prompt
 eval $(starship init zsh)
 
