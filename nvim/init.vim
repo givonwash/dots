@@ -162,6 +162,12 @@ Plug 'sheerun/vim-polyglot'
 "   vscode-like autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+"   fzf for quick file navigation within project directories
+Plug 'junegunn/fzf'
+
+"   Change working directory to project root when in project files
+Plug 'airblade/vim-rooter'
+
 call plug#end()
 
 " -----------------------------------------------------------------------------
@@ -358,8 +364,8 @@ xmap <localleader>f  <Plug>(coc-format-selected)
 nmap <localleader>f  <Plug>(coc-format-selected)
 
 "   ---- Applying codeAction to the selected region.
-xmap <localleader>a  <Plug>(coc-codeaction-selected)
-nmap <localleader>a  <Plug>(coc-codeaction-selected)
+xmap <localleader>as  <Plug>(coc-codeaction-selected)
+nmap <localleader>as  <Plug>(coc-codeaction-selected)
 
 "   ---- Remap keys for applying codeAction to the current buffer.
 nmap <localleader>ac  <Plug>(coc-codeaction)
@@ -426,3 +432,13 @@ imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = ';j'
 let g:coc_snippet_prev = ';k'
+
+"   -- fzf
+"   ---- Easily accessible mappings
+nnoremap <silent> <localleader>ae :call fzf#run(fzf#wrap({'sink': 'edit'}))<CR>
+nnoremap <silent> <localleader>at :call fzf#run(fzf#wrap({'sink': 'tabnew'}))<CR>
+nnoremap <silent> <localleader>av :call fzf#run(fzf#wrap({'sink': 'vsplit'}))<CR>
+
+"   -- vim-rooter
+"   ---- Specify root project directory contains .git directory
+let g:rooter_patterns = ['.git']
