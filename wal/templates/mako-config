@@ -10,14 +10,14 @@ font=Fira Sans 12
 format=<span weight='bold'>%a</span>: <span style='italic' weight='bold'>%s</span>\n%b
 text-color={color15}
 border-color={color15}
-background-color={color14}E5
+background-color={background}E5
 width=400
 height=150
 margin=10
 padding=5
 border-size=2
 border-radius=8
-progress-color=source {color8}
+progress-color=source {color10}
 icons=1
 markup=1
 actions=1
