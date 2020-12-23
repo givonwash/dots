@@ -19,7 +19,7 @@ hi Normal		    ctermbg=0	    ctermfg=15		cterm=NONE                  guibg=g:col
 hi ColorColumn		ctermbg=4		ctermfg=NONE	cterm=NONE                  guibg=g:color4		guifg=NONE          gui=NONE
 hi Cursor		    ctermbg=8	    ctermfg=NONE	cterm=NONE                  guibg=g:color8		guifg=NONE          gui=NONE
 hi CursorColumn		ctermbg=3		ctermfg=NONE	cterm=NONE                  guibg=g:color3		guifg=NONE          gui=NONE
-    hi link CursorLine  CursorColumn	
+    hi link CursorLine  CursorColumn
 hi Directory		ctermbg=NONE	ctermfg=12	    cterm=NONE                  guibg=NONE          guifg=g:color12		gui=NONE
 hi DiffAdd		    ctermbg=NONE	ctermfg=10		cterm=NONE                  guibg=NONE          guifg=g:color10		gui=NONE
 hi DiffChange		ctermbg=NONE	ctermfg=9		cterm=NONE                  guibg=NONE          guifg=g:color9		gui=NONE
@@ -29,6 +29,8 @@ hi EndOfBuffer		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE
 hi TermCursor		ctermbg=8		ctermfg=15		cterm=NONE                  guibg=g:color8		guifg=g:color15		gui=NONE
 hi TermCursorNC		ctermbg=9		ctermfg=8		cterm=NONE                  guibg=g:color9		guifg=g:color8		gui=NONE
 hi ErrorMsg		    ctermbg=NONE	ctermfg=12		cterm=bold                  guibg=NONE          guifg=g:color12		gui=bold
+    hi link QuickFixLine    ErrorMsg
+hi WarningMsg       ctermbg=NONE    ctermfg=11      cterm=bold                  guibg=NONE          guifg=g:color11     gui=bold
 hi VertSplit		ctermbg=NONE	ctermfg=9	    cterm=NONE                  guibg=NONE          guifg=g:color9		gui=NONE
 hi Folded		    ctermbg=14		ctermfg=NONE	cterm=bold                  guibg=g:color14		guifg=NONE		    gui=bold
 hi FoldColumn		ctermbg=NONE	ctermfg=14		cterm=NONE                  guibg=NONE          guifg=g:color14		gui=NONE
@@ -49,10 +51,9 @@ hi Pmenu		    ctermbg=9		ctermfg=15		cterm=NONE                  guibg=g:color9	
 hi PmenuSel		    ctermbg=11		ctermfg=15	    cterm=bold                  guibg=g:color11		guifg=g:color15		gui=bold
 hi PmenuSbar		ctermbg=8		ctermfg=10   	cterm=NONE                  guibg=g:color8		guifg=g:color10		gui=NONE
 hi PmenuThumb		ctermbg=9       ctermfg=15		cterm=NONE                  guibg=g:color9		guifg=g:color15		gui=NONE
-hi QuickFixLine		ctermbg=NONE	ctermfg=12		cterm=bold                  guibg=NONE          guifg=g:color12		gui=bold
 hi SpecialKey		ctermbg=NONE	ctermfg=12		cterm=NONE                  guibg=NONE          guifg=g:color12		gui=NONE
 hi SpellBad		    ctermbg=NONE	ctermfg=NONE	cterm=underline		        guibg=NONE		    guifg=NONE		    gui=underline
-    hi link SpellCap    SpellBad 
+    hi link SpellCap    SpellBad
 hi SpellLocal		ctermbg=NONE	ctermfg=NONE	cterm=NONE		            guibg=NONE		    guifg=NONE		    gui=NONE
     hi link SpellRare   SpellLocal
 hi StatusLine		ctermbg=NONE	ctermfg=15		cterm=bold		            guibg=NONE		    guifg=g:color15		gui=bold
@@ -63,7 +64,6 @@ hi TabLineSel		ctermbg=11		ctermfg=0		cterm=bold                  guibg=g:color1
 hi Title		    ctermbg=NONE	ctermfg=13		cterm=bold                  guibg=NONE		    guifg=g:color13		gui=bold
 hi Visual		    ctermbg=8		ctermfg=NONE	cterm=NONE                  guibg=g:color8		guifg=NONE          gui=NONE
 hi VisualNOS		ctermbg=9		ctermfg=NONE	cterm=NONE                  guibg=g:color9		guifg=NONE          gui=NONE
-hi WarningMsg		ctermbg=NONE	ctermfg=12		cterm=bold                  guibg=NONE		    guifg=g:color12		gui=bold
 hi Whitespace		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE		    guifg=NONE		    gui=NONE
     hi link NonText     Whitespace
 
@@ -74,7 +74,7 @@ hi String           ctermbg=NONE    ctermfg=10      cterm=NONE                  
 hi Boolean          ctermbg=NONE    ctermfg=12      cterm=bold                  guibg=NONE          guifg=g:color12		gui=bold
 hi Identifier       ctermbg=NONE    ctermfg=11      cterm=NONE                  guibg=NONE          guifg=g:color11		gui=NONE
 hi Function         ctermbg=NONE    ctermfg=14      cterm=bold                  guibg=NONE          guifg=g:color14		gui=bold
-hi Statement        ctermbg=NONE    ctermfg=11      cterm=bold                  guibg=NONE          guifg=g:color11		gui=bold 
+hi Statement        ctermbg=NONE    ctermfg=11      cterm=bold                  guibg=NONE          guifg=g:color11		gui=bold
 hi PreProc          ctermbg=NONE    ctermfg=13      cterm=bold                  guibg=NONE          guifg=g:color13		gui=bold
 hi Type             ctermbg=NONE    ctermfg=10      cterm=bold                  guibg=NONE          guifg=g:color10		gui=bold
 hi Special          ctermbg=NONE    ctermfg=13      cterm=NONE                  guibg=NONE          guifg=g:color13		gui=NONE
@@ -82,7 +82,7 @@ hi Underlined       ctermbg=NONE    ctermfg=14      cterm=underline		        gui
 hi Error            ctermbg=NONE    ctermfg=9       cterm=bold                  guibg=NONE          guifg=g:color9		gui=bold
 hi Todo             ctermbg=NONE    ctermfg=15      cterm=bold                  guibg=NONE          guifg=g:color15		gui=bold
 
-" Filetype-Specific
+" Plugin-Specific
 " -- vimwiki
 hi VimwikiHeader1   ctermbg=NONE    ctermfg=14      cterm=bold,underline		guibg=NONE          guifg=g:color14		gui=bold,underline
 hi VimwikiHeader2   ctermbg=NONE    ctermfg=9       cterm=bold,underline		guibg=NONE          guifg=g:color9		gui=bold,underline
@@ -90,3 +90,9 @@ hi VimwikiHeader3   ctermbg=NONE    ctermfg=10      cterm=bold,underline		guibg=
 hi VimwikiHeader4   ctermbg=NONE    ctermfg=11      cterm=bold,underline		guibg=NONE          guifg=g:color11		gui=bold,underline
 hi VimwikiHeader5   ctermbg=NONE    ctermfg=12      cterm=bold,underline		guibg=NONE          guifg=g:color12		gui=bold,underline
 hi VimwikiHeader6   ctermbg=NONE    ctermfg=13      cterm=bold,underline		guibg=NONE          guifg=g:color13		gui=bold,underline
+
+" -- coc-nvim
+hi link CocErrorSign    ErrorMsg
+hi link CocWarningSign  WarningMsg
+hi CocInfoSign      ctermbg=NONE    ctermfg=14      cterm=bold                  guibg=NONE          guifg=g:color14     gui=bold
+hi CocHintSign      ctermbg=NONE    ctermfg=13      cterm=bold                  guibg=NONE          guifg=g:color13     gui=bold
