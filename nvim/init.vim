@@ -445,6 +445,7 @@ let g:coc_snippet_prev = ';k'
 nnoremap <silent> <localleader>ae :call fzf#run(fzf#wrap({'sink': 'edit'}))<CR>
 nnoremap <silent> <localleader>at :call fzf#run(fzf#wrap({'sink': 'tabnew'}))<CR>
 nnoremap <silent> <localleader>av :call fzf#run(fzf#wrap({'sink': 'vsplit'}))<CR>
+nnoremap <silent> <localleader>aa :call fzf#run(fzf#wrap({'sink': 'split'}))<CR>
 
 "   -- vim-rooter
 "   ---- Specify root project directory contains .git directory
