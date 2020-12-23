@@ -42,7 +42,7 @@ set $term       alacritty
 # Commands
 #   Variable    Command
 set $launcher   wofi
-set $lock       swaylock --image $wallpaper \
+set $lock       swaylock --image $wal_wal \
                          --show-keyboard-layout \
                          --indicator-caps-lock \
                          --scaling fill \
@@ -89,7 +89,7 @@ set $ws10       "10"
 ###############################################################################
 
 #       name    bg      file        mode    fallback-color
-output  *       bg      $wallpaper  fill    $color7
+output  *       bg      $wal_wal  fill    $color7
 
 ###############################################################################
 # Idle Configuration
