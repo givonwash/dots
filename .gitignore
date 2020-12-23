@@ -1,3 +1,6 @@
 .netrwhist
 coc/*
 !coc/ultisnips
+spicetify/*
+!spicetify/Themes
+!spicetify/config.ini
