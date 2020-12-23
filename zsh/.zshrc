@@ -67,6 +67,7 @@ alias psyu="sudo pacman -Syu"
 alias q="exit"
 alias sb="source ~/.bashrc"
 alias sz="source ~/.zshrc"
+alias tm="tmux -f ${DOTFILES}/tmux/.tmux.conf"
 alias ysi="yay -Si"
 alias yss="yay -Ss"
 
