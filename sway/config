@@ -27,7 +27,7 @@ set $logk780    1133:45883:Keyboard_K780_Keyboard
 set $lockfont   Fira Sans
 set $pango_font $lockfont Bold 10
 set $wal_wal    /home/givon/DotFiles/wallpapers/blue-skies.png
-set $wal_exec   wal -i $wal_wal -n -e > /dev/null
+set $wal_exec   waltz $wal_wal --shade 0.2 > /dev/null
 
 # -- pywal Colors
 # ---- Generate Colors
