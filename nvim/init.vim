@@ -288,7 +288,7 @@ augroup vimwiki_prefs
                 \ nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<CR>|
                 \ inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()|
                 \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()|
-                \ nmap <localleader>t :VimwikiTable<space>|
+                \ nnoremap <buffer> <localleader>t :VimwikiTable<space>|
                 \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>|
 augroup end
 
