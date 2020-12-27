@@ -2,7 +2,10 @@
     "coc.source.omni.filetypes": [
         "vimwiki"
     ],
-    "python.linting.pep8Enabled": true,
-    "python.jediEnabled": false,
-    "python.pythonPath": "/home/givon/miniconda3/bin/python"
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python",
+        "rust"
+    ],
+    "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true
 }
