@@ -31,7 +31,7 @@ set undofile                " Persistent undo history
 "   Non-Plugin Related Global Variables
 " -----------------------------------------------------------------------------
 "   To use packages from current env, use miniconda instead of system python
-let g:python3_host_prog = expand('~/miniconda3/bin/python')
+let g:python3_host_prog = '/usr/bin/python'
 
 "   Remove concealing of greek letters mathematical symbols, and greek letters
 let g:tex_conceal = "abd"
@@ -304,7 +304,7 @@ let g:coc_global_extensions =[
             \ 'coc-json',
             \ 'coc-css',
             \ 'coc-markdownlint',
-            \ 'coc-python',
+            \ 'coc-pyright',
             \ 'coc-sh',
             \ 'coc-pairs',
             \ 'coc-snippets',
