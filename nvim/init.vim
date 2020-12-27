@@ -314,7 +314,9 @@ let g:coc_global_extensions =[
             \ 'coc-tag',
             \ 'coc-word',
             \ 'coc-yaml',
-            \ 'coc-rust-analyzer'
+            \ 'coc-rust-analyzer',
+            \ 'coc-marketplace', 
+            \ 'coc-vimlsp'
             \ ]
 
 "   ---- Compatability Options
