@@ -27,12 +27,12 @@ hi DiffDelete		ctermbg=NONE	ctermfg=12		cterm=NONE                  guibg=NONE  
 hi DiffText		    ctermbg=NONE	ctermfg=10		cterm=NONE                  guibg=NONE          guifg=g:color10		gui=NONE
 hi EndOfBuffer		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE		    guifg=NONE		    gui=NONE
 hi TermCursor		ctermbg=8		ctermfg=15		cterm=NONE                  guibg=g:color8		guifg=g:color15		gui=NONE
-hi TermCursorNC		ctermbg=9		ctermfg=8		cterm=NONE                  guibg=g:color9		guifg=g:color8		gui=NONE
+hi TermCursorNC		ctermbg=1		ctermfg=8		cterm=NONE                  guibg=g:color1		guifg=g:color8		gui=NONE
 hi ErrorMsg		    ctermbg=NONE	ctermfg=12		cterm=bold                  guibg=NONE          guifg=g:color12		gui=bold
     hi link QuickFixLine    ErrorMsg
 hi WarningMsg       ctermbg=NONE    ctermfg=11      cterm=bold                  guibg=NONE          guifg=g:color11     gui=bold
 hi VertSplit		ctermbg=NONE	ctermfg=9	    cterm=NONE                  guibg=NONE          guifg=g:color9		gui=NONE
-hi Folded		    ctermbg=14		ctermfg=NONE	cterm=bold                  guibg=g:color14		guifg=NONE		    gui=bold
+hi Folded		    ctermbg=6		ctermfg=NONE	cterm=bold                  guibg=g:color6		guifg=NONE		    gui=bold
 hi FoldColumn		ctermbg=NONE	ctermfg=14		cterm=NONE                  guibg=NONE          guifg=g:color14		gui=NONE
 hi SignColumn		ctermbg=NONE	ctermfg=12		cterm=NONE                  guibg=NONE          guifg=g:color12		gui=NONE
 hi Search		    ctermbg=NONE	ctermfg=NONE	cterm=bold,inverse          guibg=NONE		    guifg=NONE		    gui=bold,inverse
@@ -40,17 +40,17 @@ hi Search		    ctermbg=NONE	ctermfg=NONE	cterm=bold,inverse          guibg=NONE	
 hi Substitute		ctermbg=NONE	ctermfg=NONE	cterm=bold,italic,inverse	guibg=NONE          guifg=NONE		    gui=bold,italic,inverse
 hi LineNr		    ctermbg=NONE	ctermfg=11		cterm=bold		            guibg=NONE          guifg=g:color11		gui=bold
 hi CursorLineNr		ctermbg=NONE	ctermfg=15		cterm=bold                  guibg=NONE          guifg=g:color15		gui=bold
-hi MatchParen		ctermbg=12	    ctermfg=8		cterm=bold                  guibg=g:color12     guifg=g:color8		gui=bold
+hi MatchParen		ctermbg=4	    ctermfg=8		cterm=bold                  guibg=g:color4     guifg=g:color8		gui=bold
 hi ModeMsg		    ctermbg=NONE	ctermfg=NONE	cterm=bold                  guibg=NONE          guifg=NONE		    gui=bold
 hi MsgArea		    ctermbg=NONE	ctermfg=15		cterm=NONE                  guibg=NONE          guifg=g:color15		gui=NONE
 hi MsgSeparator		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE          guifg=NONE		    gui=NONE
 hi MoreMsg		    ctermbg=NONE	ctermfg=13		cterm=bold                  guibg=NONE          guifg=g:color13		gui=bold
-hi Pmenu		    ctermbg=9		ctermfg=15		cterm=NONE                  guibg=g:color9		guifg=g:color15		gui=NONE
+hi Pmenu		    ctermbg=1		ctermfg=15		cterm=NONE                  guibg=g:color1		guifg=g:color15		gui=NONE
     hi link NormalFloat Pmenu
     hi link WildMenu    Pmenu
-hi PmenuSel		    ctermbg=11		ctermfg=15	    cterm=bold                  guibg=g:color11		guifg=g:color15		gui=bold
-hi PmenuSbar		ctermbg=8		ctermfg=10   	cterm=NONE                  guibg=g:color8		guifg=g:color10		gui=NONE
-hi PmenuThumb		ctermbg=9       ctermfg=15		cterm=NONE                  guibg=g:color9		guifg=g:color15		gui=NONE
+hi PmenuSel		    ctermbg=3		ctermfg=15	    cterm=bold                  guibg=g:color3		guifg=g:color15		gui=bold
+hi PmenuSbar		ctermbg=8		ctermfg=2   	cterm=NONE                  guibg=g:color8		guifg=g:color2		gui=NONE
+hi PmenuThumb		ctermbg=1       ctermfg=15		cterm=NONE                  guibg=g:color1		guifg=g:color15		gui=NONE
 hi SpecialKey		ctermbg=NONE	ctermfg=12		cterm=NONE                  guibg=NONE          guifg=g:color12		gui=NONE
 hi SpellBad		    ctermbg=NONE	ctermfg=NONE	cterm=underline		        guibg=NONE		    guifg=NONE		    gui=underline
     hi link SpellCap    SpellBad
@@ -58,12 +58,12 @@ hi SpellLocal		ctermbg=NONE	ctermfg=NONE	cterm=NONE		            guibg=NONE		   
     hi link SpellRare   SpellLocal
 hi StatusLine		ctermbg=NONE	ctermfg=15		cterm=bold		            guibg=NONE		    guifg=g:color15		gui=bold
 hi StatusLineNC		ctermbg=NONE	ctermfg=15		cterm=NONE                  guibg=NONE		    guifg=g:color15		gui=NONE
-hi TabLine		    ctermbg=9		ctermfg=0		cterm=NONE                  guibg=g:color9		guifg=g:color0		gui=NONE
-hi TabLineFill		ctermbg=9	    ctermfg=0	    cterm=NONE                  guibg=g:color9		guifg=g:color0		gui=NONE
-hi TabLineSel		ctermbg=11		ctermfg=0		cterm=bold                  guibg=g:color11		guifg=g:color0		gui=bold
+hi TabLine		    ctermbg=1		ctermfg=0		cterm=NONE                  guibg=g:color1		guifg=g:color0		gui=NONE
+hi TabLineFill		ctermbg=1	    ctermfg=0	    cterm=NONE                  guibg=g:color1		guifg=g:color0		gui=NONE
+hi TabLineSel		ctermbg=3		ctermfg=0		cterm=bold                  guibg=g:color3		guifg=g:color0		gui=bold
 hi Title		    ctermbg=NONE	ctermfg=13		cterm=bold                  guibg=NONE		    guifg=g:color13		gui=bold
 hi Visual		    ctermbg=8		ctermfg=NONE	cterm=NONE                  guibg=g:color8		guifg=NONE          gui=NONE
-hi VisualNOS		ctermbg=9		ctermfg=NONE	cterm=NONE                  guibg=g:color9		guifg=NONE          gui=NONE
+hi VisualNOS		ctermbg=1		ctermfg=NONE	cterm=NONE                  guibg=g:color1		guifg=NONE          gui=NONE
 hi Whitespace		ctermbg=NONE	ctermfg=NONE	cterm=NONE                  guibg=NONE		    guifg=NONE		    gui=NONE
     hi link NonText     Whitespace
 
