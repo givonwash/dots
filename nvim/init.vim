@@ -126,7 +126,7 @@ endfunction
 nnoremap <C-S-P> :call <SID>SynStack()<CR>
 
 "   use my custom colorscheme
-source ~/.cache/wal/colors-wal.vim
+source ~/.cache/wal/colors-waltz.vim
 colorscheme walle
 
 " -----------------------------------------------------------------------------
@@ -198,7 +198,7 @@ let g:lightline = {
             \   },
             \ 'inactive': {
                 \ 'left': [
-                    \ ['filename']
+                    \ ['readonly', 'filename', 'modified']
                 \ ],
                 \ 'right': [
                     \ ['lineinfo'],
