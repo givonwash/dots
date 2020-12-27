@@ -353,34 +353,34 @@ inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(
 inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 "   ---- Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <localleader>ck <Plug>(coc-diagnostic-prev)
+nmap <silent> <localleader>cj <Plug>(coc-diagnostic-next)
 
 "   ---- GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <localleader>cd <Plug>(coc-definition)
+nmap <silent> <localleader>cy <Plug>(coc-type-definition)
+nmap <silent> <localleader>ci <Plug>(coc-implementation)
+nmap <silent> <localleader>cr <Plug>(coc-references)
 
 "   ---- Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 "   ---- Symbol renaming.
-nmap <localleader>rn <Plug>(coc-rename)
+nmap <localleader>cr <Plug>(coc-rename)
 
 "   ---- Formatting selected code.
-xmap <localleader>f  <Plug>(coc-format-selected)
-nmap <localleader>f  <Plug>(coc-format-selected)
+xmap <localleader>cf  <Plug>(coc-format-selected)
+nmap <localleader>cf  <Plug>(coc-format-selected)
 
 "   ---- Applying codeAction to the selected region.
-xmap <localleader>as  <Plug>(coc-codeaction-selected)
-nmap <localleader>as  <Plug>(coc-codeaction-selected)
+xmap <localleader>cs  <Plug>(coc-codeaction-selected)
+nmap <localleader>cs  <Plug>(coc-codeaction-selected)
 
 "   ---- Remap keys for applying codeAction to the current buffer.
-nmap <localleader>ac  <Plug>(coc-codeaction)
+nmap <localleader>ca  <Plug>(coc-codeaction)
 
 "   ---- Apply AutoFix to problem on the current line.
-nmap <localleader>qf  <Plug>(coc-fix-current)
+nmap <localleader>cc  <Plug>(coc-fix-current)
 
 "   ---- Map function and class text objects
 xmap if <Plug>(coc-funcobj-i)
@@ -407,34 +407,34 @@ command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImpo
 
 "   ---- Mappings for CoCList
 "   ------ Show all diagnostics.
-nnoremap <silent><nowait> <localleader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <localleader>cld  :<C-u>CocList diagnostics<cr>
 
 "   ------ Manage extensions.
-nnoremap <silent><nowait> <localleader>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <localleader>cle  :<C-u>CocList extensions<cr>
 
 "   ------ Show commands.
-nnoremap <silent><nowait> <localleader>m  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <localleader>clm  :<C-u>CocList commands<cr>
 
 "   ------ Find symbol of current document.
-nnoremap <silent><nowait> <localleader>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <localleader>clo  :<C-u>CocList outline<cr>
 
 "   ------ Search workspace symbols.
-nnoremap <silent><nowait> <localleader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <localleader>cls  :<C-u>CocList -I symbols<cr>
 
 "   ------ Do default action for next item.
-nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <localleader>cj  :<C-u>CocNext<CR>
 
 "   ------ Do default action for previous item.
-nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <localleader>ck  :<C-u>CocPrev<CR>
 
 "   ------ Resume latest coc list.
-nnoremap <silent><nowait> <localleader>r  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <localleader>clr  :<C-u>CocListResume<CR>
 
 "   ---- Extension Specific Mappings
 "   ------ coc-snippets
 "   -------- snippet editing
-nnoremap <silent> <localleader><leader>s :CocCommand snippets.editSnippets<CR>
-nnoremap <silent> <localleader><leader>o :CocCommand snippets.openSnippetFiles<CR>
+nnoremap <silent> <localleader>ces :CocCommand snippets.editSnippets<CR>
+nnoremap <silent> <localleader>cos :CocCommand snippets.openSnippetFiles<CR>
 
 "   -------- expand, select, and jump with snippets
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -444,10 +444,10 @@ let g:coc_snippet_prev = ';k'
 
 "   -- fzf
 "   ---- Easily accessible mappings
-nnoremap <silent> <localleader>ae :call fzf#run(fzf#wrap({'sink': 'edit'}))<CR>
-nnoremap <silent> <localleader>at :call fzf#run(fzf#wrap({'sink': 'tabnew'}))<CR>
-nnoremap <silent> <localleader>av :call fzf#run(fzf#wrap({'sink': 'vsplit'}))<CR>
-nnoremap <silent> <localleader>aa :call fzf#run(fzf#wrap({'sink': 'split'}))<CR>
+nnoremap <silent> <localleader>e :call fzf#run(fzf#wrap({'sink': 'edit'}))<CR>
+nnoremap <silent> <localleader>t :call fzf#run(fzf#wrap({'sink': 'tabnew'}))<CR>
+nnoremap <silent> <localleader>v :call fzf#run(fzf#wrap({'sink': 'vsplit'}))<CR>
+nnoremap <silent> <localleader>a :call fzf#run(fzf#wrap({'sink': 'split'}))<CR>
 
 "   -- vim-rooter
 "   ---- Specify root project directory contains .git directory
