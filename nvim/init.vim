@@ -175,6 +175,9 @@ Plug 'junegunn/fzf.vim'
 "   Change working directory to project root when in project files
 Plug 'airblade/vim-rooter'
 
+"   git integration
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 " -----------------------------------------------------------------------------
