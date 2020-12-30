@@ -170,6 +170,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "   fzf for quick file navigation within project directories
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 "   Change working directory to project root when in project files
 Plug 'airblade/vim-rooter'
@@ -444,10 +445,10 @@ let g:coc_snippet_prev = ';k'
 
 "   -- fzf
 "   ---- Easily accessible mappings
-nnoremap <silent> <localleader>e :call fzf#run(fzf#wrap({'sink': 'edit'}))<CR>
-nnoremap <silent> <localleader>t :call fzf#run(fzf#wrap({'sink': 'tabnew'}))<CR>
-nnoremap <silent> <localleader>v :call fzf#run(fzf#wrap({'sink': 'vsplit'}))<CR>
-nnoremap <silent> <localleader>a :call fzf#run(fzf#wrap({'sink': 'split'}))<CR>
+nnoremap <silent> <localleader>ff :Files<CR>
+nnoremap <silent> <localleader>fg :GFiles<CR>
+nnoremap <silent> <localleader>fr :Rg<CR>
+nnoremap <silent> <localleader>fb :Buffers<CR>
 
 "   -- vim-rooter
 "   ---- Specify root project directory contains .git directory
