@@ -88,8 +88,9 @@ set $ws10       "10"
 # Output Configuration
 ###############################################################################
 
-#       name    bg      file        mode    fallback-color
-output  *       bg      $wal_wal  fill    $color7
+output * {
+    bg          $wal_wal  fill    $color7
+}
 
 ###############################################################################
 # Idle Configuration
@@ -262,9 +263,9 @@ seat seat0 xcursor_theme Bibata-Original-Ice 20
 # Window Colors
 #                       Border      Background      Text        Indicator   Child-Border
 client.focused          $color8     $background     $color15    $color8     $color8 
-client.unfocused        $background $background     $color15    $color9     $background
-client.focused_inactive $background $background     $color15    $color9     $background
-client.urgent           $color12    $background     $color15    $color3     $color12
+client.unfocused        $background $background     $color15    $color1     $background
+client.focused_inactive $background $background     $color15    $color1     $background
+client.urgent           $color4     $background     $color15    $color3     $color4
 
 # Borders
 # -- Defaults
@@ -341,8 +342,11 @@ include /etc/sway/config.d/*
 # Sway Start-Up Executables
 ###############################################################################
 
-# Update FireFox Colors With Latest pywal Colors
+# Update With Latest waltz Colors
+# -- FireFox Colors
 exec_always pywalfox update
+# -- Spicetify
+exec spicetify apply --no-restart > /dev/null
 
 # Start gammastep
 exec gammastep
