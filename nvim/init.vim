@@ -184,15 +184,21 @@ call plug#end()
 "  Plugin Compatability
 " -----------------------------------------------------------------------------
 "   -- lightline.vim
+"   ---- Provide git info to lightline
+function! LightlineGitStatus() abort
+    return get(g:, 'coc_git_status', '') . get(b:, 'coc_git_status', '')
+endfunction
+
 let g:lightline = {
             \ 'colorscheme': 'walle',
             \ 'component_function': {
-            \   'cocstatus': 'coc#status'
+            \   'cocstatus': 'coc#status',
+            \   'gitstatus': 'LightlineGitStatus'
             \   },
             \ 'active': {
                 \ 'left': [
                     \ ['mode', 'paste'],
-                    \ ['readonly', 'filename', 'modified', 'cocstatus']
+                    \ ['readonly', 'filename', 'modified', 'gitstatus', 'cocstatus']
                 \ ],
                 \ 'right': [
                     \ ['lineinfo'],
@@ -320,7 +326,8 @@ let g:coc_global_extensions =[
             \ 'coc-yaml',
             \ 'coc-rust-analyzer',
             \ 'coc-marketplace', 
-            \ 'coc-vimlsp'
+            \ 'coc-vimlsp',
+            \ 'coc-git',
             \ ]
 
 "   ---- Compatability Options
@@ -445,6 +452,12 @@ imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = ';j'
 let g:coc_snippet_prev = ';k'
+
+"   ------ coc-snippets
+"   -------- navigate chunks of current buffer
+nmap <localleader>cgk <Plug>(coc-git-prevchunk)
+nmap <localleader>cgj <Plug>(coc-git-nextchunk)
+nmap <localleader>cgs <Plug>(coc-git-chunkinfo)
 
 "   -- fzf
 "   ---- Easily accessible mappings
