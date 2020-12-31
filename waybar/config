@@ -2,7 +2,7 @@
     {
         "name": "main",
         "layer": "top",
-        "output": "eDP-1",
+        "output": ["eDP-1", "DP-1"],
         "position": "bottom",
         "modules-left": [
             "sway/workspaces", 
@@ -34,11 +34,7 @@
                 "default": "<span font=\"Noto Color Emoji\">⟫⟪</span>"
             },
             "numeric-first": false,
-            "persistent_workspaces": {
-                "1": [],
-                "2": [],
-                "10": []
-            }
+            "persistent_workspaces": {}
         },
         "sway/mode": {
             "format": "<span font=\"FiraSans\" style=\"italic\" weight=\"bold\">{}</span>"

@@ -34,17 +34,17 @@
 }
 
 #workspaces button.focused {
-    background-color: alpha(@color14, 0.4);
+    background-color: alpha(@color6, 0.3);
 }
 
 #workspaces button:hover {
-    background-color: @color9;
+    background-color: alpha(@color1, 0.3);
     color: @background;
 }
 
 #workspaces button.urgent {
     color: @background;
-    background-color: @color11;
+    background-color: alpha(@color8, 0.3);
 }
 /* --- */
 
@@ -73,7 +73,7 @@
 #battery,
 #network,
 #clock {
-    background-color: alpha(@color14, 0.3);
+    background-color: alpha(@color6, 0.3);
     color: @color15;
     margin: 0px;
     padding: 0em 0.4em;
