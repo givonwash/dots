@@ -107,13 +107,13 @@ if [[ ! "${SSH_AUTH_SOCK}" ]]; then
 fi
 
 # fzf Default Command
-dirs_to_ignore=(
+_dirs_toignore=(
     '.git'
     '.mypy_cache'
     '__pycache__'
 )
-paths_to_ignore="$(printf ' -name %s -o' "${dirs_to_ignore[@]}")"
-export FZF_DEFAULT_COMMAND="find . -type d \( ${paths_to_ignore:1:-3} \) -prune -o -print"
+_paths_toignore="$(printf ' -name %s -o' "${_dirs_toignore[@]}")"
+export FZF_DEFAULT_COMMAND="find . -type d \( ${_paths_toignore:1:-3} \) -prune -o -print"
 
 # Starship Prompt
 eval $(starship init zsh)
