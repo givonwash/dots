@@ -4,3 +4,4 @@ coc/*
 spicetify/*
 !spicetify/Themes
 !spicetify/config.ini
+nvim/colors/
