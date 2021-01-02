@@ -37,6 +37,7 @@ export REPOS="${HOME}/repos"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 
 # Aliases
 # -- General
