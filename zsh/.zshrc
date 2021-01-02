@@ -2,6 +2,9 @@
 # Givon's .zshrc for Arch Linux
 ################################################################################
 
+# python-poetry completion
+fpath+="${HOME}/.zfunc"
+
 # Zsh Completions
 zstyle ':completion*' auto-description 'Specify: %d'
 zstyle ':completion*' completer _complete _ignored _approximate
@@ -30,7 +33,7 @@ bindkey -v
 
 # Environment Variables
 export DOTFILES="${HOME}/DotFiles"
-export PROJECTS="${HOME}/projects"
+export REPOS="${HOME}/repos"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
@@ -60,7 +63,7 @@ alias nz="n ${DOTFILES}/zsh/.zshrc"
 alias p="pacman"
 alias pqi="pacman -Qi"
 alias pqs="pacman -Qs"
-alias proj="cd ${PROJECTS}"
+alias repos="cd ${REPOS}"
 alias psi="pacman -Si"
 alias pss="pacman -Ss"
 alias psyu="sudo pacman -Syu"
@@ -91,21 +94,6 @@ alias gs="g status"
 alias gss="g stauts --short"
 alias gsw="g switch"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/givon/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/givon/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/givon/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/givon/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # Manage ssh-agent
 SSH_AGENT_DOTENV="${XDG_RUNTIME_DIR}/ssh-agent.env"
 # -- Write stdout from ssh-agent to file if no current process
@@ -116,6 +104,15 @@ fi
 if [[ ! "${SSH_AUTH_SOCK}" ]]; then
     . "${SSH_AGENT_DOTENV}" > /dev/null
 fi
+
+# fzf Default Command
+dirs_to_ignore=(
+    '.git'
+    '.mypy_cache'
+    '__pycache__'
+)
+paths_to_ignore="$(printf ' -name %s -o' "${dirs_to_ignore[@]}")"
+export FZF_DEFAULT_COMMAND="find . -type d \( ${paths_to_ignore:1:-3} \) -prune -o -print"
 
 # Starship Prompt
 eval $(starship init zsh)
@@ -128,3 +125,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax Highlighting (NOTE: Must be at EOF)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Python dependency management
+export PATH="$PATH:$HOME/.poetry/bin"
