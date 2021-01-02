@@ -314,6 +314,7 @@ let g:vimtex_indent_on_ampersands = 0
 let g:coc_global_extensions =[
             \ 'coc-json',
             \ 'coc-css',
+            \ 'coc-html',
             \ 'coc-markdownlint',
             \ 'coc-pyright',
             \ 'coc-sh',
@@ -329,6 +330,7 @@ let g:coc_global_extensions =[
             \ 'coc-marketplace', 
             \ 'coc-vimlsp',
             \ 'coc-git',
+            \ 'coc-tsserver',
             \ ]
 
 "   ---- Compatability Options
