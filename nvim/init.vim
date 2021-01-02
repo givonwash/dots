@@ -300,6 +300,7 @@ augroup vimwiki_prefs
                 \ inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()|
                 \ nnoremap <buffer> <localleader>t :VimwikiTable<space>|
                 \ inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<CR>|
+                \ nnoremap <silent><buffer> <localleader><leader> :VimwikiToggleListItem<CR>
 augroup end
 
 "   -- vimtex
