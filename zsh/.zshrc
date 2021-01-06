@@ -116,7 +116,7 @@ _paths_toignore="$(printf ' -name %s -o' "${_dirs_toignore[@]}")"
 export FZF_DEFAULT_COMMAND="find . -type d \( ${_paths_toignore:1:-3} \) -prune -o -print"
 
 # Starship Prompt
-eval $(starship init zsh)
+eval "$(starship init zsh)"
 
 # python-pywal Colors
 (cat ${HOME}/.cache/wal/sequences &)
