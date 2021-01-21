@@ -123,7 +123,7 @@ input type:keyboard {
 }
 
 input $logmx {
-    natural_scroll  disabled
+    natural_scroll  enabled
     dwt             enabled
 }
 
