@@ -89,6 +89,9 @@ nnoremap <leader><leader> :%s:\v::g<Left><Left><Left>
 nnoremap <leader>; :s:\v::g<Left><Left><Left>
 nnoremap <leader>' :.,$s:\v::g<Left><Left><Left>
 
+"   faster :g commands
+nnoremap <leader>g :%g:\v
+
 "   very-magic searching
 noremap ? ?\v
 noremap / /\v
@@ -169,7 +172,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "   fzf for quick file navigation within project directories
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 "   Change working directory to project root when in project files
