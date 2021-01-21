@@ -50,7 +50,7 @@ alias c="clear"
 alias cp="cp -i"
 alias d="cd ${DOTFILES}"
 alias e="exit"
-alias l="ls -lah"
+alias l="exa -la --git --time modified --time-style long-iso --group"
 alias md="mkdir -p"
 alias n="$EDITOR"
 alias na="n ${DOTFILES}/alacritty/alacritty.yml"
@@ -107,13 +107,7 @@ if [[ ! "${SSH_AUTH_SOCK}" ]]; then
 fi
 
 # fzf Default Command
-_dirs_toignore=(
-    '.git'
-    '.mypy_cache'
-    '__pycache__'
-)
-_paths_toignore="$(printf ' -name %s -o' "${_dirs_toignore[@]}")"
-export FZF_DEFAULT_COMMAND="find . -type d \( ${_paths_toignore:1:-3} \) -prune -o -print"
+export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
 
 # Starship Prompt
 eval "$(starship init zsh)"
