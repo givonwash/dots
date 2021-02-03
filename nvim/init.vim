@@ -33,7 +33,7 @@ set undofile                " Persistent undo history
 "   To use packages from current env, use miniconda instead of system python
 let g:python3_host_prog = '/usr/bin/python'
 
-"   Remove concealing of greek letters mathematical symbols, and greek letters
+"   Remove concealing of greek letters and mathematical symbols
 let g:tex_conceal = "abd"
 
 " -----------------------------------------------------------------------------
