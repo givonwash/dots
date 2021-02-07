@@ -8,6 +8,27 @@
 # Config Global Variables
 ###############################################################################
 
+# Colors (OneDark)
+#   Variable    Value
+set $background #282c34
+set $foreground #abb2bf
+set $color0     #5c6370
+set $color1     #e06c75
+set $color2     #98c379
+set $color3     #e5c07b
+set $color4     #61afef
+set $color5     #c678dd
+set $color6     #56b6c2
+set $color7     #abb2bf
+set $color8     #4b5263
+set $color9     #be5046
+set $color10    #98c379
+set $color11    #d19a66
+set $color12    #61afef
+set $color13    #c678dd
+set $color14    #56b6c2
+set $color15    #3e4452
+
 # Keys
 #   Variable    Key
 set $mod        Mod4
@@ -24,16 +45,9 @@ set $logk780    1133:45883:Keyboard_K780_Keyboard
 
 # Aesthetics
 #   Variable    Value
-set $lockfont   Fira Sans
-set $pango_font $lockfont Bold 10
-set $wal_wal    /home/givon/DotFiles/wallpapers/blue-skies.png
-set $wal_exec   waltz $wal_wal --shade 0.2 > /dev/null
-
-# -- pywal Colors
-# ---- Generate Colors
-exec $wal_exec 
-# ---- Import those Colors and the Wallpaper as Variables
-include /home/givon/.cache/wal/colors-sway
+set $font       FiraCode
+set $pango_font $font Bold 12
+set $wallpaper  /home/givon/DotFiles/wallpapers/astral.png
 
 # Terminal
 #   Variable    Terminal
@@ -42,34 +56,7 @@ set $term       alacritty
 # Commands
 #   Variable    Command
 set $launcher   wofi
-set $lock       swaylock --image $wal_wal \
-                         --show-keyboard-layout \
-                         --indicator-caps-lock \
-                         --scaling fill \
-                         --font "$lockfont" \
-                         --font-size 20 \
-                         --daemonize \
-                         --bs-hl-color "$color12" \
-                         --indicator-radius 75 \
-                         --indicator-thickness 25 \
-                         --inside-color "$background" \
-                         --inside-clear-color "$foreground" \
-                         --inside-ver-color "$color9" \
-                         --inside-wrong-color "$color12" \
-                         --key-hl-color "$color10" \
-                         --layout-bg-color "$background" \
-                         --layout-border-color "$color4" \
-                         --layout-text-color "$color15" \
-                         --line-color "$color14" \
-                         --line-clear-color "$color10" \
-                         --line-ver-color "$color9" \
-                         --line-wrong-color "$color12" \
-                         --ring-color "$color8" \
-                         --ring-clear-color "$color10" \
-                         --ring-ver-color "$color9" \
-                         --ring-wrong-color "$color12" \
-                         --separator-color "$color14" \
-                         --text-color "$color15"
+set $lock       swaylock --image $wallpaper
 
 # Workspaces
 #   Variable    Workspace
@@ -89,19 +76,19 @@ set $ws10       "10"
 ###############################################################################
 
 output * {
-    bg          $wal_wal  fill    $color7
+    bg          $wallpaper  fill    $color7
 }
 
 ###############################################################################
 # Idle Configuration
 ###############################################################################
 
-# Lock the Screen After 5 Minutes of Inactivity 
+# Lock the Screen After 5 Minutes of Inactivity
 # Turn Off the Screen after 6 Minutes of Inactivity
 # Also Lock the Screen Before Sleeping
 exec swayidle -w \
          timeout 300 '$lock' \
-         timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep '$lock'
 
 ###############################################################################
@@ -262,10 +249,10 @@ seat seat0 xcursor_theme Bibata-Original-Ice 20
 
 # Window Colors
 #                       Border      Background      Text        Indicator   Child-Border
-client.focused          $color8     $background     $color15    $color8     $color8 
+client.focused          $color12    $background     $color15    $color8     $color12
 client.unfocused        $background $background     $color15    $color1     $background
 client.focused_inactive $background $background     $color15    $color1     $background
-client.urgent           $color4     $background     $color15    $color3     $color4
+client.urgent           $color9     $background     $color15    $color3     $color9
 
 # Borders
 # -- Defaults
@@ -275,9 +262,9 @@ smart_borders on
 
 # Opacity
 # -- Wayland Applications
-for_window [app_id=".*"] opacity set 0.95
+for_window [app_id=".*"] opacity set 0.97
 # -- X11 Applications
-for_window [class=".*"] opacity set 0.95
+for_window [class=".*"] opacity set 0.97
 
 # Floating Windows
 for_window [app_id="nm-connection-editor"] floating enable
@@ -341,12 +328,6 @@ include /etc/sway/config.d/*
 ###############################################################################
 # Sway Start-Up Executables
 ###############################################################################
-
-# Update With Latest waltz Colors
-# -- FireFox Colors
-exec_always pywalfox update
-# -- Spicetify
-exec spicetify apply --no-restart > /dev/null
 
 # Start gammastep
 exec gammastep
