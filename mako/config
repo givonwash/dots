@@ -6,27 +6,27 @@ layer=overlay
 
 # Style Options
 # -- defaults
-font=Fira Sans 12
-format=<span weight='bold'>%a</span>: <span style='italic' weight='bold'>%s</span>\n%b
-text-color=#cbc9cc
-border-color=#cbc9cc
-background-color=#0f1f2fE5
+font=FiraCode Nerd Font 12
+format=<span weight='bold'>%a: %s</span>\n%b
+text-color=#abb2bf
+border-color=#4b5263
+background-color=#282c34
 width=400
 height=150
 margin=10
 padding=5
 border-size=2
 border-radius=8
-progress-color=source #027DC1
+progress-color=source #98c379
 icons=1
 markup=1
 actions=1
-default-timeout=10000
+default-timeout=5000
 
 # -- high urgency notifications
 [urgency=high]
-border-color=#0488C5
+border-color=#be5046
 
 # -- grouped notifications
 [grouped=true]
-format=<span weight='bold'>(%g) %a</span>: <span style='italic' weight='bold'>%s</span>\n%b
+format=<span weight='bold'>(%g) %a: %s</span>\n%b
