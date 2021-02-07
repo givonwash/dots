@@ -1,0 +1,26 @@
+indicator-caps-lock
+daemonize
+scaling=fill
+font="FiraCode Nerd Font"
+font-size=20
+bs-hl-color=e06c75
+indicator-radius=75
+indicator-thickness=25
+inside-color=282c34
+inside-clear-color=abb2bf
+inside-ver-color=be5046
+inside-wrong-color=e06c75
+key-hl-color=98c379
+layout-bg-color=282c34
+layout-border-color=61afef
+layout-text-color=abb2bf
+line-color=56b6c2
+line-clear-color=98c379
+line-ver-color=be5046
+line-wrong-color=e06c75
+ring-color=4b5263
+ring-clear-color=98c379
+ring-ver-color=be5046
+ring-wrong-color=e06c75
+separator-color=56b6c2
+text-color=abb2bf
