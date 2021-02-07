@@ -338,6 +338,7 @@ let g:coc_global_extensions =[
             \ 'coc-vimlsp',
             \ 'coc-git',
             \ 'coc-tsserver',
+            \ 'coc-prettier'
             \ ]
 
 "   ---- Compatability Options
