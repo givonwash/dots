@@ -128,10 +128,6 @@ endfunction
 
 nnoremap <C-S-P> :call <SID>SynStack()<CR>
 
-"   use my custom colorscheme
-source ~/.cache/wal/colors-waltz.vim
-colorscheme walle
-
 " -----------------------------------------------------------------------------
 "   Custom Commands
 " -----------------------------------------------------------------------------
@@ -165,6 +161,9 @@ Plug 'itchyny/lightline.vim'
 "   imporved latex features
 Plug 'lervag/vimtex'
 
+"   OneDark colorscheme
+Plug 'joshdick/onedark.vim'
+
 "   improved syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
@@ -192,7 +191,7 @@ function! LightlineGitStatus() abort
 endfunction
 
 let g:lightline = {
-            \ 'colorscheme': 'walle',
+            \ 'colorscheme': 'onedark',
             \ 'component_function': {
             \   'cocstatus': 'coc#status',
             \   'gitstatus': 'LightlineGitStatus'
@@ -311,6 +310,12 @@ let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_indent_on_ampersands = 0
+
+"   -- ondark.vim
+set termguicolors
+let g:onedark_hide_endofbuffer = 1
+let g:ondark_terminal_italics = 1
+colorscheme onedark
 
 "   -- coc.nvim
 let g:coc_global_extensions =[
