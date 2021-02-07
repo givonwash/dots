@@ -1,18 +1,18 @@
 /* Givon's Waybar Stylesheet */
 
-/* Import pywal colors */
-@import url("../../.cache/wal/colors-waybar.css");
-
 /* ==========================================================================*/
 /* Defaults */
 /* ==========================================================================*/
 * {
-    background: transparent;
+    /* waybar specific */
     box-shadow: none;
     border: none;
-    font-size: 12pt;
     text-shadow: none;
     transition-duration: 0s;
+    /* my preference */
+    font-size: 14pt;
+    font-family: "FiraCode NerdFont", monospace;
+    background: none;
 }
 
 /* ==========================================================================*/
@@ -28,29 +28,26 @@
 /* Workspaces */
 
 #workspaces button {
-    margin: 0px;
-    color: @color15;
-    border-radius: 15px;
+    margin: -0.2em -0.4em;
+    color: rgb(171, 178, 191);
 }
 
 #workspaces button.focused {
-    background-color: alpha(@color6, 0.3);
+    color: rgb(97, 175, 239);
 }
 
 #workspaces button:hover {
-    background-color: alpha(@color1, 0.3);
-    color: @background;
+    color: rgb(152, 195, 121);
 }
 
 #workspaces button.urgent {
-    color: @background;
-    background-color: alpha(@color8, 0.3);
+    color: rgb(224, 108, 117);
 }
 /* --- */
 
 /* Sway Mode */
 #mode {
-    color: @color15;
+    color: rgb(171, 178, 191);
     margin-left: 0.5em;
 }
 /* --- */
@@ -60,7 +57,7 @@
 /* ==========================================================================*/
 
 #window {
-    color: @color15;
+    color: rgb(171, 178, 191);
 }
 
 /* ==========================================================================*/
@@ -73,39 +70,13 @@
 #battery,
 #network,
 #clock {
-    background-color: alpha(@color6, 0.3);
-    color: @color15;
-    margin: 0px;
-    padding: 0em 0.4em;
+    margin: 0em 0.4em;
+    color: rgb(171, 178, 191);
 }
 /* --- */
 
-/* PulseAudio */
-#pulseaudio {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    letter-spacing: 0.6em;
-    font-size: 1.2em;
-}
-/* --- */
-
-/* Backlight */
-#backlight {
-    padding-left: 0.2em;
-}
-/* --- */
-
-/* Clock */
-#clock {
-    padding-left: 0.6em;
-    border-left: 2px solid @color11;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-/* --- */
-
-/* Network */
-#network {
-    padding-right: 0.9em;
+/* Battery */
+#battery.charging {
+    color: rgb(152, 195, 121);
 }
 /* --- */

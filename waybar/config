@@ -26,24 +26,25 @@
             "disable-markup": false,
             "format": "{icon}",
             "format-icons": {
-                "1": "<span font=\"Noto Color Emoji 14\"></span>",
-                "2": "<span font=\"Noto Color Emoji 16\"></span>",
-                "10": "<span font=\"Noto Color Emoji 14\"></span>",
-                "urgent": "<span font=\"Noto Color Emoji\"></span>",
-                "focused": "<span font=\"Noto Color Emoji\">⟪⟫</span>",
-                "default": "<span font=\"Noto Color Emoji\">⟫⟪</span>"
+                "1": "",
+                "2": "",
+                "10": "",
+                "urgent": "",
+                "focused": "",
+                "default": ""
             },
             "numeric-first": false,
             "persistent_workspaces": {}
         },
         "sway/mode": {
-            "format": "<span font=\"FiraSans\" style=\"italic\" weight=\"bold\">{}</span>"
+            "format": "{}"
         },
         "sway/window": {
-            "format": "<span font=\"FiraSans\" style=\"italic\" weight=\"bold\">{}</span>"
+            "format": "{}",
+            "max-length": 70
         },
         "clock": {
-            "format": "<span font=\"FiraSans\" style=\"italic\" weight=\"bold\">{:%a %b %d %I:%M %p}</span> ",
+            "format": ":: {:%a %b %d %I:%M %p} ::",
             "interval": 60,
             "tooltip": false
         },
@@ -51,8 +52,9 @@
             "device": "intel_backlight",
             "format": "{icon}",
             "format-icons": [
-                "<span font=\"Noto Color Emoji\">🔅</span>", 
-                "<span font=\"Noto Color Emoji\">🔆</span>"
+                "",
+                "",
+                ""
             ],
             "interval": 2,
             "tooltip": false
@@ -60,50 +62,58 @@
         "battery": {
             "states": {
                 "full": 100,
+                "great": 90,
+                "very-good": 80,
                 "good": 70,
+                "above-average": 60,
                 "average": 50,
-                "below-average": 35,
-                "warning": 20,
+                "below-average": 40,
+                "poor": 30,
+                "very-poor": 20,
                 "critical": 10
             },
             "format": "{icon}",
             "format-icons": [
-                "<span font=\"Noto Color Emoji\"></span>", 
-                "<span font=\"Noto Color Emoji\"></span>", 
-                "<span font=\"Noto Color Emoji\"></span>", 
-                "<span font=\"Noto Color Emoji\"></span>", 
-                "<span font=\"Noto Color Emoji\"></span>", 
-                "<span font=\"Noto Color Emoji\"></span>"
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
             ]
         },
         "network": {
-            "format-disconnected": "<span font=\"Noto Color Emoji 16\"></span>",
+            "format-disconnected": "",
             "format-wifi": "{icon}",
             "format-icons": [
-                "<span font=\"Noto Color Emoji 16\"></span>"
+                ""
             ],
             "tooltip": true,
             "tooltip-format": "{essid}: \n\t• Signal Strength: {signalStrength}\n\t• Upload Bandwidth: {bandwidthUpBits}\n\t• Download Bandwidth: {bandwidthDownBits}",
             "on-click": "nm-connection-editor"
         },
         "pulseaudio": {
-            "format": "{icon}{format_source}",
-            "format-bluetooth": "{icon}<span font=\"Noto Color Emoji\"></span>{format_source}",
-            "format-bluetooth-muted": "{icon}(<span font=\"Noto Color Emoji\"></span>){format_source}",
-            "format-muted": "<span font=\"Noto Color Emoji\"></span>{format_source}",
-            "format-source": "<span font=\"Noto Color Emoji 17\"></span>",
-            "format-source-muted": "<span font=\"Noto Color Emoji 17\"></span>",
+            "format": "{icon}",
+            "format-bluetooth": "{icon}",
+            "format-bluetooth-muted": "{icon}()",
+            "format-muted": "",
+            "format-source": "",
+            "format-source-muted": "",
             "format-icons": {
-                "headphone": "<span font=\"Noto Color Emoji\"></span>",
-                "hands-free": "<span font=\"Noto Color Emoji\"></span>",
-                "headset": "<span font=\"Noto Color Emoji\"></span>",
-                "phone": "<span font=\"Noto Color Emoji\"></span>",
-                "portable": "<span font=\"Noto Color Emoji\"></span>",
-                "car": "<span font=\"Noto Color Emoji\"></span>",
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
                 "default": [
-                    "<span font=\"Noto Color Emoji 22\"></span>", 
-                    "<span font=\"Noto Color Emoji 22\"></span>", 
-                    "<span font=\"Noto Color Emoji 22\"></span>"
+                    "", 
+                    "", 
+                    ""
                 ]
             },
             "on-click": "pavucontrol",
