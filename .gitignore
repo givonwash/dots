@@ -2,6 +2,7 @@
 coc/*
 !coc/ultisnips
 spicetify/*
-!spicetify/Themes
+!spicetify/Themes/walle
 !spicetify/config.ini
 nvim/colors/
+wallpapers/
