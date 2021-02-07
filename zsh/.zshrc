@@ -61,6 +61,7 @@ alias nw="n +VimwikiIndex"
 alias nwd="n +VimwikiDiaryIndex"
 alias nwdt="n +VimwikiMakeDiaryNote"
 alias nz="n ${DOTFILES}/zsh/.zshrc"
+alias o="xdg-open"
 alias p="pacman"
 alias pqi="pacman -Qi"
 alias pqs="pacman -Qs"
@@ -110,17 +111,17 @@ fi
 # fzf Default Command
 export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
 
+# bat Default Appearance
+export BAT_THEME="base16"
+
+# Python dependency management
+export PATH="$PATH:$HOME/.poetry/bin"
+
 # Starship Prompt
 eval "$(starship init zsh)"
-
-# python-pywal Colors
-(cat ${HOME}/.cache/wal/sequences &)
 
 # Auto-suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax Highlighting (NOTE: Must be at EOF)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Python dependency management
-export PATH="$PATH:$HOME/.poetry/bin"
