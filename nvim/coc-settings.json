@@ -3,8 +3,16 @@
         "vimwiki"
     ],
     "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "markdown",
         "python",
-        "rust"
+        "rust",
+        "typescript",
+        "yaml"
     ],
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true
