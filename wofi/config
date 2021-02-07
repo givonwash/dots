@@ -3,7 +3,6 @@
 ################################################################################
 
 # File Locations
-color=/home/givon/.cache/wal/colors
 style=/home/givon/.config/wofi/style.css
 
 # Defaults
@@ -19,7 +18,6 @@ exec_search=true
 matching=fuzzy
 insensitive=true
 sort_order=default
-dynamic_lines=true
 layer=overlay
 
 # -- Keybindings
@@ -30,12 +28,12 @@ key_expand=space
 # Aesthetics
 # -- Position and Dimensions
 lines=12
-location=top
+location=center
 columns=1
 y-offset=2
 
 # -- Text
-prompt="Go!"
+prompt=:: 🐵 ::
 
 # -- Misc
 hide_scroll=true
