@@ -250,9 +250,9 @@ seat seat0 xcursor_theme Bibata-Original-Ice 20
 # Window Colors
 #                       Border      Background      Text        Indicator   Child-Border
 client.focused          $color12    $background     $color15    $color8     $color12
-client.unfocused        $background $background     $color15    $color1     $background
-client.focused_inactive $background $background     $color15    $color1     $background
-client.urgent           $color9     $background     $color15    $color3     $color9
+client.unfocused        $background $background     $color15    $color8     $background
+client.focused_inactive $background $background     $color15    $color8     $background
+client.urgent           $color9     $background     $color15    $color8     $color9
 
 # Borders
 # -- Defaults
