@@ -26,6 +26,7 @@ set autoindent		    	" Copy indent from current line for newlines
 set scrolloff=2             " Min 3 lines between edge of screen and cursor
 set nrformats-=octal        " Stop C-A and C-X from Using Octal Numbers
 set undofile                " Persistent undo history
+set mouse=a                 " Mouse-clicking in insert, visual, and normal mode
 
 " -----------------------------------------------------------------------------
 "   Non-Plugin Related Global Variables
@@ -289,6 +290,9 @@ let g:vimwiki_map_prefix = '<localleader>w'
 "   ---- Table of Contents Header
 let g:vimwiki_toc_header = 'Table of Contents'
 
+"   ---- Prevent all markdown files from being treated like temporary wikis
+let g:vimwiki_global_ext = 0
+
 "   ---- Remap vimwiki keybindings when opening files of filetype vimwiki
 augroup vimwiki_prefs
     au!
@@ -369,8 +373,10 @@ inoremap <silent><expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" :
             \ "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 
 "   ---- Define mappings for scrolling down and up floating windows
+"       ---- normal mode
 nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"       ---- insert mode
 inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
