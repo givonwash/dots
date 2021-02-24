@@ -2,7 +2,7 @@
 symbol = ' '
 
 [character]
-format = '[🌵 || $symbol ](bold white)'
+format = '[:: 🐵 :: $symbol ](bold gray)'
 
 [battery]
 full_symbol = ''
