@@ -6,3 +6,6 @@ spicetify/*
 !spicetify/config.ini
 nvim/colors/
 wallpapers/
+spotify-tui/*
+!spotify-tui/config.yml
+.secrets
