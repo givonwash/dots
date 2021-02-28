@@ -265,6 +265,8 @@ smart_borders on
 for_window [app_id=".*"] opacity set 0.97
 # -- X11 Applications
 for_window [class=".*"] opacity set 0.97
+# -- No opacity for games
+for_window [class="^Minecraft.*"] opacity set 1.0
 
 # Floating Windows
 for_window [app_id="nm-connection-editor"] floating enable
