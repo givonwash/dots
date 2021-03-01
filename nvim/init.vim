@@ -21,8 +21,8 @@ set ignorecase		    	" Ignore case by default when searching
 set smartcase		    	" Infer whether I want a case-sensitive search
 set incsearch		    	" Go-to word as it being typed in search
 set tabstop=4		    	" Make tabs 4 spaces
-set expandtab		    	" Convert tabs to spaces
 set shiftwidth=4	    	" Make indents 4 spaces
+set expandtab		    	" Convert tabs to spaces
 set softtabstop=4	    	" Backspace will remove tabs instead of spaces
 set smarttab		     	" Tabbing in front of a line inserts 4 spaces
 set smartindent		    	" Smartindent on a newline
@@ -31,6 +31,9 @@ set scrolloff=2             " Min 3 lines between edge of screen and cursor
 set nrformats-=octal        " Stop C-A and C-X from Using Octal Numbers
 set undofile                " Persistent undo history
 set mouse=a                 " Mouse-clicking in insert, visual, and normal mode
+set history=500             " Decrease the amount of history neovim needs to remember
+set lazyredraw              " Hold of on redrawing screen while performing macros
+set cursorline              " Highlight the screen line of the cursor
 
 " =============================================================================
 "                              Global Variables
