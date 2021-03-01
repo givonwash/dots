@@ -242,6 +242,27 @@ Plug 'airblade/vim-rooter'
 "   git integration
 Plug 'tpope/vim-fugitive'
 
+"   distraction-free vim
+Plug 'junegunn/goyo.vim'
+
+"   focused-vim
+Plug 'junegunn/limelight.vim'
+
+"   visualize undo tree
+Plug 'mbbill/undotree'
+
+"   easier commenting
+Plug 'tpope/vim-commentary'
+
+"   testing within vim
+Plug 'vim-test/vim-test'
+
+"   debugging wihtin vim
+Plug 'puremourning/vimspector'
+
+"   kick off builds and run test suites asynchronously
+Plug 'tpope/vim-dispatch'
+
 call plug#end()
 
 " =============================================================================
@@ -290,6 +311,24 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
+
+"   GoyoEnter setup
+function! s:goyo_enter()
+    silent !tmux set status off
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+endfunction
+
+"   GoyoLeave cleanup
+function! s:goyo_leave()
+    silent !tmux set status on
+    set showmode
+    set showcmd
+    set scrolloff=5
+    call <SID>vimwiki_header_higlights()
+endfunction
+
 
 " =============================================================================
 "                                  Options
@@ -547,6 +586,79 @@ nnoremap <silent> <localleader>fb :Buffers<cr>
 "   Specify root project directory contains .git directory
 let g:rooter_patterns = ['.git']
 
+" -----------------------------------------------------------------------------
+" vim-fugitive
+" -----------------------------------------------------------------------------
+nnoremap <localleader>gs :Git<cr>
+nnoremap <localleader>gd :Git difftool<cr>
+nnoremap <localleader>gm :Git mergetool<cr>
+nnoremap <localleader>gb :Git blame<cr>
+
+" -----------------------------------------------------------------------------
+" goyo.vim
+" -----------------------------------------------------------------------------
+"   toggle goyo
+nnoremap <silent> <localleader>m :Goyo<cr>
+
+" -----------------------------------------------------------------------------
+" undotree
+" -----------------------------------------------------------------------------
+nnoremap <silent> <localleader>u :UndotreeToggle<cr>
+
+" -----------------------------------------------------------------------------
+" vim-test
+" -----------------------------------------------------------------------------
+"   run test commands with :Dispatch[!] 
+let g:test#strategy = "dispatch"
+"   in a test file run test nearest to the cursor
+nmap <silent> <localleader>tn :TestNearest<CR>
+"   in a test file run all the tests
+nmap <silent> <localleader>tf :TestFile<CR>
+"   run entire test suite
+nmap <silent> <localleader>ts :TestSuite<CR>
+"   run the last test
+nmap <silent> <localleader>tl :TestLast<CR>
+"   visit the test file from the last test
+nmap <silent> <localleader>tv :TestVisit<CR>
+"   specify python test runner
+let g:test#python#runner = "pytest"
+
+" -----------------------------------------------------------------------------
+" vimspector
+" -----------------------------------------------------------------------------
+"   '[d]ebug [c]ontinue'
+nmap <localleader>dc <Plug>VimspectorContinue
+"   '[d]ebug [s]top'
+nmap <localleader>ds <Plug>VimspectorStop
+"   '[d]ebug [r]estart'
+nmap <localleader>dr <Plug>VimspectorRestart
+"   '[d]ebug [p]ause'
+nmap <localleader>dp <Plug>VimspectorPause
+"   '[d]ebug [b]reakpoint'
+nmap <localleader>db <Plug>VimspectorToggleBreakpoint
+"   '[d]ebug co[n]diontal breakpoint'
+nmap <localleader>dn <Plug>VimspectorToggleConditionalBreakpoint
+"   '[d]ebug step over'
+nmap <localleader>dl <Plug>VimspectorStepOver
+"   '[d]ebug [i]nto'
+nmap <localleader>di <Plug>VimspectorStepInto
+"   '[d]ebug step [o]ut'
+nmap <localleader>do <Plug>VimspectorStepOut
+"   '[d]ebug [r]un to cursor'
+nmap <localleader>du <Plug>VimspectorRunToCursor
+"   '[d]ebug balloon e[v]al'
+nmap <localleader>dv <Plug>VimspectorBalloonEval
+"   '[d]ebug show ou[t]put'
+nnoremap <localleader>dt :VimspectorShowOutput<space>
+"   '[d]ebug ev[a]l'
+nnoremap <localleader>da :VimspectorEval<space>
+"   '[d]ebug [e]nter'
+nnoremap <localleader>dw :VimspectorWatch<space>
+"   '[d]ebug [e]nter'
+nnoremap <localleader>de :call vimspector#Launch()<cr>
+"   '[d]ebug reset'
+nnoremap <localleader>dd :call vimspector#Reset()<cr>
+
 " =============================================================================
 "                               Auto-Commands
 " =============================================================================
@@ -563,3 +675,11 @@ augroup vimwiki_prefs
     au FileType vimwiki inoremap <silent><buffer> <A-CR> <C-]><Esc>:VimwikiReturn 2 2<cr>
     au FileType vimwiki nnoremap <silent><buffer> <localleader><leader> :VimwikiToggleListItem<cr
 augroup end
+
+"   Goyo callbacks
+augroup goyo_compat
+    au!
+    au User GoyoEnter nested call s:goyo_enter()
+    au User GoyoLeave nested call s:goyo_leave()
+augroup end
+
