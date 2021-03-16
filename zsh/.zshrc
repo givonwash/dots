@@ -38,6 +38,13 @@ export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
+# -- fzf Default Command
+export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
+# -- bat Default Appearance
+export BAT_THEME="base16"
+# -- python dependency management
+export PATH="$PATH:$HOME/.poetry/bin"
+
 
 # Aliases
 # -- General
@@ -108,15 +115,6 @@ fi
 if [[ ! "${SSH_AUTH_SOCK}" ]]; then
     . "${SSH_AGENT_DOTENV}" > /dev/null
 fi
-
-# fzf Default Command
-export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
-
-# bat Default Appearance
-export BAT_THEME="base16"
-
-# Python dependency management
-export PATH="$PATH:$HOME/.poetry/bin"
 
 # Starship Prompt
 eval "$(starship init zsh)"
