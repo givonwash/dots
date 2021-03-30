@@ -597,6 +597,7 @@ nnoremap <localleader>gs :Git<cr>
 nnoremap <localleader>gd :Git difftool<cr>
 nnoremap <localleader>gm :Git mergetool<cr>
 nnoremap <localleader>gb :Git blame<cr>
+nnoremap <localleader>gl :Git log<cr>
 
 " -----------------------------------------------------------------------------
 " goyo.vim
@@ -672,7 +673,7 @@ augroup vimwiki_prefs
     au FileType vimwiki nnoremap <silent><buffer> gls :VimwikiChangeSymbolTo *<cr>
     au FileType vimwiki nnoremap <silent><buffer> gld :VimwikiChangeSymbolTo -<cr>
     au FileType vimwiki nnoremap <silent><buffer> glt :VimwikiChangeSymbolTo #<cr>
-    au FileType vimwiki nnoremap <silent><buffer> glm :VimwikiChangeSymbolTo 1.<cr>
+    au FileType vimwiki nnoremap <silent><buffer> gln :VimwikiChangeSymbolTo 1.<cr>
     au FileType vimwiki inoremap <silent><expr><buffer> <A-t> vimwiki#tbl#kbd_tab()
     au FileType vimwiki inoremap <silent><expr><buffer> <A-T> vimwiki#tbl#kbd_shift_tab()
     au FileType vimwiki nnoremap <buffer> <localleader>t :VimwikiTable<space>
