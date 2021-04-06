@@ -9,7 +9,7 @@
 " =============================================================================
 "                                  Options
 " =============================================================================
-set nu				        " Add line numbers
+set number                  " Add line numbers
 set relativenumber		    " Make line numbers relative
 set colorcolumn=80	    	" Add ruler to indicate 80th column
 set nowrap		        	" No line wrapping
@@ -164,7 +164,7 @@ noremap <leader>p "+p
 nnoremap <leader><leader> :%s:\v::g<Left><Left><Left>
 nnoremap <leader>; :s:\v::g<Left><Left><Left>
 nnoremap <leader>' :.,$s:\v::g<Left><Left><Left>
-nnoremap <leader>k :%s:\v<C-r><C-w>::g<Left><Left>
+nnoremap <leader>k :%s:\v<<C-r><C-w>>::g<Left><Left>
 
 "   increment all numbers in a line
 nnoremap <leader>a :s:\v\d+:\=submatch(0) + 1:g<cr>
