@@ -11,23 +11,10 @@
 # Colors (OneDark)
 #   Variable    Value
 set $background #282c34
-set $foreground #abb2bf
-set $color0     #5c6370
-set $color1     #e06c75
-set $color2     #98c379
-set $color3     #e5c07b
-set $color4     #61afef
-set $color5     #c678dd
-set $color6     #56b6c2
-set $color7     #abb2bf
-set $color8     #4b5263
-set $color9     #be5046
-set $color10    #98c379
-set $color11    #d19a66
-set $color12    #61afef
-set $color13    #c678dd
-set $color14    #56b6c2
-set $color15    #3e4452
+set $blue       #61afef
+set $gray       #4b5263
+set $red        #be5046
+set $white      #abb2bf
 
 # Keys
 #   Variable    Key
@@ -45,8 +32,7 @@ set $logk780    1133:45883:Keyboard_K780_Keyboard
 
 # Aesthetics
 #   Variable    Value
-set $font       FiraCode
-set $pango_font $font Bold 12
+set $font       FiraCode Bold 12
 set $wallpaper  /home/givon/DotFiles/wallpapers/astral.png
 
 # Terminal
@@ -76,7 +62,7 @@ set $ws10       "10"
 ###############################################################################
 
 output * {
-    bg          $wallpaper  fill    $color7
+    bg          $wallpaper  fill    $white
 }
 
 ###############################################################################
@@ -239,7 +225,7 @@ bindsym XF86AudioPrev exec playerctl previous
 ###############################################################################
 
 # Font
-font pango:$pango_font
+font pango:$font
 
 # Gaps
 gaps inner 5
@@ -248,11 +234,11 @@ gaps inner 5
 seat seat0 xcursor_theme Bibata-Original-Ice 20
 
 # Window Colors
-#                       Border      Background      Text        Indicator   Child-Border
-client.focused          $color12    $background     $color15    $color8     $color12
-client.unfocused        $background $background     $color15    $color8     $background
-client.focused_inactive $background $background     $color15    $color8     $background
-client.urgent           $color9     $background     $color15    $color8     $color9
+#                       Border          Background     Text      Indicator  Child-Border
+client.focused          $blue           $background    $white    $gray      $blue
+client.unfocused        $background     $background    $white    $gray      $background
+client.focused_inactive $background     $background    $white    $gray      $background
+client.urgent           $red            $background    $white    $gray      $red
 
 # Borders
 # -- Defaults
