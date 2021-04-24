@@ -73,6 +73,21 @@ function! s:syntax_stack()
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
+"   toggle formatoptions
+function! s:toggle_fmo_comments()
+    if !exists('b:fmo_comments_set')
+        let b:fmo_comments_set = 0
+    endif
+
+    if !b:fmo_comments_set
+        setlocal formatoptions+=ro
+        let b:fmo_comments_set = 1
+    else
+        setlocal formatoptions-=ro
+        let b:fmo_comments_set = 0
+    endif
+endfunction
+
 " =============================================================================
 "                                  Mappings
 " =============================================================================
@@ -137,7 +152,10 @@ nnoremap <leader>m :call <SID>win_toggle()<cr>
 " -----------------------------------------------------------------------------
 " Quality of Life
 " -----------------------------------------------------------------------------
-"   turn of highlighting following a search
+"   toggle formatoptions comment behavior
+nnoremap <silent> <leader>f :call <SID>toggle_fmo_comments()<cr>
+
+"   turn off highlighting following a search
 nnoremap <silent> <leader>h :nohl<cr>
 
 "   leave insert mode via 'jj'
@@ -205,6 +223,8 @@ augroup mine
     au FileType help wincmd L
     " Restore window size when switching windows in current tab
     au WinLeave * call s:win_restore()
+    " Clear whitespace on save
+    au BufWritePre * :%s:\v\s+$::ge
 augroup end
 
 " *****************************************************************************
@@ -279,12 +299,12 @@ endfunction
 
 "   Beautify Vimwiki headers
 function! s:vimwiki_header_higlights()
-    hi VimwikiHeader1   ctermbg=NONE  ctermfg=2  cterm=bold  guibg=NONE  guifg=#98c379  gui=bold
-    hi VimwikiHeader2   ctermbg=NONE  ctermfg=5  cterm=bold  guibg=NONE  guifg=#c678dd  gui=bold
-    hi VimwikiHeader3   ctermbg=NONE  ctermfg=4  cterm=bold  guibg=NONE  guifg=#61afef  gui=bold
-    hi VimwikiHeader4   ctermbg=NONE  ctermfg=3  cterm=bold  guibg=NONE  guifg=#e5c07b  gui=bold
-    hi VimwikiHeader5   ctermbg=NONE  ctermfg=6  cterm=bold  guibg=NONE  guifg=#56b6c2  gui=bold
-    hi VimwikiHeader6   ctermbg=NONE  ctermfg=1  cterm=bold  guibg=NONE  guifg=#e06c75  gui=bold
+    hi VimwikiHeader1  ctermbg=NONE  ctermfg=2  cterm=bold  guibg=NONE  guifg=#98c379  gui=bold
+    hi VimwikiHeader2  ctermbg=NONE  ctermfg=5  cterm=bold  guibg=NONE  guifg=#c678dd  gui=bold
+    hi VimwikiHeader3  ctermbg=NONE  ctermfg=4  cterm=bold  guibg=NONE  guifg=#61afef  gui=bold
+    hi VimwikiHeader4  ctermbg=NONE  ctermfg=3  cterm=bold  guibg=NONE  guifg=#e5c07b  gui=bold
+    hi VimwikiHeader5  ctermbg=NONE  ctermfg=6  cterm=bold  guibg=NONE  guifg=#56b6c2  gui=bold
+    hi VimwikiHeader6  ctermbg=NONE  ctermfg=1  cterm=bold  guibg=NONE  guifg=#e06c75  gui=bold
 endfunction
 
 "   Redefine Vimwiki link handling behavior
@@ -613,7 +633,7 @@ nnoremap <silent> <localleader>u :UndotreeToggle<cr>
 " -----------------------------------------------------------------------------
 " vim-test
 " -----------------------------------------------------------------------------
-"   run test commands with :Dispatch[!] 
+"   run test commands with :Dispatch[!]
 let g:test#strategy = "dispatch"
 "   in a test file run test nearest to the cursor
 nmap <silent> <localleader>tn :TestNearest<CR>
