@@ -1,11 +1,6 @@
 .netrwhist
-coc/*
-!coc/ultisnips
-spicetify/*
-!spicetify/Themes/walle
-!spicetify/config.ini
-nvim/colors/
 wallpapers/
 spotify-tui/*
 !spotify-tui/config.yml
 .secrets
+packer_compiled.vim
