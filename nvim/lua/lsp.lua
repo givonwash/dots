@@ -31,9 +31,14 @@ lua.setup {
 }
 
 --[[================================= rust ==================================]]
--- local rust_analyzer = lsp.rust_analyzer
+local rust_analyzer = lsp.rust_analyzer
 
--- rust_analyzer.setup()
+rust_analyzer.setup {}
+
+--[[================================ python =================================]]
+local pyright = lsp.pyright
+
+pyright.setup {}
 
 --[[================================= html ==================================]]
 local html = lsp.html

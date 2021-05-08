@@ -12,6 +12,22 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- rust inlay hints
+    use {
+        'nvim-lua/lsp_extensions.nvim',
+        config = function()
+            local autocmd = require 'autocmds'
+
+            autocmd.augroup({
+                {
+                    'InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost',
+                    '*.rs',
+                    'lua require("lsp_extensions").inlay_hints { highlight = "Comment", prefix = " → ", aligned = false, only_current_line = false, enabled = { "ChainingHint", "TypeHint", "ParameterHint" } }',
+                }
+            }, 'inlay_hints')
+        end,
+    }
+
     -- enhanced completion engine
     use {
         'hrsh7th/nvim-compe',
@@ -32,6 +48,7 @@ return require('packer').startup(function(use)
                     calc = true,
                     nvim_lsp = true,
                     nvim_lua = true,
+                    snippets_nvim = true,
                 }
             }
         end,
@@ -145,6 +162,9 @@ return require('packer').startup(function(use)
                 if ft == 'help' or ft == 'vim' then
                     local cword = fn.expand('<cword>')
                     api.nvim_command('help ' .. cword)
+                elseif ft == 'man' then
+                    local cword = fn.expand('<cword>')
+                    api.nvim_command('Man ' .. cword)
                 else
                     require('lspsaga.hover').render_hover_doc()
                 end
