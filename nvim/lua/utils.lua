@@ -3,12 +3,20 @@ local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 
 local M = {}
 
-M.create_mapper = function(mode, defaults)
+M.create_mapper = function(mode, defaults, buf_local)
     local defaults = defaults or { noremap = true, silent = true }
-    return function(lhs, rhs, opts)
-        local opts = opts or {}
-        local options = vim.tbl_extend('force', defaults, opts)
-        api.nvim_set_keymap(mode, lhs, rhs, options)
+    if not buf_local then
+        return function(lhs, rhs, opts)
+            local opts = opts or {}
+            local options = vim.tbl_extend('force', defaults, opts)
+            api.nvim_set_keymap(mode, lhs, rhs, options)
+        end
+    else
+        return function(lhs, rhs, opts)
+            local opts = opts or {}
+            local options = vim.tbl_extend('force', defaults, opts)
+            api.nvim_buf_set_keymap(0, mode, lhs, rhs, options)
+        end
     end
 end
 

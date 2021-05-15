@@ -1,7 +1,9 @@
 local fn = vim.fn
 local utils = require 'utils'
 
-_G.tab_complete = function ()
+local my_globals = _G.my_globals
+
+my_globals.tab_complete = function ()
     if fn.pumvisible() ~= 0 then
         return utils.str_to_term_code '<C-n>'
     else
@@ -9,7 +11,7 @@ _G.tab_complete = function ()
     end
 end
 
-_G.shift_tab_complete = function()
+my_globals.shift_tab_complete = function()
     if fn.pumvisible() ~= 0 then
         return utils.str_to_term_code '<C-p>'
     else
@@ -17,7 +19,7 @@ _G.shift_tab_complete = function()
     end
 end
 
--- mappers
+-- global mappers
 local mapper = utils.create_mapper
 local map = mapper('')
 local imap = mapper('i')
@@ -72,9 +74,9 @@ nmap('<leader>c', '<cmd>close<cr>')
 
 -- move lines up and down
 nmap('<C-j>', 'm`<cmd>m+1<cr>``')
-nmap('<C-k>', 'm\'>+1<cr>``')
-vmap('<C-j>', '<cmd>m\'>+1<cr>`<my`>mzgv`yo`z')
-vmap('<C-k>', '<cmd>m\'<-2<cr>`>my`<mzgv`yo`z')
+nmap('<C-k>', 'm`<cmd>m-2<cr>``')
+vmap('<C-j>', [[<cmd>m'>+1<cr>`<my`>mzgv`yo`z]])
+vmap('<C-k>', [[<cmd>m'<-2<cr>`>my`<mzgv`yo`z]])
 
 -- open new tab
 nmap('<leader>n', '<cmd>tabnew<cr>')
@@ -84,8 +86,11 @@ nmap('<C-n>', '<cmd>cnext<cr>')
 nmap('<C-p>', '<cmd>cprev<cr>')
 
 -- move thru location list
-nmap('<S-C-n>', '<cmd>lnext<cr>')
-nmap('<S-C-p>', '<cmd>lprev<cr>')
+nmap('<M-n>', '<cmd>lnext<cr>')
+nmap('<M-p>', '<cmd>lprev<cr>')
+
+-- goto definition
+nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
 --                            [[quality of life]]
 -- toggle highlighting following a search
@@ -124,16 +129,15 @@ nmap('<leader>g', ':%g:\\v', no_silent)
 map('?', '?\\v', no_silent)
 map('/', '/\\v', no_silent)
 
--- edit init file from anywhere
-nmap('<leader>i', '<cmd>edit $MYVIMRC<cr>', no_silent)
-nmap('<leader>I', '<cmd>tabnew $MYVIMRC<cr>', no_silent)
-
 -- toggle spell checking
 nmap('<leader>s', '<cmd>setlocal spell!<cr>')
 
 -- tab completion
-imap('<TAB>', 'v:lua.tab_complete()', expr)
-imap('<S-TAB>', 'v:lua.shift_tab_complete()', expr)
+imap('<TAB>', 'v:lua.my_globals.tab_complete()', expr)
+imap('<S-TAB>', 'v:lua.my_globals.shift_tab_complete()', expr)
+
+-- format buffer
+nmap('<leader>f', '<cmd>Format<cr>')
 
 return {
     map = map,

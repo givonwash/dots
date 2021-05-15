@@ -1,6 +1,8 @@
 --[[=============================== globals =================================]]
 local g = vim.g
 
+_G.my_globals = {}
+
 -- set leader keys
 g.mapleader = ' '
 g.maplocalleader = ','
@@ -10,6 +12,7 @@ g.python3_host_prog = '/usr/bin/python3'
 
 --[[=============================== modules =================================]]
 require 'plugins'
+require 'plugins.inter'
 require 'keymaps'
 require 'options'
 require 'autocmds'
