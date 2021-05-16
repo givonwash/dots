@@ -17,7 +17,15 @@ rust_analyzer.setup {}
 --[[================================ python =================================]]
 local pyright = lsp.pyright
 
-pyright.setup {}
+pyright.setup {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = 'strict',
+            },
+        },
+    },
+}
 
 --[[================================= html ==================================]]
 local html = lsp.html
