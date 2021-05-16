@@ -7,41 +7,28 @@ return require('packer').startup(function(use)
     -- default configurations for popular language servers
     use {
         'neovim/nvim-lspconfig',
-        config = function()
-            require 'plugins.lspconfig'
-        end,
+        config = function() require 'plugins.lspconfig' end,
     }
 
     -- rust inlay hints
     use {
         'nvim-lua/lsp_extensions.nvim',
-        config = function()
-            require 'plugins.lsp_extensions'
-        end,
+        config = function() require 'plugins.lsp_extensions' end,
     }
 
     -- enhanced completion engine
-    use {
-        'hrsh7th/nvim-compe',
-        config = function()
-            require 'plugins.compe'
-        end,
-    }
+    use {'hrsh7th/nvim-compe', config = function() require 'plugins.compe' end}
 
     -- snippet support for language servers
     use {
         'norcalli/snippets.nvim',
-        config = function()
-            require 'plugins.snippets'
-        end
+        config = function() require 'plugins.snippets' end,
     }
 
     --  show function signature while in insert mode
     use {
         'ray-x/lsp_signature.nvim',
-        config = function()
-            require 'plugins.lsp_signature'
-        end
+        config = function() require 'plugins.lsp_signature' end,
     }
 
     --[[ aesthetics =========================================================]]
@@ -50,53 +37,41 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function()
-            require 'plugins.treesitter'
-        end,
+        config = function() require 'plugins.treesitter' end,
     }
 
     -- onedark colorscheme with treesitter support
     use {
         'Th3Whit3Wolf/onebuddy',
-        requires = { 'tjdevries/colorbuddy.nvim' },
-        config = function()
-            require 'plugins.onebuddy'
-        end,
+        requires = {'tjdevries/colorbuddy.nvim'},
+        config = function() require 'plugins.onebuddy' end,
     }
 
     -- statusline
     use {
         'glepnir/galaxyline.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require 'plugins.galaxyline'
-        end,
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = function() require 'plugins.galaxyline' end,
     }
 
     -- display git diff icons in sign column
     use {
         'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        requires = {'nvim-lua/plenary.nvim'},
         after = 'onebuddy',
-        config = function()
-            require 'plugins.gitsigns'
-        end,
+        config = function() require 'plugins.gitsigns' end,
     }
 
     -- pretty ui for lsp actions
     use {
         'glepnir/lspsaga.nvim',
-        config = function()
-            require 'plugins.lspsaga'
-        end
+        config = function() require 'plugins.lspsaga' end,
     }
 
     -- icons for completion items
     use {
         "onsails/lspkind-nvim",
-        config = function()
-            require 'plugins.lspkind'
-        end,
+        config = function() require 'plugins.lspkind' end,
     }
 
     --[[navigation ==========================================================]]
@@ -104,20 +79,16 @@ return require('packer').startup(function(use)
     -- fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
         rocks = 'luafilesystem',
-        config = function()
-            require 'plugins.telescope'
-        end
+        config = function() require 'plugins.telescope' end,
     }
 
     -- workspace and document diagnostic navigation
     use {
         'folke/trouble.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require 'plugins.trouble'
-        end
+        config = function() require 'plugins.trouble' end,
     }
 
     --[[Efficiency ==========================================================]]
@@ -134,16 +105,12 @@ return require('packer').startup(function(use)
     -- autopairs
     use {
         'windwp/nvim-autopairs',
-        config = function()
-            require 'plugins.autopairs'
-        end
+        config = function() require 'plugins.autopairs' end,
     }
 
-    --formatting
+    -- formatting
     use {
         'mhartington/formatter.nvim',
-        config = function()
-            require 'plugins.formatter'
-        end
+        config = function() require 'plugins.formatter' end,
     }
 end)

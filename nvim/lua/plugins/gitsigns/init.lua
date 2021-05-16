@@ -1,10 +1,35 @@
 require('gitsigns').setup {
     signs = {
-        add          = { hl = 'GitGutterAdd'   , text = '+', numhl='GitGutterAdd'   , linehl='GitGutterAdd' },
-        change       = { hl = 'GitGutterChange', text = '~', numhl='GitGutterChange', linehl='GitGutterChange' },
-        delete       = { hl = 'GitGutterDelete', text = '-', numhl='GitGutterDelete', linehl='GitGutterDelete' },
-        topdelete    = { hl = 'GitGutterDelete', text = '≏', numhl='GitGutterDelete', linehl='GitGutterDelete' },
-        changedelete = { hl = 'GitGutterChange', text = '≁', numhl='GitGutterChange', linehl='GitGutterChange' },
+        add = {
+            hl = 'GitGutterAdd',
+            text = '+',
+            numhl = 'GitGutterAdd',
+            linehl = 'GitGutterAdd',
+        },
+        change = {
+            hl = 'GitGutterChange',
+            text = '~',
+            numhl = 'GitGutterChange',
+            linehl = 'GitGutterChange',
+        },
+        delete = {
+            hl = 'GitGutterDelete',
+            text = '-',
+            numhl = 'GitGutterDelete',
+            linehl = 'GitGutterDelete',
+        },
+        topdelete = {
+            hl = 'GitGutterDelete',
+            text = '≏',
+            numhl = 'GitGutterDelete',
+            linehl = 'GitGutterDelete',
+        },
+        changedelete = {
+            hl = 'GitGutterChange',
+            text = '≁',
+            numhl = 'GitGutterChange',
+            linehl = 'GitGutterChange',
+        },
     },
     numhl = false,
     linehl = false,
@@ -19,9 +44,7 @@ require('gitsigns').setup {
         ['o ih'] = ':<C-u>lua require("gitsigns").select_hunk()<cr>',
         ['x ih'] = ':<C-u>lua require("gitsigns").select_hunk()<cr>',
     },
-    watch_index = {
-        interval = 1000
-    },
+    watch_index = {interval = 1000},
     current_line_blame = false,
     sign_priority = 6,
     update_debounce = 100,

@@ -9,11 +9,15 @@ nmap('gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>')
 nmap('gr', '<cmd>lua require("lspsaga.rename").rename()<cr>')
 nmap('gD', '<cmd>lua require("lspsaga.provider").preview_definition()<cr>')
 nmap('gl', '<cmd>lua require("lspsaga.diagnostic").show_line_diagnostics()<cr>')
-nmap('gc', '<cmd>lua require("lspsaga.diagnostic").show_cursor_diagnostics()<cr>')
-nmap('gJ', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
-nmap('gK', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>')
+nmap('gc',
+     '<cmd>lua require("lspsaga.diagnostic").show_cursor_diagnostics()<cr>')
+nmap('gJ',
+     '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
+nmap('gK',
+     '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>')
 nmap('<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>')
-nmap('<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
+nmap('<C-b>',
+     '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
 
 local my_globals = _G.my_globals
 
@@ -41,20 +45,14 @@ require('lspsaga').init_lsp_saga {
     dianostic_header_icon = '   ',
     code_action_icon = ' ',
     code_action_prompt = {
-      enable = true,
-      sign = true,
-      sign_priority = 20,
-      virtual_text = true,
+        enable = true,
+        sign = true,
+        sign_priority = 20,
+        virtual_text = true,
     },
     max_preview_lines = 10,
-    code_action_keys = {
-      quit = '<esc>',
-      exec = '<cr>'
-    },
-    rename_action_keys = {
-      quit = '<esc>',
-      exec = '<cr>'
-    },
+    code_action_keys = {quit = '<esc>', exec = '<cr>'},
+    rename_action_keys = {quit = '<esc>', exec = '<cr>'},
     definition_preview_icon = '  ',
     border_style = "single",
     rename_prompt_prefix = '➤',

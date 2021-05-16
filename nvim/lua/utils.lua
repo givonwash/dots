@@ -1,10 +1,10 @@
 local api = vim.api
-local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
+local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 local M = {}
 
 M.create_mapper = function(mode, defaults, buf_local)
-    local defaults = defaults or { noremap = true, silent = true }
+    local defaults = defaults or {noremap = true, silent = true}
     if not buf_local then
         return function(lhs, rhs, opts)
             local opts = opts or {}
@@ -21,17 +21,15 @@ M.create_mapper = function(mode, defaults, buf_local)
 end
 
 M.map_opts = {
-    no_silent = { silent = false },
-    remap = { noremap = false },
-    expr = { expr = true },
+    no_silent = {silent = false},
+    remap = {noremap = false},
+    expr = {expr = true},
 }
 
 M.create_setter = function(scope)
     local opt_table = scopes[scope]
     if scope == 'o' then
-        return function(opt, val)
-            opt_table[opt] = val
-        end
+        return function(opt, val) opt_table[opt] = val end
     else
         return function(opt, val)
             opt_table[opt] = val
@@ -44,11 +42,7 @@ M.str_to_term_code = function(str)
     return api.nvim_replace_termcodes(str, true, true, true)
 end
 
-M.echo = function(any)
-    return function()
-        return any
-    end
-end
+M.echo = function(any) return function() return any end end
 
 --[[
 colors pulled from:

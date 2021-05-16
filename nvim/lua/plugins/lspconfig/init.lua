@@ -17,32 +17,18 @@ rust_analyzer.setup {}
 --[[================================ python =================================]]
 local pyright = lsp.pyright
 
-pyright.setup {
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = 'strict',
-            },
-        },
-    },
-}
+pyright.setup {settings = {python = {analysis = {typeCheckingMode = 'strict'}}}}
 
 --[[================================= html ==================================]]
 local html = lsp.html
 local html_bin = '/usr/bin/vscode-html-languageserver'
 
-html.setup {
-    capabilities = capabilities,
-    cmd = { html_bin, '--stdio' },
-}
-
+html.setup {capabilities = capabilities, cmd = {html_bin, '--stdio'}}
 
 --[[================================= css ===================================]]
 local cssls = lsp.cssls
 
-cssls.setup {
-    capabilities = capabilities,
-}
+cssls.setup {capabilities = capabilities}
 
 --[[============================== typescript ===============================]]
 local tsserver = lsp.tsserver

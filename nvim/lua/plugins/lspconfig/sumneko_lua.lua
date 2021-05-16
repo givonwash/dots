@@ -6,9 +6,8 @@ table.insert(path, 'lua/?.lua')
 table.insert(path, 'lua/?/init.lua')
 
 local cmd = {
-    '/usr/bin/lua-language-server',
-    '-E',
-    '/usr/share/lua-language-server/main.lua'
+    '/usr/bin/lua-language-server', '-E',
+    '/usr/share/lua-language-server/main.lua',
 }
 
 local lib = {}
@@ -35,21 +34,14 @@ return {
     cmd = cmd,
     settings = {
         Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = path,
-            },
-            diagnostics = {
-                globals = { 'vim' },
-            },
+            runtime = {version = 'LuaJIT', path = path},
+            diagnostics = {globals = {'vim'}},
             workspace = {
                 library = lib,
                 maxPreload = 2000,
-                preloadFileSize = 50000
+                preloadFileSize = 50000,
             },
-            telemetry = {
-                enable = false,
-            }
-        }
-    }
+            telemetry = {enable = false},
+        },
+    },
 }

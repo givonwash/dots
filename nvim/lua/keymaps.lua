@@ -3,7 +3,7 @@ local utils = require 'utils'
 
 local my_globals = _G.my_globals
 
-my_globals.tab_complete = function ()
+my_globals.tab_complete = function()
     if fn.pumvisible() ~= 0 then
         return utils.str_to_term_code '<C-n>'
     else
@@ -139,10 +139,4 @@ imap('<S-TAB>', 'v:lua.my_globals.shift_tab_complete()', expr)
 -- format buffer
 nmap('<leader>f', '<cmd>Format<cr>')
 
-return {
-    map = map,
-    imap = imap,
-    nmap = nmap,
-    tmap = tmap,
-    vmap = vmap,
-}
+return {map = map, imap = imap, nmap = nmap, tmap = tmap, vmap = vmap}
