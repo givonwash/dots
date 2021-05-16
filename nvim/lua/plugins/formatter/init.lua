@@ -1,33 +1,29 @@
-local api = vim.api
+local buf_name = vim.api.nvim_buf_get_name
 
 local prettier = {
     function()
         return {
             exe = 'prettier',
-            args = { '--stdin-filepath', api.nvim_buf_get_name(0) },
+            args = {'--stdin-filepath', buf_name(0)},
             stdin = true,
         }
-    end
+    end,
 }
 
 local rustfmt = {
     function()
-        return {
-            exe = 'rustfmt',
-            args = { '--emit=stdout' },
-            stdin = true,
-        }
-    end
+        return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true}
+    end,
 }
 
 local lua_format = {
     function()
-        return {
-            exe = 'lua-format',
-            args = { api.nvim_buf_get_name(0) },
-            stdin = true,
-        }
-    end
+        return {exe = 'lua-format', args = {buf_name(0)}, stdin = true}
+    end,
+}
+
+local black = {
+    function() return {exe = 'black', args = {buf_name(0)}, stdin = false} end,
 }
 
 local filetypes = {
@@ -36,23 +32,24 @@ local filetypes = {
     javascript = prettier,
     javascriptreact = prettier,
     json = prettier,
+    lua = lua_format,
     markdown = prettier,
+    python = black,
     typescript = prettier,
     typescriptreact = prettier,
     yaml = prettier,
     rust = rustfmt,
 }
 
-require('formatter').setup {
-    logging = false,
-    filetype = filetypes
-}
+require('formatter').setup {logging = false, filetype = filetypes}
 
 local autocmds = {}
 
 local i = 1
 for ft, _ in pairs(filetypes) do
-    autocmds[i] = { 'FileType', ft, 'autocmd', 'BufWritePost', '<buffer>', 'FormatWrite' }
+    autocmds[i] = {
+        'FileType', ft, 'autocmd', 'BufWritePost', '<buffer>', 'FormatWrite',
+    }
     i = i + 1
 end
 
