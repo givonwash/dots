@@ -12,7 +12,7 @@ lua.setup(require('plugins.lspconfig.sumneko_lua'))
 --[[================================= rust ==================================]]
 local rust_analyzer = lsp.rust_analyzer
 
-rust_analyzer.setup {}
+rust_analyzer.setup {settings = {checkOnSave = {command = 'clippy'}}}
 
 --[[================================ python =================================]]
 local pyright = lsp.pyright
