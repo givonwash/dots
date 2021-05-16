@@ -32,7 +32,7 @@ unsetopt beep extendedglob nomatch notify
 bindkey -v
 
 # Environment Variables
-export DOTFILES="${HOME}/DotFiles"
+export DOTS="${HOME}/dots/arch-nb"
 export REPOS="${HOME}/repos"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
@@ -55,7 +55,7 @@ alias ...="./../.."
 alias ..="./.."
 alias c="clear"
 alias cp="cp -i"
-alias d="cd ${DOTFILES}"
+alias d="cd ${DOTS}"
 alias e="exit"
 alias l="exa -la --git --time modified --time-style long-iso --group --icons"
 alias lg="lazygit"
