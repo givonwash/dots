@@ -36,6 +36,14 @@ return require('packer').startup(function(use)
         end
     }
 
+    --  show function signature while in insert mode
+    use {
+        'ray-x/lsp_signature.nvim',
+        config = function()
+            require 'plugins.lsp_signature'
+        end
+    }
+
     --[[ aesthetics =========================================================]]
 
     -- better syntax highlighting
