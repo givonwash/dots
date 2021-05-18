@@ -1,4 +1,5 @@
 local api = vim.api
+local cmd = vim.cmd
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 local M = {}
@@ -44,14 +45,6 @@ end
 
 M.echo = function(any) return function() return any end end
 
---[[
-colors pulled from:
-    - https://github.com/Th3Whit3Wolf/onebuddy/blob/main/lua/onebuddy.lua
-
-see the colors here:
-    - https://coolors.co/abb2bf-828997-5c6370-4b5263-3e4552-636d83-282c34
-    - https://coolors.co/55d1b4-61afef-c678dd-98c379-e06c75-be5046-d19a66-e5c07b
-]]
 M.colors = {
     light_gray = '#abb2bf',
     lighter_gray = '#828997',
@@ -69,5 +62,9 @@ M.colors = {
     bg = '#282c34',
     gutter = '#636d83',
 }
+
+M.highlight = function(hls)
+    for _, hl in pairs(hls) do cmd('highlight ' .. table.concat(hl, ' ')) end
+end
 
 return M

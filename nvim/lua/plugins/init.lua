@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
         config = function() require 'plugins.lspkind' end,
     }
 
-    --[[navigation ==========================================================]]
+    --[[ navigation =========================================================]]
 
     -- fuzzy finding
     use {
@@ -91,7 +91,7 @@ return require('packer').startup(function(use)
         config = function() require 'plugins.trouble' end,
     }
 
-    --[[Efficiency ==========================================================]]
+    --[[ efficiency =========================================================]]
 
     -- changing of surrounding delimiters
     use 'tpope/vim-surround'
