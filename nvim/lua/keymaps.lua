@@ -34,10 +34,6 @@ local expr = utils.map_opts.expr
 --[[=============================== mappings ================================]]
 
 --                               [[navigation]]
--- switch between buffers easily
-nmap('gb', '<cmd>bnext<cr>')
-nmap('gB', '<cmd>bprev<cr>')
-
 -- navigate regular splits
 nmap('<M-h>', '<cmd>wincmd h<cr>')
 nmap('<M-j>', '<cmd>wincmd j<cr>')
@@ -77,9 +73,6 @@ nmap('<C-j>', 'm`<cmd>m+1<cr>``')
 nmap('<C-k>', 'm`<cmd>m-2<cr>``')
 vmap('<C-j>', [[<cmd>m'>+1<cr>`<my`>mzgv`yo`z]])
 vmap('<C-k>', [[<cmd>m'<-2<cr>`>my`<mzgv`yo`z]])
-
--- open new tab
-nmap('<leader>n', '<cmd>tabnew<cr>')
 
 -- move thru quickfix list
 nmap('<C-n>', '<cmd>cnext<cr>')

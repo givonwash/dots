@@ -74,6 +74,13 @@ return require('packer').startup(function(use)
         config = function() require 'plugins.lspkind' end,
     }
 
+    -- buffer line
+    use {
+        'romgrk/barbar.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function() require 'plugins.barbar' end,
+    }
+
     --[[ navigation =========================================================]]
 
     -- fuzzy finding
