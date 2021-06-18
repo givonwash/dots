@@ -1,6 +1,6 @@
-local opt = require 'options'
-opt.gset('completeopt', 'menuone,noselect')
-opt.gset('shortmess', 'filnxtToOFc')
+local opt = vim.opt
+opt.completeopt = { 'menuone', 'noselect' }
+opt.shortmess:append('c')
 
 require('compe').setup {
     source = {

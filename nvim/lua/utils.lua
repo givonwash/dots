@@ -1,6 +1,5 @@
 local api = vim.api
 local cmd = vim.cmd
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 local M = {}
 
@@ -22,22 +21,10 @@ M.create_mapper = function(mode, defaults, buf_local)
 end
 
 M.map_opts = {
-    no_silent = {silent = false},
-    remap = {noremap = false},
-    expr = {expr = true},
+    no_silent = { silent = false },
+    remap = { noremap = false },
+    expr = { expr = true },
 }
-
-M.create_setter = function(scope)
-    local opt_table = scopes[scope]
-    if scope == 'o' then
-        return function(opt, val) opt_table[opt] = val end
-    else
-        return function(opt, val)
-            opt_table[opt] = val
-            vim.o[opt] = val
-        end
-    end
-end
 
 M.str_to_term_code = function(str)
     return api.nvim_replace_termcodes(str, true, true, true)
