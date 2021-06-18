@@ -10,10 +10,9 @@ function M.augroup(autocmds, name)
 end
 
 M.augroup({
-    {'BufWinEnter', '*', 'set formatoptions-=ro'},
-    {'FileType', 'rust', 'set colorcolumn=101'},
-    {'FileType', 'help,man', 'wincmd L'},
-    {'BufWritePre', '*', 'mark ` | %s:\\v\\s+$::ge | normal! ``'},
+    { 'BufWinEnter', '*', 'set formatoptions-=ro' },
+    { 'FileType', 'help,man', 'wincmd L' },
+    { 'BufWritePre', '*', 'mark ` | %s:\\v\\s+$::ge | normal! ``' },
 }, 'vimrc')
 
 return M

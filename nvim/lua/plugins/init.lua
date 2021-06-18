@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
     }
 
     -- enhanced completion engine
-    use {'hrsh7th/nvim-compe', config = function() require 'plugins.compe' end}
+    use { 'hrsh7th/nvim-compe', config = function() require 'plugins.compe' end }
 
     -- snippet support for language servers
     use {
@@ -43,21 +43,21 @@ return require('packer').startup(function(use)
     -- onedark colorscheme with treesitter support
     use {
         'Th3Whit3Wolf/onebuddy',
-        requires = {'tjdevries/colorbuddy.nvim'},
+        requires = { 'tjdevries/colorbuddy.nvim' },
         config = function() require 'plugins.onebuddy' end,
     }
 
     -- statusline
     use {
         'glepnir/galaxyline.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function() require 'plugins.galaxyline' end,
     }
 
     -- display git diff icons in sign column
     use {
         'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
         after = 'onebuddy',
         config = function() require 'plugins.gitsigns' end,
     }
@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
     -- fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
         rocks = 'luafilesystem',
         config = function() require 'plugins.telescope' end,
     }

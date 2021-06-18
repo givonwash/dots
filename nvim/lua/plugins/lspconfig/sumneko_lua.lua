@@ -34,14 +34,14 @@ return {
     cmd = cmd,
     settings = {
         Lua = {
-            runtime = {version = 'LuaJIT', path = path},
-            diagnostics = {globals = {'vim'}},
+            runtime = { version = 'LuaJIT', path = path },
+            diagnostics = { globals = { 'vim' } },
             workspace = {
                 library = lib,
                 maxPreload = 2000,
                 preloadFileSize = 50000,
             },
-            telemetry = {enable = false},
+            telemetry = { enable = false },
         },
     },
 }

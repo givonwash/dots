@@ -139,4 +139,4 @@ imap('<S-TAB>', 'v:lua.my_globals.shift_tab_complete()', expr)
 -- format buffer
 nmap('<leader>f', '<cmd>Format<cr>')
 
-return {map = map, imap = imap, nmap = nmap, tmap = tmap, vmap = vmap}
+return { map = map, imap = imap, nmap = nmap, tmap = tmap, vmap = vmap }

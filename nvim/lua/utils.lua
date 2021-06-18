@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local M = {}
 
 M.create_mapper = function(mode, defaults, buf_local)
-    local defaults = defaults or {noremap = true, silent = true}
+    local defaults = defaults or { noremap = true, silent = true }
     if not buf_local then
         return function(lhs, rhs, opts)
             local opts = opts or {}

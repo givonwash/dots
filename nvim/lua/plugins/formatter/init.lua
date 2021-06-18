@@ -4,7 +4,7 @@ local prettier = {
     function()
         return {
             exe = 'prettier',
-            args = {'--stdin-filepath', buf_name(0)},
+            args = { '--stdin-filepath', buf_name(0) },
             stdin = true,
         }
     end,
@@ -12,18 +12,20 @@ local prettier = {
 
 local rustfmt = {
     function()
-        return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true}
+        return { exe = 'rustfmt', args = { '--emit=stdout' }, stdin = true }
     end,
 }
 
 local lua_format = {
     function()
-        return {exe = 'lua-format', args = {buf_name(0)}, stdin = true}
+        return { exe = 'lua-format', args = { buf_name(0) }, stdin = true }
     end,
 }
 
 local black = {
-    function() return {exe = 'black', args = {buf_name(0)}, stdin = false} end,
+    function()
+        return { exe = 'black', args = { buf_name(0) }, stdin = false }
+    end,
 }
 
 local filetypes = {
@@ -41,7 +43,7 @@ local filetypes = {
     rust = rustfmt,
 }
 
-require('formatter').setup {logging = false, filetype = filetypes}
+require('formatter').setup { logging = false, filetype = filetypes }
 
 local autocmds = {}
 

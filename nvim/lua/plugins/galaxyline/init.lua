@@ -50,7 +50,7 @@ end
 section.left[1] = {
     FileNameLeftRounded = {
         provider = left_rounded,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
     },
 }
 
@@ -58,7 +58,7 @@ section.left[2] = {
     FileIcon = {
         provider = 'FileIcon',
         condition = not_empty,
-        highlight = {fileinfo.get_file_icon_color, colors.light_gray},
+        highlight = { fileinfo.get_file_icon_color, colors.light_gray },
     },
 }
 
@@ -66,47 +66,47 @@ section.left[3] = {
     FileName = {
         provider = filename,
         condition = not_empty,
-        highlight = {colors.bg, colors.light_gray, 'bold'},
+        highlight = { colors.bg, colors.light_gray, 'bold' },
         separator = ' ',
-        separator_highlight = {colors.light_gray, colors.light_gray},
+        separator_highlight = { colors.light_gray, colors.light_gray },
     },
 }
 
 section.left[4] = {
     FileModified = {
         provider = modified,
-        highlight = {colors.bg, colors.light_gray, 'bold'},
+        highlight = { colors.bg, colors.light_gray, 'bold' },
     },
 }
 
 section.left[5] = {
     FileNameRightRounded = {
         provider = right_rounded,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
         separator = ' ',
     },
 }
 
 local modes = {
-    c = {str = ':: Command ::', color = colors.yellow},
-    n = {str = ':: Normal ::', color = colors.blue},
-    i = {str = ':: Insert ::', color = colors.green},
-    v = {str = ':: Visual ::', color = colors.magenta},
-    V = {str = ':: Visual-Line ::', color = colors.pink},
-    R = {str = ':: Replace ::', color = colors.red},
-    s = {str = ':: Select ::', color = colors.orange},
-    S = {str = ':: Select-Line ::', color = colors.dark_gray},
-    [''] = {str = ':: Visual-Block ::', color = colors.gutter},
-    [''] = {str = ':: Select-Block ::', color = colors.gutter},
-    ic = {str = ':: Insert ::', color = colors.green},
-    Rv = {str = ':: Virtual Replace ::', color = colors.red},
-    cv = {str = ':: Vim Ex ::', color = colors.yellow},
-    ce = {str = ':: Normal Ex ::', color = colors.yellow},
-    r = {str = ':: Hit Enter ::', color = colors.gutter},
-    rm = {str = ':: More ::', color = colors.gutter},
-    ['r?'] = {str = ':: Confirm ::', color = colors.yellow},
-    ['!'] = {str = ':: Shell ::', color = colors.red},
-    t = {str = ':: Terminal ::', color = colors.blue},
+    c = { str = ':: Command ::', color = colors.yellow },
+    n = { str = ':: Normal ::', color = colors.blue },
+    i = { str = ':: Insert ::', color = colors.green },
+    v = { str = ':: Visual ::', color = colors.magenta },
+    V = { str = ':: Visual-Line ::', color = colors.pink },
+    R = { str = ':: Replace ::', color = colors.red },
+    s = { str = ':: Select ::', color = colors.orange },
+    S = { str = ':: Select-Line ::', color = colors.dark_gray },
+    [''] = { str = ':: Visual-Block ::', color = colors.gutter },
+    [''] = { str = ':: Select-Block ::', color = colors.gutter },
+    ic = { str = ':: Insert ::', color = colors.green },
+    Rv = { str = ':: Virtual Replace ::', color = colors.red },
+    cv = { str = ':: Vim Ex ::', color = colors.yellow },
+    ce = { str = ':: Normal Ex ::', color = colors.yellow },
+    r = { str = ':: Hit Enter ::', color = colors.gutter },
+    rm = { str = ':: More ::', color = colors.gutter },
+    ['r?'] = { str = ':: Confirm ::', color = colors.yellow },
+    ['!'] = { str = ':: Shell ::', color = colors.red },
+    t = { str = ':: Terminal ::', color = colors.blue },
 }
 
 section.left[6] = {
@@ -120,7 +120,7 @@ section.left[6] = {
         highlight = function()
             local fg = modes[api.nvim_get_mode()['mode']]['color']
             fg = fg or colors.blue
-            return {fg, colors.bg}
+            return { fg, colors.bg }
         end,
     },
 }
@@ -167,7 +167,7 @@ section.left[9] = {
     GitInfoLeftRounded = {
         provider = left_rounded,
         condition = git_and_wide,
-        highlight = {colors.gutter, colors.bg},
+        highlight = { colors.gutter, colors.bg },
     },
 }
 
@@ -176,9 +176,9 @@ section.left[10] = {
         provider = 'GitBranch',
         condition = git_and_wide,
         icon = ' ',
-        highlight = {colors.magenta, colors.gutter, 'bold'},
+        highlight = { colors.magenta, colors.gutter, 'bold' },
         separator = ' ',
-        separator_highlight = {colors.gutter, colors.gutter},
+        separator_highlight = { colors.gutter, colors.gutter },
     },
 }
 
@@ -187,7 +187,7 @@ section.left[11] = {
         provider = 'DiffAdd',
         condition = git_and_wide,
         icon = '+',
-        highlight = {colors.green, colors.gutter, 'bold'},
+        highlight = { colors.green, colors.gutter, 'bold' },
     },
 }
 
@@ -196,7 +196,7 @@ section.left[12] = {
         provider = 'DiffModified',
         condition = git_and_wide,
         icon = '~',
-        highlight = {colors.orange, colors.gutter, 'bold'},
+        highlight = { colors.orange, colors.gutter, 'bold' },
     },
 }
 
@@ -205,7 +205,7 @@ section.left[13] = {
         provider = 'DiffRemove',
         condition = git_and_wide,
         icon = '-',
-        highlight = {colors.red, colors.gutter, 'bold'},
+        highlight = { colors.red, colors.gutter, 'bold' },
     },
 }
 
@@ -213,7 +213,7 @@ section.left[14] = {
     GitInfoRightRounded = {
         provider = right_rounded,
         condition = git_and_wide,
-        highlight = {colors.gutter, colors.bg},
+        highlight = { colors.gutter, colors.bg },
     },
 }
 
@@ -223,7 +223,7 @@ section.right[1] = {
     LspLeftRounded = {
         provider = left_rounded,
         condition = is_wide,
-        highlight = {colors.orange, colors.bg},
+        highlight = { colors.orange, colors.bg },
     },
 }
 
@@ -231,7 +231,7 @@ section.right[2] = {
     Lsp = {
         provider = 'GetLspClient',
         condition = is_wide,
-        highlight = {colors.bg, colors.orange, 'bold'},
+        highlight = { colors.bg, colors.orange, 'bold' },
     },
 }
 
@@ -240,7 +240,7 @@ section.right[3] = {
         provider = 'DiagnosticInfo',
         condition = is_wide,
         icon = ' ',
-        highlight = {colors.bg, colors.orange, 'bold'},
+        highlight = { colors.bg, colors.orange, 'bold' },
     },
 }
 
@@ -249,9 +249,9 @@ section.right[4] = {
         provider = 'DiagnosticHint',
         condition = is_wide,
         icon = ' ',
-        highlight = {colors.bg, colors.orange, 'bold'},
+        highlight = { colors.bg, colors.orange, 'bold' },
         separator = ' ',
-        separator_highlight = {colors.orange, colors.orange},
+        separator_highlight = { colors.orange, colors.orange },
     },
 }
 
@@ -260,7 +260,7 @@ section.right[5] = {
         provider = 'DiagnosticWarn',
         condition = is_wide,
         icon = ' ',
-        highlight = {colors.bg, colors.orange, 'bold'},
+        highlight = { colors.bg, colors.orange, 'bold' },
     },
 }
 
@@ -269,7 +269,7 @@ section.right[6] = {
         provider = 'DiagnosticError',
         condition = is_wide,
         icon = ' ',
-        highlight = {colors.bg, colors.orange, 'bold'},
+        highlight = { colors.bg, colors.orange, 'bold' },
     },
 }
 
@@ -277,7 +277,7 @@ section.right[7] = {
     LspRightRounded = {
         provider = right_rounded,
         condition = is_wide,
-        highlight = {colors.orange, colors.bg},
+        highlight = { colors.orange, colors.bg },
     },
 }
 
@@ -285,7 +285,7 @@ section.right[8] = {
     FileMetaLeftRounded = {
         provider = left_rounded,
         condition = is_wide,
-        highlight = {colors.pink, colors.bg},
+        highlight = { colors.pink, colors.bg },
         separator = ' ',
     },
 }
@@ -299,7 +299,7 @@ section.right[9] = {
             return enc .. ' :: ' .. fmt .. ' :: ' .. ft
         end,
         condition = is_wide,
-        highlight = {colors.bg, colors.pink, 'bold'},
+        highlight = { colors.bg, colors.pink, 'bold' },
     },
 }
 
@@ -307,14 +307,14 @@ section.right[10] = {
     FileMetaRightRounded = {
         provider = right_rounded,
         condition = is_wide,
-        highlight = {colors.pink, colors.bg},
+        highlight = { colors.pink, colors.bg },
     },
 }
 
 section.right[11] = {
     PositionLeftRounded = {
         provider = left_rounded,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
         separator = ' ',
     },
 }
@@ -322,34 +322,34 @@ section.right[11] = {
 section.right[12] = {
     LineColumn = {
         provider = line_col,
-        highlight = {colors.bg, colors.light_gray, 'bold'},
+        highlight = { colors.bg, colors.light_gray, 'bold' },
     },
 }
 
 section.right[13] = {
     LinePercent = {
         provider = line_percent,
-        highlight = {colors.bg, colors.green, 'bold'},
+        highlight = { colors.bg, colors.green, 'bold' },
         separator = ' ',
-        separator_highlight = {colors.green, colors.green},
+        separator_highlight = { colors.green, colors.green },
     },
 }
 
 section.right[14] = {
     PositionRightRounded = {
         provider = right_rounded,
-        highlight = {colors.green, colors.bg},
+        highlight = { colors.green, colors.bg },
     },
 }
 
 --[[================= Inactive Windows and Special Buffers ==================]]
 
-galaxy.short_line_list = {'dbui', 'packer'}
+galaxy.short_line_list = { 'dbui', 'packer' }
 
 section.short_line_left[1] = {
     FileNameShort = {
         provider = filename,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
         separator = ' ',
     },
 }
@@ -357,13 +357,13 @@ section.short_line_left[1] = {
 section.short_line_left[2] = {
     FileModifiedShort = {
         provider = modified,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
     },
 }
 
 section.short_line_right[1] = {
     LineColumnShort = {
         provider = line_percent,
-        highlight = {colors.light_gray, colors.bg},
+        highlight = { colors.light_gray, colors.bg },
     },
 }
