@@ -36,15 +36,6 @@ export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 
-# -- fzf Default Command
-export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
-
-# -- bat Default Appearance
-export BAT_THEME="base16"
-
-# -- python dependency management
-export PATH="$PATH:$HOME/.poetry/bin"
-
 # ----------------------------------------------------------------------------
 # Auto-Completion
 # ----------------------------------------------------------------------------
@@ -53,7 +44,7 @@ fpath+="${HOME}/.zfunc"
 # ----------------------------------------------------------------------------
 # Aliases
 # ----------------------------------------------------------------------------
-# -- git
+# git
 alias g="git"
 alias ga="git add"
 alias gaa="git add --all"
@@ -117,14 +108,30 @@ fi
 # misc. software setup
 # ----------------------------------------------------------------------------
 
-# prompt
+# fzf
+export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
+
+# bat
+export BAT_THEME="base16"
+
+# poetry
+export PATH="$PATH:$HOME/.poetry/bin"
+
+# mcfly
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=true
+export MCFLY_HISTORY_LIMIT=10000
+export MCFLY_RESULTS=50
+eval "$(mcfly init zsh)"
+
+# starship
 eval "$(starship init zsh)"
 
-# navigation
+# zoxide
 eval "$(zoxide init zsh)"
 
-# auto-suggestions
+# zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# syntax highlighting (note: leave me at EOF)
+# zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
