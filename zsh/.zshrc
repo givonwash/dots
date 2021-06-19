@@ -1,11 +1,6 @@
-################################################################################
-# Givon's .zshrc for Arch Linux
-################################################################################
-
-# python-poetry completion
-fpath+="${HOME}/.zfunc"
-
-# Zsh Completions
+# ----------------------------------------------------------------------------
+# zsh setup
+# ----------------------------------------------------------------------------
 zstyle ':completion*' auto-description 'Specify: %d'
 zstyle ':completion*' completer _complete _ignored _approximate
 zstyle ':completion*' expand prefix suffix
@@ -23,7 +18,6 @@ zstyle :compinstall filename '/home/givon/.zshrc'
 autoload -Uz compinit
 compinit
 
-# Zsh Options
 HISTFILE=~/.cache/zsh/.hist
 HISTSIZE=1000
 SAVEHIST=1000
@@ -31,23 +25,57 @@ setopt autocd
 unsetopt beep extendedglob nomatch notify
 bindkey -v
 
+# ----------------------------------------------------------------------------
 # Environment Variables
+# ----------------------------------------------------------------------------
+
 export DOTS="${HOME}/dots/arch-nb"
 export REPOS="${HOME}/repos"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
+
 # -- fzf Default Command
 export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
+
 # -- bat Default Appearance
 export BAT_THEME="base16"
+
 # -- python dependency management
 export PATH="$PATH:$HOME/.poetry/bin"
 
+# ----------------------------------------------------------------------------
+# Auto-Completion
+# ----------------------------------------------------------------------------
+fpath+="${HOME}/.zfunc"
 
+# ----------------------------------------------------------------------------
 # Aliases
-# -- General
+# ----------------------------------------------------------------------------
+# -- git
+alias g="git"
+alias ga="git add"
+alias gaa="git add --all"
+alias gb="git branch"
+alias gc="git commit --verbose"
+alias gca="git commit --all --verbose"
+alias gco="git checkout"
+alias gconf="git config"
+alias gd="git diff"
+alias gf="git fetch"
+alias ggr="git grep"
+alias gl="git log --graph --decorate --summary --stat"
+alias gll="git log --graph --decorate --all --summary --stat"
+alias gm="git merge"
+alias gpull="git pull"
+alias gpush="git push"
+alias gshow="git show"
+alias gs="git status"
+alias gss="git stauts --short"
+alias gsw="git switch"
+
+# misc.
 alias ......="./../../../../.."
 alias .....="./../../../.."
 alias ....="./../../.."
@@ -70,47 +98,33 @@ alias q="exit"
 alias sz="source ~/.zshrc"
 alias tm="tmux"
 
-# -- Git Related
-alias g="git"
-alias ga="git add"
-alias gaa="git add --all"
-alias gb="git branch"
-alias gc="git commit --verbose"
-alias gca="git commit --all --verbose"
-alias gco="git checkout"
-alias gconf="git config"
-alias gd="git diff"
-alias gf="git fetch"
-alias ggr="git grep"
-alias gl="git log --graph --decorate --summary --stat"
-alias gll="git log --graph --decorate --all --summary --stat"
-alias gm="git merge"
-alias gpull="git pull"
-alias gpush="git push"
-alias gshow="git show"
-alias gs="git status"
-alias gss="git stauts --short"
-alias gsw="git switch"
+# ----------------------------------------------------------------------------
+# proc management
+# ----------------------------------------------------------------------------
 
-# Manage ssh-agent
+# ssh-agent
 SSH_AGENT_DOTENV="${XDG_RUNTIME_DIR}/ssh-agent.env"
-# -- Write stdout from ssh-agent to file if no current process
+
 if ! pgrep -u "${USER}" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "${SSH_AGENT_DOTENV}"
 fi
-# -- If SSH_AUTH_SOCK env variable DNE, source previously saved file
+
 if [[ ! "${SSH_AUTH_SOCK}" ]]; then
     . "${SSH_AGENT_DOTENV}" > /dev/null
 fi
 
-# Starship Prompt
+# ----------------------------------------------------------------------------
+# misc. software setup
+# ----------------------------------------------------------------------------
+
+# prompt
 eval "$(starship init zsh)"
 
-# zoxide
+# navigation
 eval "$(zoxide init zsh)"
 
-# Auto-suggestions
+# auto-suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Syntax Highlighting (NOTE: Must be at EOF)
+# syntax highlighting (note: leave me at EOF)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
