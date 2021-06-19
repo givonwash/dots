@@ -55,24 +55,20 @@ alias ...="./../.."
 alias ..="./.."
 alias c="clear"
 alias cp="cp -i"
-alias d="cd ${DOTS}"
 alias e="exit"
 alias l="exa -la --git --time modified --time-style long-iso --group --icons"
 alias ll="exa -la --git --time modified --time-style long-iso --group --icons --only-dirs"
 alias md="mkdir -p"
 alias n="$EDITOR"
 alias o="xdg-open"
-alias p="pacman"
 alias pqi="pacman -Qi"
 alias pqs="pacman -Qs"
 alias pqo="pacman -Qo"
 alias psi="pacman -Si"
 alias pss="pacman -Ss"
 alias q="exit"
-alias rp="cd ${REPOS}"
 alias sz="source ~/.zshrc"
 alias tm="tmux"
-alias yss="yay -Ss"
 
 # -- Git Related
 alias g="git"
@@ -109,6 +105,9 @@ fi
 
 # Starship Prompt
 eval "$(starship init zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Auto-suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
