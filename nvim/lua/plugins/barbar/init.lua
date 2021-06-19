@@ -30,7 +30,7 @@ nmap('g.', '<cmd>BufferClose<cr>')
 
 -- options
 g.bufferline = {
-    animation = true,
+    animation = false,
     auto_hide = true,
     tabpages = true,
     closable = true,
