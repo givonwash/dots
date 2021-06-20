@@ -113,9 +113,6 @@ export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
 # bat
 export BAT_THEME="base16"
 
-# poetry
-export PATH="$PATH:$HOME/.poetry/bin"
-
 # mcfly
 export MCFLY_KEY_SCHEME=vim
 export MCFLY_FUZZY=true
