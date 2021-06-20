@@ -1,4 +1,5 @@
 local fn = vim.fn
+local lua = require('lspconfig').sumneko_lua
 
 local path = vim.split(package.path, ';')
 
@@ -24,7 +25,7 @@ add_lib('~/.config/nvim')
 add_lib("~/.local/share/nvim/site/pack/packer/opt/*")
 add_lib("~/.local/share/nvim/site/pack/packer/start/*")
 
-return {
+lua.setup {
     on_new_config = function(config, root)
         local libs = vim.tbl_deep_extend("force", {}, lib)
         libs[root] = nil
