@@ -39,8 +39,6 @@ export REPOS="${HOME}/repos"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
-export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
-
 
 # ----------------------------------------------------------------------------
 # Aliases
@@ -126,6 +124,7 @@ export MCFLY_RESULTS=50
 eval "$(mcfly init zsh)"
 
 # starship
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
 # zoxide
