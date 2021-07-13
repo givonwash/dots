@@ -1,0 +1,7 @@
+.netrwhist
+wallpapers/
+spotify-tui/
+!spotify-tui/config.yml
+.secrets
+packer_compiled.lua
+nvim/spell

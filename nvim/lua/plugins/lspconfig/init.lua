@@ -1,0 +1,6 @@
+require 'plugins.lspconfig.sumneko_lua'
+require 'plugins.lspconfig.rust_analyzer'
+require 'plugins.lspconfig.pyright'
+require 'plugins.lspconfig.html'
+require 'plugins.lspconfig.cssls'
+require 'plugins.lspconfig.tsserver'

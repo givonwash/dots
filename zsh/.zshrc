@@ -1,10 +1,11 @@
-################################################################################
-# Givon's .zshrc
-# NOTE: .zshrc is meant to be as vanilla as possible so as to be usable across
-#       machines before being forked
-################################################################################
+# ----------------------------------------------------------------------------
+# Auto-Completion
+# ----------------------------------------------------------------------------
+fpath+="${HOME}/.zfunc"
 
-# Zsh Completions
+# ----------------------------------------------------------------------------
+# zsh setup
+# ----------------------------------------------------------------------------
 zstyle ':completion*' auto-description 'Specify: %d'
 zstyle ':completion*' completer _complete _ignored _approximate
 zstyle ':completion*' expand prefix suffix
@@ -22,7 +23,6 @@ zstyle :compinstall filename '/home/givon/.zshrc'
 autoload -Uz compinit
 compinit
 
-# Zsh Options
 HISTFILE=~/.cache/zsh/.hist
 HISTSIZE=1000
 SAVEHIST=1000
@@ -30,52 +30,79 @@ setopt autocd
 unsetopt beep extendedglob nomatch notify
 bindkey -v
 
+# ----------------------------------------------------------------------------
 # Environment Variables
-export DOTFILES="${HOME}/DotFiles"
-export PATH="${PATH}:${HOME}/.local/bin"
+# ----------------------------------------------------------------------------
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 
-# Machine Dependent Environment Variables
-if ! nvim_loc="$(whence -p nvim)" || [[ -x $nvim_loc ]]; then
-    export EDITOR="nvim"
-    export MANPAGER="nvim +Man!"
-else
-    export EDITOR="vim"
-fi
-
+# ----------------------------------------------------------------------------
 # Aliases
-# -- General
-alias ..="./.."
-alias ...="./../.."
-alias ....="./../../.."
-alias .....="./../../../.."
+# ----------------------------------------------------------------------------
+# git
+alias g="git"
+alias ga="git add"
+alias gaa="git add --all"
+alias gb="git branch"
+alias gc="git commit --verbose"
+alias gca="git commit --all --verbose"
+alias gco="git checkout"
+alias gconf="git config"
+alias gd="git diff"
+alias gf="git fetch"
+alias ggr="git grep"
+alias gl="git log --graph --decorate --summary --stat"
+alias gll="git log --graph --decorate --all --summary --stat"
+alias gm="git merge"
+alias gpull="git pull"
+alias gpush="git push"
+alias gshow="git show"
+alias gs="git status"
+alias gss="git stauts --short"
+alias gsw="git switch"
+
+# misc.
 alias ......="./../../../../.."
+alias .....="./../../../.."
+alias ....="./../../.."
+alias ...="./../.."
+alias ..="./.."
 alias c="clear"
 alias cp="cp -i"
 alias e="exit"
-alias l="ls -lah"
+alias l="exa -la --git --time modified --time-style long-iso --group --icons"
+alias ll="exa -la --git --time modified --time-style long-iso --group --icons --only-dirs"
 alias md="mkdir -p"
-alias n="$EDITOR"
-alias nn="n ${DOTFILES}/nvim/init.vim"
-alias na="n ${DOTFILES}/alacritty/alacritty.yml"
-alias nb="n ${DOTFILES}/bash/.bashrc"
-alias nz="n ${DOTFILES}/zsh/.zshrc"
-alias sb="source ~/.bashrc"
+alias n="${EDITOR}"
 alias sz="source ~/.zshrc"
+alias tm="tmux"
 
-# -- Git Related
-alias g="git"
-alias ga="g add"
-alias gb="g branch"
-alias gaa="g add --all"
-alias gc="g commit --verbose"
-alias gca="g commit --all --verbose"
-alias gco="g checkout"
-alias gconf="g config"
-alias gd="g diff"
-alias gf="g fetch"
-alias gl="g log --graph --decorate --all"
-alias gm="g merge"
-alias gpush="g push"
-alias gpull="g pull"
-alias gs="g status"
-alias gss="g stauts --short"
+# ----------------------------------------------------------------------------
+# misc. software setup
+# ----------------------------------------------------------------------------
+
+# fzf
+export FZF_DEFAULT_COMMAND="fd . --type file --full-path"
+
+# bat
+export BAT_THEME="base16"
+
+# mcfly
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=true
+export MCFLY_HISTORY_LIMIT=10000
+export MCFLY_RESULTS=50
+eval "$(mcfly init zsh)"
+
+# starship
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
+eval "$(starship init zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# zsh-autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
