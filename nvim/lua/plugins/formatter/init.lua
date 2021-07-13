@@ -16,13 +16,16 @@ local rustfmt = {
     end,
 }
 
-local lua_format = {
+local luafmt = {
     function()
         return { exe = 'lua-format', args = { buf_name(0) }, stdin = true }
     end,
 }
 
-local black = {
+local pyfmt = {
+    function()
+        return { exe = 'isort', args = { buf_name(0) }, stdin = false }
+    end,
     function()
         return { exe = 'black', args = { buf_name(0) }, stdin = false }
     end,
@@ -34,9 +37,9 @@ local filetypes = {
     javascript = prettier,
     javascriptreact = prettier,
     json = prettier,
-    lua = lua_format,
+    lua = luafmt,
     markdown = prettier,
-    python = black,
+    python = pyfmt,
     typescript = prettier,
     typescriptreact = prettier,
     yaml = prettier,
