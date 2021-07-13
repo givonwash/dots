@@ -1,77 +1,45 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
 window:
   padding:
     x: 5
     y: 5
-
-  # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
-
-  # Window decorations
   decorations: none
-
-  # Startup Mode
   startup_mode: Windowed
-
-  # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
-
-  # Window class (Linux/BSD only):
   class:
-    # Application instance name
     instance: Alacritty
-    # General application class
     general: Alacritty
-
-  # GTK theme variant (Linux/BSD only)
   gtk_theme_variant: None
-
 scrolling:
   history: 10000
-
-# Font configuration
 font:
   normal:
     family: FiraCode Nerd Font
     style: Regular
-
   bold:
     family: FiraCode Nerd Font
     style: Bold
-
   size: 12
-
   offset:
     x: 0
     y: 0
-
   glyph_offset:
     x: 0
     y: 0
-
 draw_bold_text_with_bright_colors: true
-
-# Colors (One Dark)
 colors:
-  # Default colors
   primary:
     foreground: "0xabb2bf"
     background: "0x282c34"
-
-  # Cursor colors
   cursor:
     text: "0x5c6370"
     cursor: "0xabb2bf"
-
   vi_mode_cursor:
     text: "0x5c6370"
     cursor: "0xabb2bf"
-
   selection:
     text: "0x5c6370"
     background: "0xabb2bf"
-
-  # Normal colors
   normal:
     black: "0x5c6370"
     red: "0xe06c75"
@@ -81,8 +49,6 @@ colors:
     magenta: "0xc678dd"
     cyan: "0x56b6c2"
     white: "0xabb2bf"
-
-  # Bright colors
   bright:
     black: "0x4b5263"
     red: "0xbe5046"
@@ -92,71 +58,27 @@ colors:
     magenta: "0xc678dd"
     cyan: "0x56b6c2"
     white: "0x3e4452"
-
-# Background opacity
 background_opacity: 1.0
-
 cursor:
   style: Beam
-
-  # Vi mode cursor style (Disabled so irrelevant)
   vi_mode_style: Underline
-
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
   unfocused_hollow: true
-
-  # Thickness of the cursor relative to the cell width as floating point number
-  # from `0.0` to `1.0`.
   thickness: 0.15
-
 live_config_reload: true
-
-# Shell
 shell:
   program: /usr/bin/zsh
-  args:
-    - --login
-
 mouse:
   hide_when_typing: true
-
-# Key bindings
 key_bindings:
-  - { key: Paste, action: Paste }
-  - { key: Copy, action: Copy }
-  - { key: L, mods: Control, action: ReceiveChar }
-  - { key: L, mods: Control, mode: ~Vi, action: ReceiveChar }
-  - { key: PageUp, mods: Shift, mode: ~Alt, action: ScrollPageUp }
-  - { key: PageDown, mods: Shift, mode: ~Alt, action: ScrollPageDown }
-  - { key: Home, mods: Shift, mode: ~Alt, action: ScrollToTop }
-  - { key: End, mods: Shift, mode: ~Alt, action: ScrollToBottom }
-
-  # Vi Mode
   - { key: Space, mods: Shift|Control, action: ReceiveChar }
-
-  # (Windows, Linux, and BSD only)
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: C, mods: Control|Shift, action: Copy }
-  - { key: F, mods: Control|Shift, action: SearchForward }
-  - { key: B, mods: Control|Shift, action: SearchBackward }
-  - { key: C, mods: Control|Shift, mode: Vi, action: ClearSelection }
-  - { key: Insert, mods: Shift, action: PasteSelection }
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Plus, mods: Control, action: IncreaseFontSize }
-  - { key: NumpadAdd, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize }
-
 debug:
-  # Display the time it takes to redraw each frame.
   render_timer: false
-
-  # Keep the log file after quitting Alacritty.
   persistent_logging: false
-
   log_level: Warn
-
-  # Print all received window events.
   print_events: false
