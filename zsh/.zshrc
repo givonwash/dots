@@ -35,8 +35,7 @@ bindkey -v
 # ----------------------------------------------------------------------------
 
 export DOTS="${HOME}/dots/arch-nb"
-export REPOS="${HOME}/repos"
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin"
+export PATH="${PATH}:${HOME}/.cargo/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
@@ -77,7 +76,7 @@ alias e="exit"
 alias l="exa -la --git --time modified --time-style long-iso --group --icons"
 alias ll="exa -la --git --time modified --time-style long-iso --group --icons --only-dirs"
 alias md="mkdir -p"
-alias n="$EDITOR"
+alias n="${EDITOR}"
 alias o="xdg-open"
 alias pqi="pacman -Qi"
 alias pqs="pacman -Qs"
