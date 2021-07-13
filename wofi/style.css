@@ -1,40 +1,40 @@
 /* Wofi CSS Style/Color Sheet */
 
 * {
-    font-family: "FiraCode NerdFont", monospace;
-    color: rgb(171, 178, 191);
+  font-family: "FiraCode NerdFont", monospace;
+  color: rgb(171, 178, 191);
 }
 
 #window {
-    background-color: rgb(40, 44, 52);
-    border: none;
-    border-radius: 3px;
+  background-color: rgb(40, 44, 52);
+  border: none;
+  border-radius: 3px;
 }
 
 #input {
-    background-color: rgb(76, 82, 99);
-    border-radius: 3px;
-    box-shadow: none;
-    margin: 0.8em;
-    font-size: 1.2em;
+  background-color: rgb(76, 82, 99);
+  border-radius: 3px;
+  box-shadow: none;
+  margin: 0.8em;
+  font-size: 1.2em;
 }
 
 #entry {
-    padding-left: 0.5em;
-    border: none;
+  padding-left: 0.5em;
+  border: none;
 }
 
 #entry:selected {
-    background-color: rgb(76, 82, 99);
-    padding-left: 1em;
+  background-color: rgb(76, 82, 99);
+  padding-left: 1em;
 }
 
 #text {
-    margin: 2px;
-    color: rgb(152, 195, 121);
+  margin: 2px;
+  color: rgb(152, 195, 121);
 }
 
 #text:selected {
-    font-weight: bold;
-    color: rgb(97, 175, 239);
+  font-weight: bold;
+  color: rgb(97, 175, 239);
 }
