@@ -26,10 +26,11 @@
             "disable-markup": false,
             "format": "{icon}",
             "format-icons": {
-                "1": "",
-                "2": "",
-                "10": "",
-                "urgent": "",
+                "1": "",
+                "2": "",
+                "3": "",
+                "10": "",
+                "urgent": "",
                 "focused": "",
                 "default": ""
             },
