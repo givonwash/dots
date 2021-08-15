@@ -32,7 +32,6 @@ set $logk780    1133:45883:Keyboard_K780_Keyboard
 
 # Aesthetics
 #   Variable    Value
-set $font       FiraCode Bold 12
 set $wallpaper  /home/givon/wall/astral.png
 
 # Terminal
@@ -223,9 +222,6 @@ bindsym XF86AudioPrev exec playerctl previous
 ###############################################################################
 # Aesthetics
 ###############################################################################
-
-# Font
-font pango:$font
 
 # Gaps
 gaps inner 5
