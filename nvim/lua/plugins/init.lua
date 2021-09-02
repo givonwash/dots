@@ -7,28 +7,26 @@ return require('packer').startup(function(use)
     -- default configurations for popular language servers
     use {
         'neovim/nvim-lspconfig',
-        config = function() require 'plugins.lspconfig' end,
+        after = 'coq_nvim',
+        requires = { { 'kabouzeid/nvim-lspinstall' }, { 'ms-jpq/coq_nvim' } },
+        config = require 'plugins.nvim-lspconfig',
     }
+
+    -- completion engine
+    use {
+        'ms-jpq/coq_nvim',
+        branch = 'coq',
+        run = ':COQDeps',
+        config = require 'plugins.coq_nvim',
+    }
+
+    -- LSP snippet capabilities
+    use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 
     -- rust inlay hints
     use {
         'nvim-lua/lsp_extensions.nvim',
-        config = function() require 'plugins.lsp_extensions' end,
-    }
-
-    -- enhanced completion engine
-    use { 'hrsh7th/nvim-compe', config = function() require 'plugins.compe' end }
-
-    -- snippet support for language servers
-    use {
-        'norcalli/snippets.nvim',
-        config = function() require 'plugins.snippets' end,
-    }
-
-    --  show function signature while in insert mode
-    use {
-        'ray-x/lsp_signature.nvim',
-        config = function() require 'plugins.lsp_signature' end,
+        config = require 'plugins.lsp_extensions',
     }
 
     --[[ aesthetics =========================================================]]
@@ -37,21 +35,21 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function() require 'plugins.treesitter' end,
+        config = require 'plugins.nvim-treesitter',
     }
 
     -- onedark colorscheme with treesitter support
     use {
         'Th3Whit3Wolf/onebuddy',
         requires = { 'tjdevries/colorbuddy.nvim' },
-        config = function() require 'plugins.onebuddy' end,
+        config = require 'plugins.onebuddy',
     }
 
     -- statusline
     use {
         'glepnir/galaxyline.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function() require 'plugins.galaxyline' end,
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = require 'plugins.galaxyline',
     }
 
     -- display git diff icons in sign column
@@ -59,26 +57,17 @@ return require('packer').startup(function(use)
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         after = 'onebuddy',
-        config = function() require 'plugins.gitsigns' end,
+        config = require 'plugins.gitsigns',
     }
 
     -- pretty ui for lsp actions
-    use {
-        'glepnir/lspsaga.nvim',
-        config = function() require 'plugins.lspsaga' end,
-    }
-
-    -- icons for completion items
-    use {
-        "onsails/lspkind-nvim",
-        config = function() require 'plugins.lspkind' end,
-    }
+    use { 'glepnir/lspsaga.nvim', config = require 'plugins.lspsaga' }
 
     -- buffer line
     use {
         'romgrk/barbar.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        config = function() require 'plugins.barbar' end,
+        config = require 'plugins.barbar',
     }
 
     --[[ navigation =========================================================]]
@@ -88,14 +77,15 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
         rocks = 'luafilesystem',
-        config = function() require 'plugins.telescope' end,
+        config = require 'plugins.telescope',
     }
 
-    -- workspace and document diagnostic navigation
+    -- file tree
     use {
-        'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require 'plugins.trouble' end,
+        'ms-jpq/chadtree',
+        branch = 'chad',
+        run = ':CHADdeps',
+        config = require 'plugins.chadtree',
     }
 
     --[[ efficiency =========================================================]]
@@ -103,21 +93,19 @@ return require('packer').startup(function(use)
     -- changing of surrounding delimiters
     use 'tpope/vim-surround'
 
-    -- switch director to root of project
-    use 'airblade/vim-rooter'
+    -- project manager
+    use {
+        'ahmedkhalf/project.nvim',
+        requires = { 'nvim-telescope/telescope.nvim' },
+        config = require('plugins.project'),
+    }
 
     -- quick commenting and uncommenting
     use 'b3nj5m1n/kommentary'
 
     -- autopairs
-    use {
-        'windwp/nvim-autopairs',
-        config = function() require 'plugins.autopairs' end,
-    }
+    use { 'windwp/nvim-autopairs', config = require 'plugins.nvim-autopairs' }
 
     -- formatting
-    use {
-        'mhartington/formatter.nvim',
-        config = function() require 'plugins.formatter' end,
-    }
+    use { 'mhartington/formatter.nvim', config = require 'plugins.formatter' }
 end)

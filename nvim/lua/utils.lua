@@ -54,4 +54,28 @@ M.highlight = function(hls)
     for _, hl in pairs(hls) do cmd('highlight ' .. table.concat(hl, ' ')) end
 end
 
+M.LUA_PATH = (function()
+    local path = vim.split(package.path, ';')
+    table.insert(path, 'lua/?.lua')
+    table.insert(path, 'lua/?/init.lua')
+    return path
+end)()
+
+M.LUA_LIBRARIES = (function()
+    local libraries = {}
+
+    local function add_library(path)
+        for _, p in pairs(vim.fn.expand(path, false, true)) do
+            local real_path = vim.loop.fs_realpath(p)
+            libraries[real_path] = true
+        end
+    end
+
+    add_library('$VIMRUNTIME')
+    add_library('~/.config/nvim')
+    add_library("~/.local/share/nvim/site/pack/packer/opt/*")
+    add_library("~/.local/share/nvim/site/pack/packer/start/*")
+    return libraries
+end)()
+
 return M

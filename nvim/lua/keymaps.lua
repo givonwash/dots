@@ -1,24 +1,6 @@
 local fn = vim.fn
 local utils = require 'utils'
 
-local my_globals = _G.my_globals
-
-my_globals.tab_complete = function()
-    if fn.pumvisible() ~= 0 then
-        return utils.str_to_term_code '<C-n>'
-    else
-        return utils.str_to_term_code '<TAB>'
-    end
-end
-
-my_globals.shift_tab_complete = function()
-    if fn.pumvisible() ~= 0 then
-        return utils.str_to_term_code '<C-p>'
-    else
-        return utils.str_to_term_code '<S-TAB>'
-    end
-end
-
 -- global mappers
 local mapper = utils.create_mapper
 local map = mapper('')
@@ -124,12 +106,5 @@ map('/', '/\\v', no_silent)
 
 -- toggle spell checking
 nmap('<leader>s', '<cmd>setlocal spell!<cr>')
-
--- tab completion
-imap('<TAB>', 'v:lua.my_globals.tab_complete()', expr)
-imap('<S-TAB>', 'v:lua.my_globals.shift_tab_complete()', expr)
-
--- format buffer
-nmap('<leader>f', '<cmd>Format<cr>')
 
 return { map = map, imap = imap, nmap = nmap, tmap = tmap, vmap = vmap }
