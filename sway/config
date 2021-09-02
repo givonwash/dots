@@ -191,10 +191,6 @@ bindsym $mod+a focus parent
 bindsym $mod+g gaps inner current plus 1
 bindsym $mod+Shift+g gaps inner current minus 1
 
-# Scratchpad
-# -- Move the Currently Focused Window to the Scratchpad
-bindsym $mod+Shift+minus move to scratchpad
-
 # -- Cycle thru Scratchpad Windows or Close the Sole Focused One
 bindsym $mod+minus scratchpad show
 
@@ -218,6 +214,11 @@ bindsym $mod+n exec playerctl next
 bindsym $mod+p exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Screen Capturing
+# -- Screenshot
+bindsym $mod+c exec grim -g "$(slurp)" "~/.cache/screenshots"
+bindsym $mod+Shift+c exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" "~/.cache/screenshots"
 
 ###############################################################################
 # Aesthetics
