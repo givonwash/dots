@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
         config = require 'plugins.lsp_extensions',
     }
 
+    use { 'folke/trouble.nvim', config = require 'plugins.trouble' }
+
     --[[ aesthetics =========================================================]]
 
     -- better syntax highlighting
