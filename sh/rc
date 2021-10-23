@@ -1,0 +1,47 @@
+# ----------------------------------------------------------------------------
+# Environment Variables
+# ----------------------------------------------------------------------------
+
+# put your env variables here
+
+# ----------------------------------------------------------------------------
+# Aliases
+# ----------------------------------------------------------------------------
+# git
+alias g="git"
+alias ga="git add"
+alias gaa="git add --all"
+alias gb="git branch"
+alias gc="git commit --verbose"
+alias gca="git commit --all --verbose"
+alias gco="git checkout"
+alias gconf="git config"
+alias gd="git diff"
+alias gf="git fetch"
+alias ggr="git grep"
+alias gl="git log --graph --decorate --summary --stat"
+alias gll="git log --graph --decorate --all --summary --stat"
+alias gm="git merge"
+alias gpull="git pull"
+alias gpush="git push"
+alias gshow="git show"
+alias gs="git status"
+alias gss="git stauts --short"
+alias gsw="git switch"
+
+# misc.
+alias ......="./../../../../.."
+alias .....="./../../../.."
+alias ....="./../../.."
+alias ...="./../.."
+alias ..="./.."
+alias c="clear"
+alias cp="cp -i"
+alias e="exit"
+alias l="exa -la --git --time modified --time-style long-iso --group --icons"
+alias ll="exa -la --git --time modified --time-style long-iso --group --icons --only-dirs"
+alias md="mkdir -p"
+alias n="${EDITOR}"
+alias sz="source ~/.zshrc"
+alias tm="tmux"
+
