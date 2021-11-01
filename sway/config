@@ -1,13 +1,6 @@
 ###############################################################################
-# Givon's Sway Config
-###############################################################################
-
-# see sway(5) for detailed breakdown
-
-###############################################################################
 # Config Global Variables
 ###############################################################################
-
 # Colors (OneDark)
 #   Variable    Value
 set $background #282c34
@@ -59,7 +52,6 @@ set $ws10       "10"
 ###############################################################################
 # Output Configuration
 ###############################################################################
-
 output * {
     bg          $wallpaper  fill    $white
 }
@@ -67,19 +59,11 @@ output * {
 ###############################################################################
 # Idle Configuration
 ###############################################################################
-
-# Lock the Screen After 5 Minutes of Inactivity
-# Turn Off the Screen after 6 Minutes of Inactivity
-# Also Lock the Screen Before Sleeping
-exec swayidle -w \
-         timeout 300 '$lock' \
-         timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep '$lock'
+exec swayidle -w timeout 300 'systemctl suspend' before-sleep '$lock'
 
 ###############################################################################
 # Input configuration
 ###############################################################################
-
 input type:touchpad {
     natural_scroll  enabled
     tap             enabled
@@ -107,47 +91,36 @@ input $logk780 {
 ###############################################################################
 # Key Bindings
 ###############################################################################
+# launchers
+bindsym $mod+return exec $term
+bindsym $mod+space exec $launcher
 
-# Launchers
-# -- Start a Terminal
-bindsym $mod+Return exec $term
-
-# -- Run Launcher
-bindsym $mod+Space exec $launcher
-
-# General
-# -- Kill Focused Window
-bindsym $mod+q kill
-
-# -- Reload the Configuration File
-bindsym $mod+Shift+r reload
-
-# -- Lock Sway
-bindsym $mod+x exec $lock
-
-# -- Exit Sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exit
-
-# -- Dismiss Most Recent Mako Notifications
+# general
+# -- kill focused window
+bindsym $mod+x kill
+# -- reload sway
+bindsym $mod+shift+r reload
+# -- lock screen
+bindsym $mod+period exec $lock
+# -- exit sway
+bindsym $mod+shift+e exit
+# -- dismiss most recent mako notification
 bindsym $mod+d exec makoctl dismiss
-
-# -- Dismiss All Mako Notifications
+# -- dismiss all mako notifications
 bindsym $mod+Shift+d exec makoctl dismiss
 
-# Movement
-# -- Move Your Focus Around
+# movement
+# -- move focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-
-# -- Move the Focused Window with the Same, but Add Shift
+# -- move container around within workspace
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-
-# -- Switch to Explicity Defined Workspace
+# -- switch workspaces
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -158,8 +131,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-
-# -- Move Focused Container to Explicitly Defined Workspace
+# -- move container to different workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -171,41 +143,29 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# Layout
-# -- Splits
+# layout
+# -- splits
 bindsym $mod+Semicolon splith
 bindsym $mod+v splitv
-
-# -- Switch the Current Container Between Different Layout Styles
+# -- switch layout
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout default
-
-# -- Make the current focus fullscreen
+# -- enter fullscreen
 bindsym $mod+f fullscreen toggle
-
-# -- Move focus to the parent container
+# -- move focus to parent container
 bindsym $mod+a focus parent
 
-# -- Increase/Decrease Inner Gaps for Current Workspace
-bindsym $mod+g gaps inner current plus 1
-bindsym $mod+Shift+g gaps inner current minus 1
-
-# -- Cycle thru Scratchpad Windows or Close the Sole Focused One
-bindsym $mod+minus scratchpad show
-
-# Device Control
-# -- Backlight
+# device control
+# -- backlight
 bindsym $mod+b exec light -U 5
 bindsym $mod+Shift+b exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5
-
-# -- Inhibit Idle
+# -- inhibit idle
 bindsym $mod+i inhibit_idle visible
 bindsym $mod+Shift+i inhibit_idle none
-
-# -- Audio
+# -- audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -215,104 +175,73 @@ bindsym $mod+p exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Screen Capturing
-# -- Screenshot
-bindsym $mod+c exec grim -g "$(slurp)" "~/.cache/screenshots"
-bindsym $mod+Shift+c exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" "~/.cache/screenshots"
+# screen capturing
+bindsym $mod+c exec grim -g "$(slurp)"
+bindsym $mod+Shift+c exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')"
 
 ###############################################################################
 # Aesthetics
 ###############################################################################
-
-# Gaps
-gaps inner 5
-
-# Cursor Theme
+gaps inner 20
 seat seat0 xcursor_theme Bibata-Original-Ice 20
-
-# Window Colors
-#                       Border          Background     Text      Indicator  Child-Border
-client.focused          $blue           $background    $white    $gray      $blue
-client.unfocused        $background     $background    $white    $gray      $background
-client.focused_inactive $background     $background    $white    $gray      $background
-client.urgent           $red            $background    $white    $gray      $red
-
-# Borders
-# -- Defaults
 default_border pixel 2
 default_floating_border normal
 smart_borders on
-
-# Opacity
-# -- Wayland Applications
-for_window [app_id=".*"] opacity set 0.97
-# -- X11 Applications
-for_window [class=".*"] opacity set 0.97
-# -- No opacity for games
-for_window [class="^Minecraft.*"] opacity set 1.0
-
-# Floating Windows
-for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-
-###############################################################################
-# Modes
-###############################################################################
-
-# Resize
-mode "resize" {
-    # left will shrink the containers width
-    bindsym $left resize shrink width 10px
-    # right will grow the containers width
-    bindsym $right resize grow width 10px
-    # down will grow the containers height
-    bindsym $down resize grow height 10px
-    # up will shrink the containers height
-    bindsym $up resize shrink height 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-
-###############################################################################
-# Waybar
-###############################################################################
 
 bar {
     swaybar_command waybar
 }
 
-###############################################################################
-# Miscellaneous Defaults/Commands
-###############################################################################
+# window colors
+#                       border          background     text      indicator  child-border
+client.focused          $blue           $background    $white    $gray      $blue
+client.unfocused        $background     $background    $white    $gray      $background
+client.focused_inactive $background     $background    $white    $gray      $background
+client.urgent           $red            $background    $white    $gray      $red
 
-# Modifier for Dragging Floating Windows and Resizing Any Window
+###############################################################################
+# Applications
+###############################################################################
+for_window [app_id="pavucontrol"] floating enable
+
+###############################################################################
+# Modes
+###############################################################################
+# resize
+mode "resize" {
+    bindsym w resize grow width 10px
+    bindsym Shift+w resize shrink width 10px
+    bindsym h resize grow height 10px
+    bindsym Shift+h resize shrink height 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+###############################################################################
+# Quality of Life
+###############################################################################
+# modifier for dragging floating windows and resizing any window
 floating_modifier $mod normal
 
-# Initial Workspace Layout
+# initial workspace layout
 workspace_layout default
 
-# Lazy Load XWayland for Compatability with Several Applications
+# lazy load xwayland for compatability with several applications
 xwayland enable
 
-# Do Not Wrap Focus to Opposite Edge Container When No Containers Left
+# do not wrap focus to opposite edge container when no containers left
 focus_wrapping no
 
-# Focus Follows Mouse
+# focus follows mouse
 focus_follows_mouse yes
 
-# Focus Windows Requesting Activation If Visible, Else Make Them Urgent
+# focus windows requesting activation if visible, else make them urgent
 focus_on_window_activation smart
 
-# Include Any Additoinal System-Wide Configurations
+# include any additoinal system-wide configurations
 include /etc/sway/config.d/*
 
-###############################################################################
-# Sway Start-Up Executables
-###############################################################################
-
-# Start gammastep
+# start gammastep
 exec gammastep
