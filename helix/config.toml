@@ -1,0 +1,11 @@
+theme = "onedark"
+
+[lsp]
+display-messages = true
+
+[keys.insert]
+j = { j = "normal_mode" }
+
+[editor]
+line-number = "relative"
+idle-timeout = 0
