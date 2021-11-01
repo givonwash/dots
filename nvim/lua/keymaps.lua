@@ -1,17 +1,36 @@
-local fn = vim.fn
-local utils = require 'utils'
+local api = vim.api
 
--- global mappers
-local mapper = utils.create_mapper
+local mapper = function(mode, defaults, is_buf_local)
+    local defaults = defaults or { noremap = true, silent = true }
+    if not is_buf_local then
+        return function(lhs, rhs, opts)
+            local opts = opts or {}
+            local options = vim.tbl_extend('force', defaults, opts)
+            api.nvim_set_keymap(mode, lhs, rhs, options)
+        end
+    else
+        return function(lhs, rhs, opts)
+            local opts = opts or {}
+            local options = vim.tbl_extend('force', defaults, opts)
+            api.nvim_buf_set_keymap(0, mode, lhs, rhs, options)
+        end
+    end
+end
+
+local map_opts = {
+    no_silent = { silent = false },
+    recursive = { noremap = false },
+    expr = { expr = true },
+}
+
 local map = mapper('')
 local imap = mapper('i')
 local nmap = mapper('n')
 local tmap = mapper('t')
 local vmap = mapper('v')
 
--- common mapping options
-local no_silent = utils.map_opts.no_silent
-local expr = utils.map_opts.expr
+local no_silent = map_opts.no_silent
+local expr = map_opts.expr
 
 --[[=============================== mappings ================================]]
 
@@ -50,12 +69,6 @@ nmap('<leader>o', '<cmd>only<cr>')
 -- close windows
 nmap('<leader>c', '<cmd>close<cr>')
 
--- move lines up and down
-nmap('<C-j>', 'm`<cmd>m+1<cr>``')
-nmap('<C-k>', 'm`<cmd>m-2<cr>``')
-vmap('<C-j>', [[<cmd>m'>+1<cr>`<my`>mzgv`yo`z]])
-vmap('<C-k>', [[<cmd>m'<-2<cr>`>my`<mzgv`yo`z]])
-
 -- move thru quickfix list
 nmap('<C-n>', '<cmd>cnext<cr>')
 nmap('<C-p>', '<cmd>cprev<cr>')
@@ -63,9 +76,6 @@ nmap('<C-p>', '<cmd>cprev<cr>')
 -- move thru location list
 nmap('<M-n>', '<cmd>lnext<cr>')
 nmap('<M-p>', '<cmd>lprev<cr>')
-
--- goto definition
-nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
 --                            [[quality of life]]
 -- toggle highlighting following a search
@@ -107,4 +117,12 @@ map('/', '/\\v', no_silent)
 -- toggle spell checking
 nmap('<leader>s', '<cmd>setlocal spell!<cr>')
 
-return { map = map, imap = imap, nmap = nmap, tmap = tmap, vmap = vmap }
+return {
+    mapper = mapper,
+    map = map,
+    imap = imap,
+    nmap = nmap,
+    tmap = tmap,
+    vmap = vmap,
+    map_opts = map_opts,
+}

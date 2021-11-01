@@ -31,3 +31,4 @@ opt.history = 500 -- command history max size
 opt.lazyredraw = true -- no redrawing of screen during macros
 opt.showmode = false -- no '-- INSERT --' above command-line
 opt.termguicolors = true -- enable 24-bit rgb
+opt.conceallevel = 2 -- make pmenu docs look pretty

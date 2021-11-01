@@ -6,5 +6,5 @@ return function()
 
     local nmap = require('keymaps').nmap
 
-    nmap('<leader>tt', '<cmd>TroubleToggle<cr>')
+    nmap('<leader>t', '<cmd>TroubleToggle<cr>')
 end

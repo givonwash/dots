@@ -1,7 +1,9 @@
 local g = vim.g
 
 --[[=============================== globals =================================]]
-_G.my_globals = {}
+_G.__config__ = {}
+
+_G.__config__.puts = function(any) print(vim.inspect(any)) end
 
 -- set leader keys
 g.mapleader = ' '
