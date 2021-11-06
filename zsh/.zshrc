@@ -31,15 +31,6 @@ unsetopt beep extendedglob nomatch notify
 bindkey -v
 
 # ----------------------------------------------------------------------------
-# Environment Variables
-# ----------------------------------------------------------------------------
-
-export DOTS="${HOME}/dots/arch-nb"
-export PATH="${PATH}:${HOME}/.cargo/bin"
-export EDITOR="nvim"
-export MANPAGER="nvim +Man!"
-
-# ----------------------------------------------------------------------------
 # Aliases
 # ----------------------------------------------------------------------------
 # git
