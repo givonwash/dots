@@ -29,6 +29,24 @@ return function()
         rename_action_keys = { quit = '<esc>', exec = '<cr>' },
     }
 
+    -- special hover
+    _G.__config__.hover = function()
+        local api = vim.api
+        local fn = vim.fn
+
+        local ft = api.nvim_buf_get_option(0, 'filetype')
+
+        if ft == 'help' or ft == 'vim' then
+            local cword = fn.expand('<cword>')
+            api.nvim_command('help ' .. cword)
+        elseif ft == 'man' then
+            local cword = fn.expand('<cword>')
+            api.nvim_command('Man ' .. cword)
+        else
+            vim.cmd 'Lspsaga hover_doc'
+        end
+    end
+
     local defaults = {
         on_attach = function()
             local nmap = require('keymaps').mapper('n', nil, true)
@@ -50,24 +68,6 @@ return function()
                  '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>')
             nmap('<C-b>',
                  '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
-
-            -- hover
-            _G.__config__.hover = function()
-                local api = vim.api
-                local fn = vim.fn
-
-                local ft = api.nvim_buf_get_option(0, 'filetype')
-
-                if ft == 'help' or ft == 'vim' then
-                    local cword = fn.expand('<cword>')
-                    api.nvim_command('help ' .. cword)
-                elseif ft == 'man' then
-                    local cword = fn.expand('<cword>')
-                    api.nvim_command('Man ' .. cword)
-                else
-                    vim.cmd 'Lspsaga hover_doc'
-                end
-            end
 
             nmap('K', '<cmd>call v:lua.__config__.hover()<cr>')
 
