@@ -47,7 +47,7 @@ return function()
         },
         sources = {
             { name = 'nvim_lsp' }, { name = 'luasnip' }, { name = 'buffer' },
-            { name = 'path' },
+            { name = 'path' }, { name = 'neorg' },
         },
     }
 

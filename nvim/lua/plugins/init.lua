@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
             'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline', 'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip', 'simrat39/rust-tools.nvim',
+            'nvim-neorg/neorg',
         },
     }
 
@@ -103,4 +104,15 @@ return require('packer').startup(function(use)
     -- [[ debuggin plugins  ==================================================]]
 
     use { 'nvim-treesitter/playground', config = require 'plugins.playground' }
+
+    -- [[ note-taking ======================================================= ]]
+    use {
+        'nvim-neorg/neorg',
+        requires = {
+            'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter',
+            'hrsh7th/nvim-cmp',
+        },
+        after = 'nvim-treesitter',
+        config = require 'plugins.neorg',
+    }
 end)
