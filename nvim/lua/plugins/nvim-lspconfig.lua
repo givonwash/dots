@@ -59,7 +59,6 @@ return function()
             nmap('gr', '<cmd>lua require("lspsaga.rename").rename()<cr>')
             nmap('gD',
                  '<cmd>lua require("lspsaga.provider").preview_definition()<cr>')
-            nmap('gR', '<cmd>lua require("lspsaga.provider").lsp_finder()<cr>')
             nmap('gJ',
                  '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
             nmap('gK',
