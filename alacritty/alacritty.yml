@@ -6,19 +6,9 @@ window:
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
-  class:
-    instance: Alacritty
-    general: Alacritty
-  gtk_theme_variant: None
 scrolling:
   history: 10000
 font:
-  normal:
-    family: FiraCode Nerd Font
-    style: Regular
-  bold:
-    family: FiraCode Nerd Font
-    style: Bold
   size: 12
   offset:
     x: 0
@@ -58,15 +48,12 @@ colors:
     magenta: "0xc678dd"
     cyan: "0x56b6c2"
     white: "0x3e4452"
-background_opacity: 1.0
 cursor:
   style: Beam
   vi_mode_style: Underline
   unfocused_hollow: true
   thickness: 0.15
 live_config_reload: true
-shell:
-  program: /usr/bin/zsh
 mouse:
   hide_when_typing: true
 key_bindings:
