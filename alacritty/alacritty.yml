@@ -3,7 +3,7 @@ window:
     x: 5
     y: 5
   dynamic_padding: true
-  decorations: none
+  decorations: buttonless
   startup_mode: Windowed
   dynamic_title: true
 scrolling:
@@ -15,7 +15,7 @@ font:
   bold:
     family: FiraCode Nerd Font
     style: Bold
-  size: 12
+  size: 14
   offset:
     x: 0
     y: 0
@@ -61,8 +61,6 @@ cursor:
   unfocused_hollow: true
   thickness: 0.15
 live_config_reload: true
-shell:
-  program: /usr/bin/zsh
 mouse:
   hide_when_typing: true
 key_bindings:
