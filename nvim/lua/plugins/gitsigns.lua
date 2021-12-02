@@ -1,39 +1,12 @@
 return function()
     require('gitsigns').setup {
         signs = {
-            add = {
-                hl = 'GitGutterAdd',
-                text = '+',
-                numhl = 'GitGutterAdd',
-                linehl = 'GitGutterAdd',
-            },
-            change = {
-                hl = 'GitGutterChange',
-                text = '~',
-                numhl = 'GitGutterChange',
-                linehl = 'GitGutterChange',
-            },
-            delete = {
-                hl = 'GitGutterDelete',
-                text = '-',
-                numhl = 'GitGutterDelete',
-                linehl = 'GitGutterDelete',
-            },
-            topdelete = {
-                hl = 'GitGutterDelete',
-                text = '≏',
-                numhl = 'GitGutterDelete',
-                linehl = 'GitGutterDelete',
-            },
-            changedelete = {
-                hl = 'GitGutterChange',
-                text = '≁',
-                numhl = 'GitGutterChange',
-                linehl = 'GitGutterChange',
-            },
+            add = { text = '+' },
+            change = { text = '~' },
+            delete = { text = '-' },
+            topdelete = { text = '≏' },
+            changedelete = { text = '≁' },
         },
-        numhl = false,
-        linehl = false,
         keymaps = {
             noremap = true,
             buffer = true,
@@ -46,11 +19,5 @@ return function()
             ['o ih'] = ':<C-u>lua require("gitsigns").select_hunk()<cr>',
             ['x ih'] = ':<C-u>lua require("gitsigns").select_hunk()<cr>',
         },
-        watch_index = { interval = 1000 },
-        current_line_blame = false,
-        sign_priority = 6,
-        update_debounce = 100,
-        status_formatter = nil,
-        use_internal_diff = true,
     }
 end
