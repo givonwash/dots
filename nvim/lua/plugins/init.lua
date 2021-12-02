@@ -2,34 +2,36 @@ return require('packer').startup(function(use)
     -- let packer manage itself
     use 'wbthomason/packer.nvim'
 
-    --[[ lsp-related plugins ================================================]]
-
-    -- default configurations for popular language servers
-    use {
-        'neovim/nvim-lspconfig',
-        after = 'coq_nvim',
-        requires = { { 'kabouzeid/nvim-lspinstall' }, { 'ms-jpq/coq_nvim' } },
-        config = require 'plugins.nvim-lspconfig',
-    }
+    --[[ completion plugins ==================================================]]
 
     -- completion engine
     use {
-        'ms-jpq/coq_nvim',
-        branch = 'coq',
-        run = ':COQDeps',
-        config = require 'plugins.coq_nvim',
+        'hrsh7th/nvim-cmp',
+        config = require 'plugins.nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline', 'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip', 'simrat39/rust-tools.nvim',
+            'nvim-neorg/neorg',
+        },
     }
 
-    -- LSP snippet capabilities
-    use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+    --[[ lsp plugins =========================================================]]
 
-    -- rust inlay hints
+    -- configurations for popular language servers
     use {
-        'nvim-lua/lsp_extensions.nvim',
-        config = require 'plugins.lsp_extensions',
+        'neovim/nvim-lspconfig',
+        requires = {
+            'williamboman/nvim-lsp-installer', 'hrsh7th/nvim-cmp',
+            { 'tami5/lspsaga.nvim', branch = 'nvim51' },
+        },
+        config = require 'plugins.nvim-lspconfig',
     }
 
-    --[[ aesthetics =========================================================]]
+    -- easily viewable (and navigable) lsp diagnositcs
+    use { 'folke/trouble.nvim', config = require 'plugins.trouble' }
+
+    --[[ aesthetic plugins ===================================================]]
 
     -- better syntax highlighting
     use {
@@ -39,29 +41,23 @@ return require('packer').startup(function(use)
     }
 
     -- onedark colorscheme with treesitter support
-    use {
-        'Th3Whit3Wolf/onebuddy',
-        requires = { 'tjdevries/colorbuddy.nvim' },
-        config = require 'plugins.onebuddy',
-    }
+    use { 'navarasu/onedark.nvim', config = require 'plugins.onedark' }
 
     -- statusline
     use {
-        'glepnir/galaxyline.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        config = require 'plugins.galaxyline',
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
+        },
+        config = require 'plugins.lualine',
     }
 
     -- display git diff icons in sign column
     use {
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
-        after = 'onebuddy',
         config = require 'plugins.gitsigns',
     }
-
-    -- pretty ui for lsp actions
-    use { 'glepnir/lspsaga.nvim', config = require 'plugins.lspsaga' }
 
     -- buffer line
     use {
@@ -70,7 +66,7 @@ return require('packer').startup(function(use)
         config = require 'plugins.barbar',
     }
 
-    --[[ navigation =========================================================]]
+    --[[ navigation plugins ==================================================]]
 
     -- fuzzy finding
     use {
@@ -82,13 +78,12 @@ return require('packer').startup(function(use)
 
     -- file tree
     use {
-        'ms-jpq/chadtree',
-        branch = 'chad',
-        run = ':CHADdeps',
-        config = require 'plugins.chadtree',
+        'kyazdani42/nvim-tree.lua',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = require 'plugins.nvim-tree',
     }
 
-    --[[ efficiency =========================================================]]
+    --[[ efficiency plugins ==================================================]]
 
     -- changing of surrounding delimiters
     use 'tpope/vim-surround'
@@ -106,6 +101,18 @@ return require('packer').startup(function(use)
     -- autopairs
     use { 'windwp/nvim-autopairs', config = require 'plugins.nvim-autopairs' }
 
-    -- formatting
-    use { 'mhartington/formatter.nvim', config = require 'plugins.formatter' }
+    -- [[ debuggin plugins  ==================================================]]
+
+    use { 'nvim-treesitter/playground', config = require 'plugins.playground' }
+
+    -- [[ note-taking ======================================================= ]]
+    use {
+        'nvim-neorg/neorg',
+        requires = {
+            'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter',
+            'hrsh7th/nvim-cmp',
+        },
+        after = 'nvim-treesitter',
+        config = require 'plugins.neorg',
+    }
 end)

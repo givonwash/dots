@@ -7,6 +7,8 @@ return function()
     nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
     nmap('<leader>fm', '<cmd>lua require("telescope.builtin").man_pages()<cr>')
     nmap('<leader>fr', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+    nmap('<leader>fe',
+         '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
 
     local actions = require('telescope.actions')
 
