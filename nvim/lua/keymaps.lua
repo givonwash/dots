@@ -30,34 +30,33 @@ local tmap = mapper('t')
 local vmap = mapper('v')
 
 local no_silent = map_opts.no_silent
-local expr = map_opts.expr
 
 --[[=============================== mappings ================================]]
 
 --                               [[navigation]]
 -- navigate regular splits
-nmap('<M-h>', '<cmd>wincmd h<cr>')
-nmap('<M-j>', '<cmd>wincmd j<cr>')
-nmap('<M-k>', '<cmd>wincmd k<cr>')
-nmap('<M-l>', '<cmd>wincmd l<cr>')
+nmap('˙', '<cmd>wincmd h<cr>')
+nmap('∆', '<cmd>wincmd j<cr>')
+nmap('˚', '<cmd>wincmd k<cr>')
+nmap('¬', '<cmd>wincmd l<cr>')
 
 -- move regular splits around
-nmap('<S-M-h>', '<cmd>wincmd H<cr>')
-nmap('<S-M-j>', '<cmd>wincmd J<cr>')
-nmap('<S-M-k>', '<cmd>wincmd K<cr>')
-nmap('<S-M-l>', '<cmd>wincmd L<cr>')
+nmap('Ó', '<cmd>wincmd H<cr>')
+nmap('Ô', '<cmd>wincmd J<cr>')
+nmap('', '<cmd>wincmd K<cr>')
+nmap('Ò', '<cmd>wincmd L<cr>')
 
 -- navigate termninal splits
-tmap('<M-h>', '<C-\\><C-N><cmd>wincmd h<cr>')
-tmap('<M-j>', '<C-\\><C-N><cmd>wincmd j<cr>')
-tmap('<M-k>', '<C-\\><C-N><cmd>wincmd k<cr>')
-tmap('<M-l>', '<C-\\><C-N><cmd>wincmd l<cr>')
+tmap('˙', '<C-\\><C-N><cmd>wincmd h<cr>')
+tmap('∆', '<C-\\><C-N><cmd>wincmd j<cr>')
+tmap('˚', '<C-\\><C-N><cmd>wincmd k<cr>')
+tmap('¬', '<C-\\><C-N><cmd>wincmd l<cr>')
 
 -- move terminal splits around
-tmap('<S-M-h>', '<C-\\><C-N><cmd>wincmd H<cr>')
-tmap('<S-M-j>', '<C-\\><C-N><cmd>wincmd J<cr>')
-tmap('<S-M-k>', '<C-\\><C-N><cmd>wincmd K<cr>')
-tmap('<S-M-l>', '<C-\\><C-N><cmd>wincmd L<cr>')
+tmap('Ó', '<C-\\><C-N><cmd>wincmd H<cr>')
+tmap('Ô', '<C-\\><C-N><cmd>wincmd J<cr>')
+tmap('', '<C-\\><C-N><cmd>wincmd K<cr>')
+tmap('Ò', '<C-\\><C-N><cmd>wincmd L<cr>')
 
 -- horizontal scrolling
 map('zl', 'zL')

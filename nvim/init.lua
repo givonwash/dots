@@ -10,7 +10,7 @@ g.mapleader = ' '
 g.maplocalleader = ','
 
 -- pin python host to system python
--- g.python3_host_prog = '{{PYTHON3_NVIM_HOST}} '
+g.python3_host_prog = '/usr/local/bin/python3'
 
 --[[=============================== modules =================================]]
 require 'plugins'
