@@ -1,11 +1,5 @@
-# File Locations
 style=/home/givon/.config/wofi/style.css
-
-# Defaults
 term=alacritty
-
-# Behavior
-# -- General
 show=drun,run
 normal_window=false
 allow_images=true
@@ -15,35 +9,19 @@ matching=fuzzy
 insensitive=true
 sort_order=default
 layer=overlay
-
-# -- Keybindings
 key_submit=Return
 key_exit=Escape
 key_expand=space
-
-# Aesthetics
-# -- Position and Dimensions
 lines=12
 location=center
 columns=1
 y-offset=2
-
-# -- Text
 prompt=:: 🐵 ::
-
-# -- Misc
 hide_scroll=true
-
-# Mode Specifi Config
-# -- dmenu
 drun-parse_actions=false
 drun-separator="\\n"
 drun-print_line_num=false
-
-# -- run
 run-always_parse_arg=false
 show_all=true
-
-# --drun
 drun-print_commands=false
 drun-display_generic=true

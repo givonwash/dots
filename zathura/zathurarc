@@ -1,9 +1,3 @@
-# Givon's Zathura Config
-
-# Keybindings
-# ...
-
-# Girara and Zathura Options
 set completion-fg "#abb2bf"
 set completion-bg "#4b5263"
 set completion-group-fg "#5c6370"
@@ -24,8 +18,6 @@ set notification-warning-fg "#c678dd"
 set notification-warning-bg "#5c6370"
 set statusbar-fg "#56b6c2"
 set statusbar-bg "#abb2bf"
-
-# Zathura Only Options
 set abort-clear-search true
 set adjust-open width
 set advance-pages-per-row false

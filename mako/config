@@ -1,11 +1,5 @@
-# Givon's Mako Config
-
-# Behavior Options
 max-visible=3
 layer=overlay
-
-# Style Options
-# -- defaults
 font=FiraCode Nerd Font 12
 format=<span weight='bold'>%a: %s</span>\n%b
 text-color=#abb2bf
@@ -23,10 +17,8 @@ markup=1
 actions=1
 default-timeout=5000
 
-# -- high urgency notifications
 [urgency=high]
 border-color=#be5046
 
-# -- grouped notifications
 [grouped=true]
 format=<span weight='bold'>(%g) %a: %s</span>\n%b
