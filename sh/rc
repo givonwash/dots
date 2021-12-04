@@ -44,4 +44,3 @@ alias md="mkdir -p"
 alias n="${EDITOR}"
 alias sz="source ~/.zshrc"
 alias tm="tmux"
-
