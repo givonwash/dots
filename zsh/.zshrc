@@ -25,3 +25,8 @@ unsetopt beep extendedglob nomatch notify
 bindkey -v
 
 source $HOME/.config/sh/rc
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
