@@ -3,6 +3,7 @@ return function()
     opt.completeopt = 'menu,menuone,noselect'
     local cmp = require('cmp')
     local luasnip = require('luasnip')
+    local apairs = require("nvim-autopairs.completion.cmp")
     cmp.setup {
         snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
         mapping = {
@@ -16,7 +17,6 @@ return function()
                                    .nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
                                    col, col):match("%s") == nil
                 end
-
                 if cmp.visible() then
                     cmp.select_next_item()
                 elseif luasnip.expand_or_jumpable() then
@@ -53,4 +53,6 @@ return function()
 
     cmp.setup.cmdline(':',
                       { sources = { { name = 'path' }, { name = 'cmdline' } } })
+    cmp.event:on("confirm_done",
+                 apairs.on_confirm_done({ map_char = { tex = "" } }))
 end
