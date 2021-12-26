@@ -9,10 +9,15 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         config = require 'plugins.nvim-cmp',
         requires = {
-            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline', 'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip', 'simrat39/rust-tools.nvim',
-            'nvim-neorg/neorg', 'windwp/nvim-autopairs',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'simrat39/rust-tools.nvim',
+            'nvim-neorg/neorg',
+            'windwp/nvim-autopairs',
         },
     }
 
@@ -22,7 +27,8 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'williamboman/nvim-lsp-installer', 'hrsh7th/nvim-cmp',
+            'williamboman/nvim-lsp-installer',
+            'hrsh7th/nvim-cmp',
             { 'tami5/lspsaga.nvim', branch = 'nvim51' },
         },
         config = require 'plugins.nvim-lspconfig',
@@ -47,7 +53,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = {
-            { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
+            { 'kyazdani42/nvim-web-devicons' },
+            { 'lewis6991/gitsigns.nvim' },
         },
         config = require 'plugins.lualine',
     }
@@ -92,7 +99,7 @@ return require('packer').startup(function(use)
     use {
         'ahmedkhalf/project.nvim',
         requires = { 'nvim-telescope/telescope.nvim' },
-        config = require('plugins.project'),
+        config = require 'plugins.project',
     }
 
     -- quick commenting and uncommenting
@@ -109,7 +116,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-neorg/neorg',
         requires = {
-            'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter',
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
             'hrsh7th/nvim-cmp',
         },
         after = 'nvim-treesitter',

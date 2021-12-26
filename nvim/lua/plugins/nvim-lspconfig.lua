@@ -18,9 +18,9 @@ return function()
             end
         end
 
-        add_library('$VIMRUNTIME')
-        add_library('~/.config/nvim')
-        add_library("~/.local/share/nvim/site/pack/packer/start/*")
+        add_library '$VIMRUNTIME'
+        add_library '~/.config/nvim'
+        add_library '~/.local/share/nvim/site/pack/packer/start/*'
         return libraries
     end)()
 
@@ -37,10 +37,10 @@ return function()
         local ft = api.nvim_buf_get_option(0, 'filetype')
 
         if ft == 'help' or ft == 'vim' then
-            local cword = fn.expand('<cword>')
+            local cword = fn.expand '<cword>'
             api.nvim_command('help ' .. cword)
         elseif ft == 'man' then
-            local cword = fn.expand('<cword>')
+            local cword = fn.expand '<cword>'
             api.nvim_command('Man ' .. cword)
         else
             vim.cmd 'Lspsaga hover_doc'
@@ -52,32 +52,26 @@ return function()
             local nmap = require('keymaps').mapper('n', nil, true)
 
             nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-            nmap('ga',
-                 '<cmd>lua require("lspsaga.codeaction").code_action()<cr>')
-            nmap('gs',
-                 '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>')
+            nmap('ga', '<cmd>lua require("lspsaga.codeaction").code_action()<cr>')
+            nmap('gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>')
             nmap('gr', '<cmd>lua require("lspsaga.rename").rename()<cr>')
-            nmap('gD',
-                 '<cmd>lua require("lspsaga.provider").preview_definition()<cr>')
-            nmap('gJ',
-                 '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
-            nmap('gK',
-                 '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>')
-            nmap('<C-f>',
-                 '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>')
-            nmap('<C-b>',
-                 '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
+            nmap('gD', '<cmd>lua require("lspsaga.provider").preview_definition()<cr>')
+            nmap('gJ', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
+            nmap('gK', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>')
+            nmap('<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>')
+            nmap('<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
 
             nmap('K', '<cmd>call v:lua.__config__.hover()<cr>')
 
             vim.cmd [[au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
         end,
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp
-                                                                       .protocol
-                                                                       .make_client_capabilities()),
+        capabilities = require('cmp_nvim_lsp').update_capabilities(
+            vim.lsp.protocol.make_client_capabilities()
+        ),
     }
 
-    local is_available, rust_analyzer = require('nvim-lsp-installer.servers').get_server('rust_analyzer')
+    local is_available, rust_analyzer =
+        require('nvim-lsp-installer.servers').get_server 'rust_analyzer'
 
     if is_available then
         require('rust-tools').setup {
@@ -98,9 +92,11 @@ return function()
                 },
                 sumneko_lua = {
                     on_new_config = function(config, root)
-                        local libraries =
-                            vim.tbl_deep_extend('force', {}, config.settings.Lua
-                                                    .workspace.library)
+                        local libraries = vim.tbl_deep_extend(
+                            'force',
+                            {},
+                            config.settings.Lua.workspace.library
+                        )
                         libraries[vim.loop.fs_realpath(root) .. '/lua'] = nil
                         libraries[vim.loop.fs_realpath(root)] = nil
                         config.settings.Lua.workspace.library = libraries
