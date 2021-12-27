@@ -4,7 +4,41 @@ return function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     local apairs = require 'nvim-autopairs.completion.cmp'
+    local icons = {
+        Text = '',
+        Method = '',
+        Function = '',
+        Constructor = '',
+        Field = '',
+        Variable = '',
+        Class = '',
+        Interface = '',
+        Module = '',
+        Property = '',
+        Unit = '',
+        Value = '',
+        Enum = '',
+        Keyword = '',
+        Snippet = '',
+        Color = '',
+        File = '',
+        Reference = '',
+        Folder = '',
+        EnumMember = '',
+        Constant = '',
+        Struct = '"',
+        Event = '',
+        Operator = '',
+        TypeParameter = '',
+    }
+
     cmp.setup {
+        formatting = {
+            format = function(_, item)
+                item.kind = string.format('%s %s', icons[item.kind], item.kind)
+                return item
+            end,
+        },
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body)
