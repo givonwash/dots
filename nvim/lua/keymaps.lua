@@ -23,11 +23,11 @@ local map_opts = {
     expr = { expr = true },
 }
 
-local map = mapper('')
-local imap = mapper('i')
-local nmap = mapper('n')
-local tmap = mapper('t')
-local vmap = mapper('v')
+local map = mapper ''
+local imap = mapper 'i'
+local nmap = mapper 'n'
+local tmap = mapper 't'
+local vmap = mapper 'v'
 
 local no_silent = map_opts.no_silent
 
@@ -99,7 +99,7 @@ nmap('<leader>p', '"+p', no_silent)
 -- fast substitution
 nmap('<leader><leader>', ':%s:\\v::g<left><left><left>', no_silent)
 nmap('<leader>;', ':s:\\v::g<left><left><left>', no_silent)
-nmap('<leader>\'', ':.,$s:\\v::g<left><left><left>', no_silent)
+nmap("<leader>'", ':.,$s:\\v::g<left><left><left>', no_silent)
 nmap('<leader>k', ':%s:\\v<<C-r><C-w>>::g<left><left>', no_silent)
 
 -- fast number incrementing/decrementing

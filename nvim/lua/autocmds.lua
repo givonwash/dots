@@ -4,9 +4,11 @@ local M = {}
 
 function M.augroup(autocmds, name)
     cmd('augroup ' .. name)
-    cmd('autocmd!')
-    for _, au in pairs(autocmds) do cmd(au) end
-    cmd('augroup end')
+    cmd 'autocmd!'
+    for _, au in pairs(autocmds) do
+        cmd(au)
+    end
+    cmd 'augroup end'
 end
 
 M.augroup({
