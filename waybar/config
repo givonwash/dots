@@ -43,7 +43,7 @@
         "critical": 5
       },
       "format": "{icon}",
-      "format-icons": ["","","","",""],
+      "format-icons": ["", "", "", "", ""],
       "tooltip-format": "{capacity}%"
     },
     "network": {
@@ -64,7 +64,7 @@
         "headset": "",
         "phone": "",
         "car": "",
-        "default": ["", "", ""],
+        "default": ["", "", ""]
       },
       "on-click": "pavucontrol",
       "scroll-step": 0,
