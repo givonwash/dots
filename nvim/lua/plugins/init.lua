@@ -30,7 +30,6 @@ return require('packer').startup(function(use)
         requires = {
             'williamboman/nvim-lsp-installer',
             'hrsh7th/nvim-cmp',
-            { 'tami5/lspsaga.nvim', branch = 'nvim51' },
         },
         config = require 'plugins.nvim-lspconfig',
     }

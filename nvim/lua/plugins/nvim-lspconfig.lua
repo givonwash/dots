@@ -24,11 +24,6 @@ return function()
         return libraries
     end)()
 
-    require('lspsaga').init_lsp_saga {
-        code_action_keys = { quit = '<esc>', exec = '<cr>' },
-        rename_action_keys = { quit = '<esc>', exec = '<cr>' },
-    }
-
     -- special hover
     _G.__config__.hover = function()
         local api = vim.api
@@ -43,24 +38,22 @@ return function()
             local cword = fn.expand '<cword>'
             api.nvim_command('Man ' .. cword)
         else
-            vim.cmd 'Lspsaga hover_doc'
+            -- vim.cmd 'Lspsaga hover_doc'
+            vim.lsp.buf.hover()
         end
     end
 
     local defaults = {
         on_attach = function()
             local nmap = require('keymaps').mapper('n', nil, true)
+            local imap = require('keymaps').mapper('i', nil, true)
 
             nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-            nmap('ga', '<cmd>lua require("lspsaga.codeaction").code_action()<cr>')
-            nmap('gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>')
-            nmap('gr', '<cmd>lua require("lspsaga.rename").rename()<cr>')
-            nmap('gD', '<cmd>lua require("lspsaga.provider").preview_definition()<cr>')
-            nmap('gJ', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>')
-            nmap('gK', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>')
-            nmap('<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>')
-            nmap('<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>')
-
+            nmap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+            imap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+            nmap('ga', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+            nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+            nmap('gr', '<cmd>lua vim.lsp.buf.rename()<cr>')
             nmap('K', '<cmd>call v:lua.__config__.hover()<cr>')
 
             vim.cmd [[au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
@@ -68,6 +61,15 @@ return function()
         capabilities = require('cmp_nvim_lsp').update_capabilities(
             vim.lsp.protocol.make_client_capabilities()
         ),
+        handlers = {
+            ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = 'rounded',
+            }),
+            ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+                border = 'rounded',
+                close_events = { 'CursorMoved', 'BufHidden', 'InsertCharPre' },
+            }),
+        },
     }
 
     local is_available, rust_analyzer =
