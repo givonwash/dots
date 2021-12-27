@@ -3,9 +3,9 @@ return function()
 
     parsers.norg = {
         install_info = {
-            url = "https://github.com/nvim-neorg/tree-sitter-norg",
-            files = { "src/parser.c", "src/scanner.cc" },
-            branch = "main",
+            url = 'https://github.com/nvim-neorg/tree-sitter-norg',
+            files = { 'src/parser.c', 'src/scanner.cc' },
+            branch = 'main',
         },
     }
 

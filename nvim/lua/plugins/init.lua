@@ -9,10 +9,16 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         config = require 'plugins.nvim-cmp',
         requires = {
-            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline', 'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip', 'simrat39/rust-tools.nvim',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-emoji',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'simrat39/rust-tools.nvim',
             'nvim-neorg/neorg',
+            'windwp/nvim-autopairs',
         },
     }
 
@@ -22,14 +28,21 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'williamboman/nvim-lsp-installer', 'hrsh7th/nvim-cmp',
-            { 'tami5/lspsaga.nvim', branch = 'nvim51' },
+            'williamboman/nvim-lsp-installer',
+            'hrsh7th/nvim-cmp',
         },
         config = require 'plugins.nvim-lspconfig',
     }
 
     -- easily viewable (and navigable) lsp diagnositcs
     use { 'folke/trouble.nvim', config = require 'plugins.trouble' }
+
+    -- inject useful diagnostics and actions into builtin-lsp
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = require 'plugins.null-ls',
+    }
 
     --[[ aesthetic plugins ===================================================]]
 
@@ -41,13 +54,15 @@ return require('packer').startup(function(use)
     }
 
     -- onedark colorscheme with treesitter support
-    use { 'navarasu/onedark.nvim', config = require 'plugins.onedark' }
+    use { 'ful1e5/onedark.nvim', config = require 'plugins.onedark' }
 
     -- statusline
     use {
         'nvim-lualine/lualine.nvim',
         requires = {
-            { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
+            'kyazdani42/nvim-web-devicons',
+            'lewis6991/gitsigns.nvim',
+            'ful1e5/onedark.nvim',
         },
         config = require 'plugins.lualine',
     }
@@ -92,7 +107,7 @@ return require('packer').startup(function(use)
     use {
         'ahmedkhalf/project.nvim',
         requires = { 'nvim-telescope/telescope.nvim' },
-        config = require('plugins.project'),
+        config = require 'plugins.project',
     }
 
     -- quick commenting and uncommenting
@@ -109,7 +124,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-neorg/neorg',
         requires = {
-            'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter',
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
             'hrsh7th/nvim-cmp',
         },
         after = 'nvim-treesitter',
