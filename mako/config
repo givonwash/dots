@@ -1,6 +1,6 @@
 max-visible=3
 layer=overlay
-font=FiraCode Nerd Font 12
+font=Iosevka Term SS12 Extended 12
 format=<span weight='bold'>%a: %s</span>\n%b
 text-color=#abb2bf
 border-color=#4b5263

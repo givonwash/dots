@@ -1,7 +1,7 @@
 indicator-caps-lock
 daemonize
 scaling=fill
-font="FiraCode Nerd Font"
+font="Iosevka SS12 Extended"
 font-size=20
 bs-hl-color=e06c75
 indicator-radius=75
