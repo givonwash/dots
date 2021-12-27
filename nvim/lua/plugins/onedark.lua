@@ -1,4 +1,8 @@
 return function()
-    vim.g.onedark_toggle_style_keymap = '<nop>'
-    require('onedark').setup()
+    require('onedark').setup {
+        hide_inactive_statusline = true,
+        lualine_bold = true,
+        dark_sidebar = false,
+        dark_float = false,
+    }
 end

@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
     }
 
     -- onedark colorscheme with treesitter support
-    use { 'navarasu/onedark.nvim', config = require 'plugins.onedark' }
+    use { 'ful1e5/onedark.nvim', config = require 'plugins.onedark' }
 
     -- statusline
     use {
