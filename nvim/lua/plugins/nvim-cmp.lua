@@ -55,6 +55,7 @@ return function()
             { name = 'luasnip' },
             { name = 'buffer' },
             { name = 'path' },
+            { name = 'emoji' },
             { name = 'neorg' },
         },
     }
