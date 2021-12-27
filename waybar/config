@@ -32,7 +32,7 @@
       }
     },
     "clock": {
-      "format": " {:%a %b %d %I:%M %p}",
+      "format": "<span color='#e5c07b'> </span>{:%a %b %d %I:%M %p}",
       "interval": 60,
       "tooltip": false
     },
