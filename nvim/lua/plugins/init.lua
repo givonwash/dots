@@ -61,8 +61,9 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = {
-            { 'kyazdani42/nvim-web-devicons' },
-            { 'lewis6991/gitsigns.nvim' },
+            'kyazdani42/nvim-web-devicons',
+            'lewis6991/gitsigns.nvim',
+            'ful1e5/onedark.nvim',
         },
         config = require 'plugins.lualine',
     }
