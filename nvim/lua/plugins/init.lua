@@ -37,6 +37,13 @@ return require('packer').startup(function(use)
     -- easily viewable (and navigable) lsp diagnositcs
     use { 'folke/trouble.nvim', config = require 'plugins.trouble' }
 
+    -- inject useful diagnostics and actions into builtin-lsp
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = require 'plugins.null-ls',
+    }
+
     --[[ aesthetic plugins ===================================================]]
 
     -- better syntax highlighting
