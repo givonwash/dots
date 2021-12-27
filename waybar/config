@@ -1,125 +1,74 @@
 [
-    {
-        "name": "main",
-        "layer": "top",
-        "output": ["eDP-1", "DP-1"],
-        "position": "bottom",
-        "modules-left": [
-            "sway/workspaces",
-            "sway/mode"
-        ],
-        "modules-center": [
-            "sway/window"
-        ],
-        "modules-right": [
-            "pulseaudio",
-            "backlight",
-            "battery",
-            "network",
-            "clock"
-        ],
-        "sway/workspaces": {
-            "all-outputs": false,
-            "current-only": false,
-            "disable-scroll": true,
-            "disable-click": false,
-            "disable-markup": false,
-            "format": "{icon}",
-            "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-                "10": "",
-                "urgent": "",
-                "focused": "",
-                "default": ""
-            },
-            "numeric-first": false,
-            "persistent_workspaces": {}
-        },
-        "sway/mode": {
-            "format": "{}"
-        },
-        "sway/window": {
-            "format": "{}",
-            "max-length": 70
-        },
-        "clock": {
-            "format": ":: {:%a %b %d %I:%M %p} ::",
-            "interval": 60,
-            "tooltip": false
-        },
-        "backlight": {
-            "device": "intel_backlight",
-            "format": "{icon}",
-            "format-icons": [
-                "",
-                "",
-                ""
-            ],
-            "interval": 2,
-            "tooltip": false
-        },
-        "battery": {
-            "states": {
-                "full": 100,
-                "great": 90,
-                "very-good": 80,
-                "good": 70,
-                "above-average": 60,
-                "average": 50,
-                "below-average": 40,
-                "poor": 30,
-                "very-poor": 20,
-                "critical": 10
-            },
-            "format": "{icon}",
-            "format-icons": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        "network": {
-            "format-disconnected": "",
-            "format-wifi": "{icon}",
-            "format-icons": [
-                ""
-            ],
-            "tooltip": true,
-            "tooltip-format": "{essid}: \n\t• Signal Strength: {signalStrength}\n\t• Upload Bandwidth: {bandwidthUpBits}\n\t• Download Bandwidth: {bandwidthDownBits}",
-            "on-click": "nm-connection-editor"
-        },
-        "pulseaudio": {
-            "format": "{icon}",
-            "format-bluetooth": "",
-            "format-bluetooth-muted": "",
-            "format-muted": "",
-            "format-source": "",
-            "format-source-muted": "",
-            "format-icons": {
-                "headphone": "",
-                "hands-free": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": [
-                    "",
-                    "",
-                    ""
-                ]
-            },
-            "on-click": "pavucontrol",
-            "scroll-step": 1,
-            "tooltip": true
-        }
+  {
+    "name": "main",
+    "layer": "top",
+    "output": ["eDP-1", "DP-1"],
+    "position": "bottom",
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "battery", "network", "clock"],
+    "sway/workspaces": {
+      "all-outputs": true,
+      "disable-scroll": true,
+      "numeric-first": false,
+      "format": "{icon}",
+      "format-icons": {
+        "default": "<span weight='bold'></span>",
+        "focused": ""
+      },
+      "persistent_workspaces": {
+        "1_browsing": [],
+        "2_terminal": [],
+        "3_communicating": [],
+        "4_music": []
+      }
+    },
+    "sway/window": {
+      "format": "<span weight='bold'>{}</span>",
+      "max-length": 50,
+      "tooltip": false,
+      "rewrite": {
+        "(.*)\\s—\\sFirefox( Developer Edition)?$": "<span color='#e86671'></span> $1"
+      }
+    },
+    "clock": {
+      "format": " {:%a %b %d %I:%M %p}",
+      "interval": 60,
+      "tooltip": false
+    },
+    "battery": {
+      "states": {
+        "okay": 40,
+        "poor": 20,
+        "critical": 5
+      },
+      "format": "{icon}",
+      "format-icons": ["","","","",""],
+      "tooltip-format": "{capacity}%"
+    },
+    "network": {
+      "format-ethernet": "",
+      "format-wifi": "",
+      "format-disconnected": "",
+      "format-disabled": "",
+      "max-length": 30,
+      "tooltip-format": "Network: {essid}\nStrength: {signalStrength}\nFrequency:{frequency}"
+    },
+    "pulseaudio": {
+      "format": "{icon}",
+      "format-bluetooth": "{icon} ",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "car": "",
+        "default": ["", "", ""],
+      },
+      "on-click": "pavucontrol",
+      "scroll-step": 0,
+      "tooltip-format": "{volume}%"
     }
+  }
 ]
