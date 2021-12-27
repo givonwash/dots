@@ -3,6 +3,7 @@ return function()
 
     nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
     nmap('<leader>fc', '<cmd>lua require("telescope.builtin").commands()<cr>')
+    nmap('<leader>fk', '<cmd>lua require("telescope.builtin").keymaps()<cr>')
     nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
     nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
     nmap('<leader>fm', '<cmd>lua require("telescope.builtin").man_pages()<cr>')
