@@ -1,4 +1,5 @@
 return function()
+    local lsp = require 'lsp'
     local lsp_installer = require 'nvim-lsp-installer'
 
     local LUA_PATH = (function()
@@ -24,52 +25,12 @@ return function()
         return libraries
     end)()
 
-    -- special hover
-    _G.__config__.hover = function()
-        local api = vim.api
-        local fn = vim.fn
-
-        local ft = api.nvim_buf_get_option(0, 'filetype')
-
-        if ft == 'help' or ft == 'vim' then
-            local cword = fn.expand '<cword>'
-            api.nvim_command('help ' .. cword)
-        elseif ft == 'man' then
-            local cword = fn.expand '<cword>'
-            api.nvim_command('Man ' .. cword)
-        else
-            -- vim.cmd 'Lspsaga hover_doc'
-            vim.lsp.buf.hover()
-        end
-    end
-
     local defaults = {
-        on_attach = function()
-            local nmap = require('keymaps').mapper('n', nil, true)
-            local imap = require('keymaps').mapper('i', nil, true)
-
-            nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-            nmap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-            imap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-            nmap('ga', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-            nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-            nmap('gr', '<cmd>lua vim.lsp.buf.rename()<cr>')
-            nmap('K', '<cmd>call v:lua.__config__.hover()<cr>')
-
-            vim.cmd [[au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
-        end,
+        on_attach = lsp.on_attach,
         capabilities = require('cmp_nvim_lsp').update_capabilities(
             vim.lsp.protocol.make_client_capabilities()
         ),
-        handlers = {
-            ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-                border = 'rounded',
-            }),
-            ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                border = 'rounded',
-                close_events = { 'CursorMoved', 'BufHidden', 'InsertCharPre' },
-            }),
-        },
+        handlers = lsp.handlers,
     }
 
     local is_available, rust_analyzer =
