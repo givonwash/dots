@@ -31,34 +31,27 @@ colors:
   primary:
     foreground: "0xabb2bf"
     background: "0x282c34"
-  cursor:
-    text: "0x5c6370"
-    cursor: "0xabb2bf"
-  vi_mode_cursor:
-    text: "0x5c6370"
-    cursor: "0xabb2bf"
-  selection:
-    text: "0x5c6370"
-    background: "0xabb2bf"
   normal:
-    black: "0x5c6370"
-    red: "0xe06c75"
+    black: "0x20232a"
+    red: "0xe86671"
     green: "0x98c379"
-    yellow: "0xe5c07b"
+    yellow: "0xe0af68"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0x798294"
+  bright:
+    black: "0x21252b"
+    red: "0xe86671"
+    green: "0x98c379"
+    yellow: "0xe0af68"
     blue: "0x61afef"
     magenta: "0xc678dd"
     cyan: "0x56b6c2"
     white: "0xabb2bf"
-  bright:
-    black: "0x4b5263"
-    red: "0xbe5046"
-    green: "0x98c379"
-    yellow: "0xd19a66"
-    blue: "0x61afef"
-    magenta: "0xc678dd"
-    cyan: "0x56b6c2"
-    white: "0x3e4452"
-background_opacity: 1.0
+  indexed_colors:
+    - { index: 16, color: "0xd19a66" }
+    - { index: 17, color: "0xf65866" }
 cursor:
   style: Beam
   vi_mode_style: Underline

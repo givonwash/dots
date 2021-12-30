@@ -5,8 +5,8 @@
 #   Variable    Value
 set $background #282c34
 set $blue       #61afef
-set $gray       #4b5263
-set $red        #be5046
+set $gray       #798294
+set $red        #e86671
 set $white      #abb2bf
 
 # Keys
