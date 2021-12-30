@@ -38,7 +38,6 @@ return function()
             },
             file_browser = {
                 hidden = true,
-                dir_icon = '🖿',
             },
             man_pages = {
                 sections = { 'ALL' },
