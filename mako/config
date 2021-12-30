@@ -1,7 +1,7 @@
 max-visible=3
 layer=overlay
 font=Iosevka Term SS12 Extended 12
-format=<span weight='bold'>%a: %s</span>\n%b
+format=<span color='#e5c07b' weight='bold'>%a: %s</span>\n%b
 text-color=#abb2bf
 border-color=#21252b
 background-color=#282c34
