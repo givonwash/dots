@@ -81,6 +81,12 @@ return require('packer').startup(function(use)
         config = require 'plugins.barbar',
     }
 
+    -- colorizer
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = require 'plugins.nvim-colorizer',
+    }
+
     --[[ navigation plugins ==================================================]]
 
     -- fuzzy finding
