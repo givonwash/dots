@@ -2,39 +2,40 @@
 
 * {
   font-family: "Iosevka SS12 Extended", monospace;
-  color: rgb(171, 178, 191);
+  border: none;
 }
 
 #window {
-  background-color: rgb(40, 44, 52);
-  border: none;
-  border-radius: 3px;
+  background-color: rgb(33, 37, 43);
 }
 
 #input {
-  background-color: rgb(76, 82, 99);
-  border-radius: 3px;
-  box-shadow: none;
+  color: rgb(171, 178, 191);
+  background-color: rgb(92, 99, 112);
   margin: 0.8em;
   font-size: 1.2em;
 }
 
-#entry {
+#scroll {
   padding-left: 0.5em;
-  border: none;
+}
+
+#entry {
+  color: rgb(171, 178, 191);
+  font-weight: bold;
+  font-style: italic;
 }
 
 #entry:selected {
-  background-color: rgb(76, 82, 99);
   padding-left: 1em;
+  background-color: rgb(57, 63, 74);
 }
 
-#text {
-  margin: 2px;
-  color: rgb(152, 195, 121);
+#entry image + label {
+  margin-left: 1em;
 }
 
-#text:selected {
-  font-weight: bold;
-  color: rgb(97, 175, 239);
+#entry expander list {
+  border-radius: 1em;
+  background-color: rgb(57, 63, 74);
 }
