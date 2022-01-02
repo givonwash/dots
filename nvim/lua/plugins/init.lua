@@ -49,6 +49,9 @@ return require('packer').startup(function(use)
     -- better syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
+        requires = {
+            'windwp/nvim-ts-autotag',
+        },
         run = ':TSUpdate',
         config = require 'plugins.nvim-treesitter',
     }
@@ -81,12 +84,28 @@ return require('packer').startup(function(use)
         config = require 'plugins.barbar',
     }
 
+    -- colorizer
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = require 'plugins.nvim-colorizer',
+    }
+
+    -- notifications
+    use {
+        'rcarriga/nvim-notify',
+        config = require 'plugins.nvim-notify',
+    }
+
     --[[ navigation plugins ==================================================]]
 
     -- fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        },
         rocks = 'luafilesystem',
         config = require 'plugins.telescope',
     }
@@ -115,6 +134,13 @@ return require('packer').startup(function(use)
 
     -- autopairs
     use { 'windwp/nvim-autopairs', config = require 'plugins.nvim-autopairs' }
+
+    -- arbitrary location movement
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v1.2',
+        config = require 'plugins.hop',
+    }
 
     -- [[ debuggin plugins  ==================================================]]
 
