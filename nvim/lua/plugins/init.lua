@@ -90,6 +90,12 @@ return require('packer').startup(function(use)
         config = require 'plugins.nvim-colorizer',
     }
 
+    -- notifications
+    use {
+        'rcarriga/nvim-notify',
+        config = require 'plugins.nvim-notify',
+    }
+
     --[[ navigation plugins ==================================================]]
 
     -- fuzzy finding
