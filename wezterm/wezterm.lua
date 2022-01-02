@@ -36,15 +36,10 @@ local theme = {
     },
 }
 
-wezterm.on('format-tab-title', function(tab)
-    return string.format('[%d]: %s ', tab.tab_index + 1, tab.active_pane.title)
-end)
-
 return {
     -- theming
     bold_brightens_ansi_colors = false,
     default_cursor_style = 'SteadyBar',
-    tab_bar_at_bottom = true,
     font = wezterm.font('Iosevka Term SS12', { stretch = 'Expanded', weight = 'Regular' }),
     colors = {
         foreground = theme.fg,
@@ -64,17 +59,14 @@ return {
             active_tab = {
                 fg_color = theme.term.normal[1],
                 bg_color = theme.term.normal[3],
-                intensity = 'Bold',
             },
             inactive_tab = {
                 fg_color = theme.term.normal[3],
                 bg_color = theme.term.normal[1],
-                intensity = 'Bold',
             },
             inactive_tab_hover = {
                 fg_color = theme.term.normal[4],
                 bg_color = theme.term.normal[1],
-                intensity = 'Bold',
             },
             new_tab = {
                 fg_color = theme.term.normal[2],
@@ -206,6 +198,11 @@ return {
             mods = 'LEADER|SHIFT',
             action = wezterm.action { ClearScrollback = 'ScrollbackAndViewport' },
         },
+    },
+    window_frame = {
+        font = wezterm.font('Iosevka Etoile', { weight = 'Bold' }),
+        active_titlebar_bg = theme.sel.fg,
+        inactive_titlebar_bg = theme.sel.fg,
     },
 
     -- misc
