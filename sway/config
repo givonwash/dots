@@ -29,7 +29,7 @@ set $wallpaper  /home/givon/wall/astral.png
 
 # Terminal
 #   Variable    Terminal
-set $term       alacritty
+set $term       wezterm
 
 # Commands
 #   Variable    Command
