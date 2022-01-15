@@ -41,6 +41,8 @@ return {
     bold_brightens_ansi_colors = false,
     default_cursor_style = 'SteadyBar',
     font = wezterm.font('Iosevka Term SS12', { stretch = 'Expanded', weight = 'Regular' }),
+    font_size = 13.0,
+    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
     colors = {
         foreground = theme.fg,
         background = theme.bg,
@@ -201,6 +203,7 @@ return {
     },
     window_frame = {
         font = wezterm.font('Iosevka Etoile', { weight = 'Bold' }),
+        font_size = 13.0,
         active_titlebar_bg = theme.sel.fg,
         inactive_titlebar_bg = theme.sel.fg,
     },
