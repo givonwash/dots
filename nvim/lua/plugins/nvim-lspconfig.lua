@@ -78,7 +78,13 @@ return function()
                         },
                     },
                 },
-                tsserver = {},
+                tsserver = {
+                    on_attach = function(client)
+                        client.resolved_capabilities.document_formatting = false
+                        client.resolved_capabilities.document_range_formatting = false
+                        lsp.on_attach(client)
+                    end,
+                },
             }
 
             server:setup(vim.tbl_extend('keep', config[server.name], defaults))
