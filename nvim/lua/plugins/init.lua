@@ -136,13 +136,6 @@ return require('packer').startup(function(use)
     -- autopairs
     use { 'windwp/nvim-autopairs', config = require 'plugins.nvim-autopairs' }
 
-    -- arbitrary location movement
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v1.2',
-        config = require 'plugins.hop',
-    }
-
     -- [[ debuggin plugins  ==================================================]]
 
     use { 'nvim-treesitter/playground', config = require 'plugins.playground' }
