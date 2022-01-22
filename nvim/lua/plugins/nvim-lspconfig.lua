@@ -47,6 +47,7 @@ return function()
         if server.name ~= 'rust_analyzer' then
             local config = {
                 cssls = {},
+                eslint = {},
                 html = {},
                 pyright = {
                     settings = {
@@ -78,6 +79,7 @@ return function()
                         },
                     },
                 },
+                texlab = {},
                 tsserver = {
                     on_attach = function(client)
                         client.resolved_capabilities.document_formatting = false
