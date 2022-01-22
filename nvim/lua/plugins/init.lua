@@ -116,6 +116,7 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require 'plugins.nvim-tree',
         cmd = 'NvimTreeToggle',
+        keys = { '<leader>e' },
     }
 
     --[[ efficiency plugins ==================================================]]
