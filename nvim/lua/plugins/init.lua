@@ -115,6 +115,8 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require 'plugins.nvim-tree',
+        cmd = 'NvimTreeToggle',
+        keys = { '<leader>e' },
     }
 
     --[[ efficiency plugins ==================================================]]
@@ -134,13 +136,6 @@ return require('packer').startup(function(use)
 
     -- autopairs
     use { 'windwp/nvim-autopairs', config = require 'plugins.nvim-autopairs' }
-
-    -- arbitrary location movement
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v1.2',
-        config = require 'plugins.hop',
-    }
 
     -- [[ debuggin plugins  ==================================================]]
 

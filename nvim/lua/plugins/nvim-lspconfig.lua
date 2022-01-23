@@ -47,6 +47,7 @@ return function()
         if server.name ~= 'rust_analyzer' then
             local config = {
                 cssls = {},
+                eslint = {},
                 html = {},
                 pyright = {
                     settings = {
@@ -78,7 +79,14 @@ return function()
                         },
                     },
                 },
-                tsserver = {},
+                texlab = {},
+                tsserver = {
+                    on_attach = function(client)
+                        client.resolved_capabilities.document_formatting = false
+                        client.resolved_capabilities.document_range_formatting = false
+                        lsp.on_attach(client)
+                    end,
+                },
             }
 
             server:setup(vim.tbl_extend('keep', config[server.name], defaults))
