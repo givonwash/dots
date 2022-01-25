@@ -40,8 +40,11 @@ return {
     -- theming
     bold_brightens_ansi_colors = false,
     default_cursor_style = 'SteadyBar',
-    font = wezterm.font('Iosevka Term SS12', { stretch = 'Expanded', weight = 'Regular' }),
-    font_size = 13.0,
+    font = wezterm.font_with_fallback {
+        { family = 'Iosevka SS12', stretch = 'Expanded', weight = 'Regular' },
+        { family = 'Symbols Nerd Font' },
+    },
+    font_size = 14,
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
     colors = {
         foreground = theme.fg,
@@ -200,6 +203,9 @@ return {
             mods = 'LEADER|SHIFT',
             action = wezterm.action { ClearScrollback = 'ScrollbackAndViewport' },
         },
+
+        -- misc
+        { key = 'f', mods = 'CTRL|CMD', action = 'ToggleFullScreen' },
     },
     window_frame = {
         font = wezterm.font('Iosevka Etoile', { weight = 'Bold' }),
