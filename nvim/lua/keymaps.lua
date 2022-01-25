@@ -30,7 +30,6 @@ local tmap = mapper 't'
 local vmap = mapper 'v'
 
 local no_silent = map_opts.no_silent
-local expr = map_opts.expr
 
 --[[=============================== mappings ================================]]
 
