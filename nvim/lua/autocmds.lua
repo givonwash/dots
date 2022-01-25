@@ -14,6 +14,7 @@ end
 M.augroup({
     [[au FileType help,man wincmd L]],
     [[au BufWritePre * mark ` | %s:\v\s+$::ge | normal! ``]],
+    [[au TextYankPost * silent! lua vim.highlight.on_yank() ]],
 }, 'vimrc')
 
 return M
