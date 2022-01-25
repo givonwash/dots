@@ -28,5 +28,7 @@ source $HOME/.config/sh/rc
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
