@@ -1,4 +1,4 @@
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin:${HOME}/.luarocks/bin"
+export PATH="${PATH}:${HOME}/Library/Python/3.9/bin:${HOME}/.cargo/bin:${HOME}/.luarocks/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
