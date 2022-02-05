@@ -1,0 +1,5 @@
+profile {
+    output "Dell Inc. DELL S3221QS 50LSTB3" position 0,0
+    output eDP-1 position 3840,0
+    exec swaymsg 'workspace 1_browsing; move workspace to output "Dell Inc. DELL S3221QS 50LSTB3"'
+}

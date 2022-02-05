@@ -225,5 +225,8 @@ focus_on_window_activation smart
 # include any additoinal system-wide configurations
 include /etc/sway/config.d/*
 
+# start kanshi
+exec kanshi
+
 # start gammastep
 exec gammastep
