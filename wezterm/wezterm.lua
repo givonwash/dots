@@ -207,7 +207,4 @@ return {
         active_titlebar_bg = theme.sel.fg,
         inactive_titlebar_bg = theme.sel.fg,
     },
-
-    -- misc
-    enable_wayland = true,
 }
