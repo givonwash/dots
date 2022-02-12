@@ -33,9 +33,6 @@ return function()
             },
         },
         pickers = {
-            find_files = {
-                hidden = true,
-            },
             file_browser = {
                 hidden = true,
             },

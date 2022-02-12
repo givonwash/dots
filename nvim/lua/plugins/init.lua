@@ -146,7 +146,6 @@ return require('packer').startup(function(use)
         'nvim-neorg/neorg',
         requires = {
             'nvim-lua/plenary.nvim',
-            'nvim-treesitter/nvim-treesitter',
             'hrsh7th/nvim-cmp',
         },
         after = 'nvim-treesitter',
