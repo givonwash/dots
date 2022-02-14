@@ -30,6 +30,5 @@ eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
