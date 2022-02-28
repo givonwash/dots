@@ -47,6 +47,7 @@ return function()
         if server.name ~= 'rust_analyzer' then
             local config = {
                 cssls = {},
+                dockerls = {},
                 eslint = {},
                 html = {},
                 pyright = {
