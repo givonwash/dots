@@ -80,6 +80,8 @@ return function()
                         },
                     },
                 },
+                tflint = {},
+                terraformls = {},
                 texlab = {},
                 tsserver = {
                     on_attach = function(client)
