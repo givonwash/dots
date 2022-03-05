@@ -47,6 +47,7 @@ return function()
         if server.name ~= 'rust_analyzer' then
             local config = {
                 cssls = {},
+                dockerls = {},
                 eslint = {},
                 html = {},
                 pyright = {
@@ -79,6 +80,8 @@ return function()
                         },
                     },
                 },
+                tflint = {},
+                terraformls = {},
                 texlab = {},
                 tsserver = {
                     on_attach = function(client)
