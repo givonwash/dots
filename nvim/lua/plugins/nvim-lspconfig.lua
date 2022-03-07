@@ -33,16 +33,6 @@ return function()
         handlers = lsp.handlers,
     }
 
-    local is_available, rust_analyzer =
-        require('nvim-lsp-installer.servers').get_server 'rust_analyzer'
-
-    if is_available then
-        require('rust-tools').setup {
-            hover_with_actions = false,
-            server = vim.tbl_extend('force', rust_analyzer:get_default_options(), defaults),
-        }
-    end
-
     lsp_installer.on_server_ready(function(server)
         if server.name ~= 'rust_analyzer' then
             local config = {
@@ -93,6 +83,13 @@ return function()
             }
 
             server:setup(vim.tbl_extend('keep', config[server.name], defaults))
+        else
+            require('rust-tools').setup {
+                hover_with_actions = false,
+                server = vim.tbl_extend('force', server:get_default_options(), defaults),
+            }
+
+            server:attach_buffers()
         end
     end)
 end

@@ -14,8 +14,8 @@ zstyle ':completion*' preserve-prefix '//[^/]##/'
 zstyle ':completion*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion*' verbose true
 zstyle :compinstall filename "${HOME}/.zshrc"
-autoload -Uz compinit
-compinit
+autoload -Uz +X compinit && compinit
+autoload -Uz +X bashcompinit && bashcompinit
 
 HISTFILE=~/.cache/zsh/.hist
 HISTSIZE=1000
