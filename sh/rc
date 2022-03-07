@@ -74,6 +74,7 @@ if [[ ! "${SSH_AUTH_SOCK}" ]]; then
 fi
 
 # ----------------------------------------------------------------------------
-# Application inits
+# Application Configuration
 # ----------------------------------------------------------------------------
 eval "$(pyenv init -)"
+complete -C aws_completer aws
