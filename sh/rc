@@ -50,3 +50,5 @@ alias tm="tmux"
 # Application inits
 # ----------------------------------------------------------------------------
 eval "$(pyenv init -)"
+eval "$(rbenv init -)"
+eval "$(direnv hook zsh)"
