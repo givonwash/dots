@@ -13,6 +13,7 @@ return function()
         '<cmd>lua require("telescope.builtin").file_browser({ cwd = vim.fn.expand "%:p:h" })<cr>'
     )
     nmap('<leader>ft', '<cmd>lua require("telescope.builtin").builtin()<cr>')
+    nmap('<leader>fs', '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
 
     local actions = require 'telescope.actions'
 
