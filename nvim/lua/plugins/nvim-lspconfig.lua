@@ -36,6 +36,7 @@ return function()
     lsp_installer.on_server_ready(function(server)
         if server.name ~= 'rust_analyzer' then
             local config = {
+                bashls = {},
                 cssls = {},
                 dockerls = {},
                 eslint = {},
