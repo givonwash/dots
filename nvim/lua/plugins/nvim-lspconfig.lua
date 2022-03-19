@@ -33,56 +33,56 @@ return function()
         handlers = lsp.handlers,
     }
 
+    local config = {
+        bashls = {},
+        cssls = {},
+        dockerls = {},
+        eslint = {},
+        html = {},
+        pyright = {
+            settings = {
+                python = { analysis = { typeCheckingMode = 'strict' } },
+            },
+        },
+        sumneko_lua = {
+            on_new_config = function(config, root)
+                local libraries = vim.tbl_deep_extend(
+                    'force',
+                    {},
+                    config.settings.Lua.workspace.library
+                )
+                libraries[vim.loop.fs_realpath(root) .. '/lua'] = nil
+                libraries[vim.loop.fs_realpath(root)] = nil
+                config.settings.Lua.workspace.library = libraries
+                return config
+            end,
+            settings = {
+                Lua = {
+                    runtime = { version = 'LuaJIT', path = LUA_PATH },
+                    diagnostics = { globals = { 'vim' } },
+                    workspace = {
+                        library = LUA_LIBRARIES,
+                        maxPreload = 1000,
+                        preloadFileSize = 150,
+                    },
+                    telemetry = { enable = false },
+                },
+            },
+        },
+        tflint = {},
+        terraformls = {},
+        texlab = {},
+        tsserver = {
+            on_attach = function(client)
+                client.resolved_capabilities.document_formatting = false
+                client.resolved_capabilities.document_range_formatting = false
+                lsp.on_attach(client)
+            end,
+        },
+    }
+
     lsp_installer.on_server_ready(function(server)
         if server.name ~= 'rust_analyzer' then
-            local config = {
-                bashls = {},
-                cssls = {},
-                dockerls = {},
-                eslint = {},
-                html = {},
-                pyright = {
-                    settings = {
-                        python = { analysis = { typeCheckingMode = 'strict' } },
-                    },
-                },
-                sumneko_lua = {
-                    on_new_config = function(config, root)
-                        local libraries = vim.tbl_deep_extend(
-                            'force',
-                            {},
-                            config.settings.Lua.workspace.library
-                        )
-                        libraries[vim.loop.fs_realpath(root) .. '/lua'] = nil
-                        libraries[vim.loop.fs_realpath(root)] = nil
-                        config.settings.Lua.workspace.library = libraries
-                        return config
-                    end,
-                    settings = {
-                        Lua = {
-                            runtime = { version = 'LuaJIT', path = LUA_PATH },
-                            diagnostics = { globals = { 'vim' } },
-                            workspace = {
-                                library = LUA_LIBRARIES,
-                                maxPreload = 1000,
-                                preloadFileSize = 150,
-                            },
-                            telemetry = { enable = false },
-                        },
-                    },
-                },
-                tflint = {},
-                terraformls = {},
-                texlab = {},
-                tsserver = {
-                    on_attach = function(client)
-                        client.resolved_capabilities.document_formatting = false
-                        client.resolved_capabilities.document_range_formatting = false
-                        lsp.on_attach(client)
-                    end,
-                },
-            }
-
             server:setup(vim.tbl_extend('keep', config[server.name], defaults))
         else
             require('rust-tools').setup {
