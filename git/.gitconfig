@@ -1,0 +1,30 @@
+[user]
+	email = givonwash@gmail.com
+	name = givonwash
+
+[core]
+	editor = nvim
+    pager = delta
+
+[init]
+	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    hyperlinks = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+    tool = nvimdiff
+
+[pull]
+	rebase = true
+
+[diff]
+    algorithm = histogram
+    colorMoved = default
+    tool = nvimdiff
